@@ -1,5 +1,5 @@
 {
-  "name": "@enab/module-starter",
+  "name": "@enab/app-store",
   "version": "1.0.0",
   "license": "MIT",
   "type": "module",
@@ -21,6 +21,7 @@
     "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground"
   },
   "dependencies": {
+    "@enab/notepad": "^1.0.0",
     "@enab/ui": "^1.0.2",
     "@iconify/json": "^2.1.77",
     "@nuxt/kit": "^3.0.0-rc.6",

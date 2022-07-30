@@ -9,8 +9,8 @@ export interface ModuleOptions {
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
-    name: 'module-starter',
-    configKey: 'moduleStarter'
+    name: 'app-store',
+    configKey: 'appStore'
   },
   defaults: {
     addPlugin: true,
