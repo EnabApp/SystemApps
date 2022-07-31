@@ -1,6 +1,6 @@
 {
-  "name": "@enab/app-store",
-  "version": "1.0.0",
+  "name": "@enab/appstore",
+  "version": "1.0.1",
   "license": "MIT",
   "type": "module",
   "exports": {
