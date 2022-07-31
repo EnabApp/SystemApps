@@ -1,12 +1,9 @@
 <template>
   <!-- Header -->
   <div flex="~" justify="between" m-b="3">
-    <div flex="~">
-      <UiInput placeholder="البحث عن تطبيق" > 
-        <UiButton @click="appsToggle()" icon="i-fa:filter" title="تطبيقاتي" :solid="appsState ? true : false" color="slate" />
-      </UiInput>
-    </div>
-    <span @click="something()" flex="~" cursor="pointer" transition="~" delay="100" hover="bg-purple-700 -translate-y-1 scale-100 text-w-90" border="w-10 2" p="3" rounded="lg" text="2xl success-500">نقاطي  :   1000  <div class="i-emojione-v1:diamond-with-a-dot" m-r="2" align="center"></div></span>
+    <UiInput placeholder="البحث عن تطبيق" > 
+      <UiButton @click="appsToggle()" icon="i-fa:filter" title="تطبيقاتي" :solid="appsState ? true : false" color="slate" />
+    </UiInput>
   </div>
   <!-- Apps -->
   <div p="2" h="96" grid="~ lg:cols-4 cols-2 gap-2" border="rounded-lg" overflow-y="auto">

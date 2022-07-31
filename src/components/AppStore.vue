@@ -1,21 +1,16 @@
 <template>
   <!-- Application -->
   <Transition>
-    <UiDesktopWindow
-      v-if="app.running"
-      v-show="!app.minimized"
-      :app="app"
-    >
-      <div class="flex" h="full">
-        <!-- Right -->
-        <div basis="4/6" border="w-10 2" rounded="lg" p="2" m="2">
-          <AppStoreTabsApps basis="3/4" :app="app" />
+    <UiDesktopWindow v-if="app.running" v-show="!app.minimized" :app="app">
+        <AppStoreSectionsSidebar :app="app" />
+        <div class="fixed h-full right-[0rem] top-[0rem] left-24 overflow-y-auto">
+          <AppStoreSectionsHome :app="app" />
         </div>
-        <!-- Left -->
-        <div basis="2/6" border="w-10 2" rounded="lg" p="2" m="2">
+      <!-- <div flex="~ col" h="full">
+        <div basis="1/4" border="w-10 2" rounded="lg" p="2" m="2">
           <AppStoreTabsAds basis="1/4" :app="app" />
         </div>
-      </div>
+      </div> -->
     </UiDesktopWindow>
   </Transition>
 </template>
