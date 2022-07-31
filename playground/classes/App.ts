@@ -14,6 +14,7 @@ export default class App {
     running: boolean;
     locked: boolean;
     owned: boolean;
+    points: number ;
     size: string;
     zIndex: string;
 
@@ -43,6 +44,7 @@ export default class App {
         this.zIndex = args.zIndex ?? 20
         this.locked = args.locked ?? false
         this.owned = args.owned ?? false
+        this.points = args.points ?? 0
 
         this.utility = args.utility ?? false
 
