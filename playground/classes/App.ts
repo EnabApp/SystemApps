@@ -14,7 +14,6 @@ export default class App {
     running: boolean;
     locked: boolean;
     owned: boolean;
-    points: number ;
     size: string;
     zIndex: string;
 
@@ -23,6 +22,8 @@ export default class App {
     solid: boolean;
 
     parentApp: string;
+
+    points: number;
 
     widgets: Widget[];
     subApps: App[];
@@ -44,7 +45,6 @@ export default class App {
         this.zIndex = args.zIndex ?? 20
         this.locked = args.locked ?? false
         this.owned = args.owned ?? false
-        this.points = args.points ?? 0
 
         this.utility = args.utility ?? false
 
@@ -54,17 +54,21 @@ export default class App {
 
         this.size = args.size ?? "w-2xl h-lg"
 
+        this.points = args.points ?? 0
+
         this.widgets = args.widgets ?? []
         this.subApps = args.subApps ?? []
     }
-
+    
+    
+    // Actions - Toggles
     toggleRunning(){
         this.running = !this.running
         this.minimized = false
         if (!this.running)
             this.subApps.forEach(app => app.running = false)
     }
-
+    
     toggleMinimize() {
         this.minimized = !this.minimized
     }
@@ -75,11 +79,18 @@ export default class App {
             this.maximized = !this.maximized
     }
 
+
+    // Getters
     getWidget(id: number){
         return this.widgets.find(widget => widget.id === id)
     }
 
     getSubApp(id: number){
         return this.subApps.find(app => app.id === id)
+    }
+
+    // Utilities
+    isSubAppsRunning(){
+        return this.subApps.some(app => app.running)
     }
 }

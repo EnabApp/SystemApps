@@ -1,13 +1,18 @@
 import { defineNuxtConfig } from 'nuxt'
 import MyModule from '..'
+
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
-    isProduction: false,
+    // isProduction: true,
     ssr: false,
 
     autoImports: {
-        global: true,
+        global: true
     },
+    
+    // build: {
+    //     analyze: true,
+    // },
 
     components: {
         global: true,
@@ -17,10 +22,8 @@ export default defineNuxtConfig({
     },
 
     modules: [
-        
         MyModule,
 
-        '@enab/notepad',
 
         '@enab/ui',
 
@@ -202,7 +205,7 @@ export default defineNuxtConfig({
             height: {
                 'sidebar': 'calc(100vh - 3.75rem)',
                 'main-content': 'calc(100vh - 2.25rem)',
-                'minus-bottombar': 'calc(100vh - 64px)',
+                'minus-bottombar': 'calc(100vh)',
             },
         },
     },
