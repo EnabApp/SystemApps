@@ -50,7 +50,7 @@ export const useStoreApps = defineStore("apps", {
 
             new App({
                 id: 3,
-                name: 'Test2',
+                name: 'AppStore',
                 title: "متجر الخدمات",
                 icon: "i-bxs-cart",
                 owned:true,

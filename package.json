@@ -1,6 +1,6 @@
 {
-  "name": "@enab/module-starter",
-  "version": "1.0.0",
+  "name": "@enab/appstore",
+  "version": "1.0.1",
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -21,7 +21,6 @@
     "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground"
   },
   "dependencies": {
-    "@enab/appstore": "^1.0.1",
     "@enab/calculator": "^1.0.7",
     "@enab/ui": "^1.1.6",
     "@iconify/json": "^2.1.77",
