@@ -1,23 +1,18 @@
 <template>
-  <div w="full" m-l="3" position="relative">
+  <div w="full">
     <!-- Imgs banner and search -->
-    <nuxt-img v-if="banner" class="transition-all duration-300 ease-in delay-75"  relative="~" w="full" h="130" cursor="pointer" border="w-70" :src="banner.src" />
-    <div class="bg-gradient-to-b from-transparent to-black" position="absolute" w="full" h="full" top="0">
-    </div>
-    <div position="absolute" top="0">
-      <UiInput placeholder="البحث عن تطبيق" class="fixed top-0 caret-pink-500 " /> 
-    </div>
-    <!-- Apps -->
-    <div position="absolute" bottom="-10" p="2" class="grid grid-flow-col overflow-x-scroll scroll-smooth snap-x" w="full" rounded="lg">
-      <div v-for="app in apps" :key="'banner-app-' + app.id" m-r="2" cursor="pointer" grid="~ flow-row" h="40" w="40" :class="[
-        app.id == banner?.app?.id
-        ? 'bg-w-30 transition ease-in-out delay-75 -translate-y-2 scale-x-110 border-success-300 snap-center'
-        : 'bg-w-10 border-w-10'
-      ]" rounded="lg" place="items-center" p="4">
-          <div :class="app.icon" text="w-35" w="15" h="15"></div>
-          <span self="auto" text="xl w-50" m="4">{{app.title}}</span>
-          <span v-if="!app.owned" self="auto" text="2xl" :class="app.points > 1000 ?'text-error-500' : 'text-success-500'">{{app.points}} نقطة</span>
+    <div left="2" position="relative" cursor="pointer">
+      <nuxt-img v-if="banner" class="transition-all duration-300 ease-in delay-75" w="full" h="130" cursor="pointer" border="w-70" rounded="3xl" :src="banner.src" />
+      <div class="bg-gradient-to-b from-transparent to-black" position="absolute" w="full" h="full" top="0" rounded="3xl">
+          <div class="absolute bottom-10 right-10" grid="~ flow-row" align="center">
+            <span text="3xl w-90">{{banner.app.title}}</span>
+            <span self="auto" text="lg w-90" m="2">تخفيضات تصل الى 60% </span>
+            <span flex="~" text="3xl center w-90">{{banner.app.points - 1200}} <div class="i-fxemoji:grapes" w="8" h="8"></div></span>
+          </div>
       </div>
+      <!-- <div position="absolute" top="0">
+        <UiInput placeholder="البحث عن تطبيق" class="fixed top-0 caret-pink-500 " /> 
+      </div> -->
     </div>
   </div>
 </template>
@@ -25,7 +20,6 @@
 <script setup>
 import { useStoreApps } from '~/composables/useStore/useStoreApps'
 import { useCycleList } from '@vueuse/core'
-  
 
 const appsStore = useStoreApps();
 
@@ -49,30 +43,6 @@ const banners = computed(() => {
     {
       src:'imgs/bg.jpg',
       app:apps.value[3] ?? '',
-    },
-    {
-      src:'https://adsterra.com/blog/wp-content/uploads/2021/06/how-banners-make-you-money.png',
-      app:apps.value[4] ?? '',
-    },
-    {
-      src:'imgs/bg.jpg',
-      app:apps.value[5] ?? '',
-    },
-    {
-      src:'https://adsterra.com/blog/wp-content/uploads/2021/06/how-banners-make-you-money.png',
-      app:apps.value[6] ?? '',
-    },
-    {
-      src:'imgs/bg.jpg',
-      app:apps.value[7] ?? '',
-    },
-    {
-      src:'https://adsterra.com/blog/wp-content/uploads/2021/06/how-banners-make-you-money.png',
-      app:apps.value[8] ?? '',
-    },
-    {
-      src:'imgs/bg.jpg',
-      app:apps.value[9] ?? '',
     },
   ]
 })

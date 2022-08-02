@@ -1,8 +1,8 @@
 <template>
     <div class="fixed h-full left-[0rem] top-[0.5rem] right-auto w-[5rem] pl-2 overflow-y-auto">
-        <div place="items-center" grid="~ flow-col">
+        <div place="items-center" grid="~ flow-col" class="animate-pulse">
             <span m-b="3" flex="~" cursor="pointer" text="2xl success-500">1000</span>
-            <div class="i-emojione-v1:diamond-with-a-dot" m-b="3" w="4" h="4"></div>
+            <div class="i-fxemoji:grapes" m-b="3" w="8" h="8"></div>
         </div>
         <div @click="activeToggle()" :class="!activeState ? 'bg-w-10 text-w-50' : 'hover:bg-w-10 text-w-50 cursor-pointer'" rounded="lg" p="3" m-b="3" place="items-center" grid="~ flow-row"
             class="place-content-center">
