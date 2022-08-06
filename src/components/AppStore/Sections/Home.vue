@@ -2,7 +2,6 @@
   <div m-t="10">
     <!-- Slider -->
     <AppStoreUtilitiesHomeSlider/>
-
     <span bg="w-90" text="b-90" m-r="5" @click="page ='home'">page1</span>
     <span bg="w-90" text="b-90" @click="page ='page2'">page2</span>
     <div m-t="4">
