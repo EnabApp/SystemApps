@@ -2,7 +2,7 @@
   <!-- Application -->
   <Transition>
     <UiDesktopWindow v-if="app.running" v-show="!app.minimized" :app="app">
-      <div class="flex bg-b-90">
+      <div class="flex" bg="primary dark:primaryOp">
         <!-- sidebare -->
         <div class="flex place-content-center" w="[96px]" m-t="[36px]">
           <AppStoreSectionsSidebar :app="app" w="[64px]" />
@@ -26,7 +26,6 @@ const props = defineProps({
     required: true,
   },
 });
-
 ///////////////////////////////
 </script>
 <style scoped>
