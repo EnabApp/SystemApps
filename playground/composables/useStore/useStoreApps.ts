@@ -50,8 +50,8 @@ export const useStoreApps = defineStore("apps", {
 
             new App({
                 id: 3,
-                name: 'AppStore',
-                title: "متجر الخدمات",
+                name: 'appStore',
+                title: "متجر التطبيقات",
                 icon: "i-bxs-cart",
                 owned:true,
                 points:1999,
@@ -87,7 +87,7 @@ export const useStoreApps = defineStore("apps", {
         setFocus(title){
             this.focused = title;
         },
-        
+
     },
 });
 
