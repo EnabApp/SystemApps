@@ -1,7 +1,7 @@
 <template>
   <div m-t="10">
     <!-- Slider -->
-    <AppStoreUtilitiesHomeSlider />
+    <AppStoreUtilitiesHomeSlider/>
 
     <span bg="w-90" text="b-90" m-r="5" @click="page ='home'">page1</span>
     <span bg="w-90" text="b-90" @click="page ='page2'">page2</span>
@@ -9,8 +9,7 @@
       <!-- Best Apps -->
         <AppStoreUtilitiesHomeBestApps :apps="apps" />
       <!-- New Apps -->
-        <AppStoreUtilitiesHomeBestApps v-if="page === 'home'" :apps="apps" m-t="8" />
-        <AppStoreUtilitiesHomeBestApps v-if="page === 'page2'" :apps="apps" m-t="8" />
+        <AppStoreUtilitiesHomeBestApps :apps="apps" m-t="8" />
     </div>
   </div>
 </template>
@@ -23,7 +22,6 @@ const appsStore = useStoreApps();
 
 const apps = appsStore.getApps;
 
-const page = ref('home');
 </script>
 
 <style></style>
