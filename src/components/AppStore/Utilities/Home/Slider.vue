@@ -1,18 +1,8 @@
 <template>
+  <!-- Imgs banner and search -->
   <div w="full">
-    <!-- Imgs banner and search -->
-    <div left="2" position="relative" cursor="pointer">
-      <nuxt-img v-if="banner" class="transition-all duration-300 ease-in delay-75" w="full" h="130" cursor="pointer" border="w-70" rounded="3xl" :src="banner.src" />
-      <div class="bg-gradient-to-b from-transparent to-black" position="absolute" w="full" h="full" top="0" rounded="3xl">
-          <div class="absolute bottom-10 right-10" grid="~ flow-row" align="center">
-            <span text="3xl w-90">{{banner.app.title}}</span>
-            <span self="auto" text="lg w-90" m="2">تخفيضات تصل الى 60% </span>
-            <span flex="~" text="3xl center w-90">{{banner.app.points - 1200}} <div class="i-fxemoji:grapes" w="8" h="8"></div></span>
-          </div>
-      </div>
-      <!-- <div position="absolute" top="0">
-        <UiInput placeholder="البحث عن تطبيق" class="fixed top-0 caret-pink-500 " /> 
-      </div> -->
+    <div cursor="pointer">
+      <nuxt-img v-if="banner" class="transition-all duration-300 ease-in delay-75" w="full" h="70" cursor="pointer" border="w-70" rounded="lg" :src="banner.src" />
     </div>
   </div>
 </template>
@@ -49,7 +39,7 @@ const banners = computed(() => {
 
 const { state: banner, next, prev } = useCycleList(banners.value)
 
-setInterval(function(){ 
+setInterval(function(){
   next()
 }, 5000);
 

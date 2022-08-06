@@ -1,37 +1,103 @@
 <template>
-    <div class="fixed h-full left-[0rem] top-[0.5rem] right-auto w-[5rem] pl-2 overflow-y-auto">
-        <div place="items-center" grid="~ flow-col" class="animate-pulse">
-            <span m-b="3" flex="~" cursor="pointer" text="2xl success-500">1000</span>
-            <div class="i-fxemoji:grapes" m-b="3" w="8" h="8"></div>
+  <div>
+    <!-- Home -->
+    <div
+    v-motion
+      @click="activePage = 'home'"
+      p-x="3"
+      m-b="3"
+      place="items-center"
+      grid="~ flow-row"
+      class="place-content-center"
+    >
+      <div
+        :class="
+        activePage === 'home'
+          ? 'bg-w-90 text-b-90'
+          : 'hover:bg-w-70 cursor-pointer text-w-90 hover:text-b-80'"
+          grid="~ flow-row"
+          rounded="lg"
+          class="place-content-center"
+          w="[64px]"
+          h="[64px]"
+        >
+        <div class="i-ant-design:home-filled"
+          w="[32px]"
+          h="[32px]"
+          >
         </div>
-        <div @click="activeToggle()" :class="!activeState ? 'bg-w-10 text-w-50' : 'hover:bg-w-10 text-w-50 cursor-pointer'" rounded="lg" p="3" m-b="3" place="items-center" grid="~ flow-row"
-            class="place-content-center">
-            <div class="i-ant-design:home-filled" w="8" h="8"></div>
-            <span class="mt-2">الرئيسية</span>
-        </div>
-        <div :class="false ? 'bg-w-10 text-w-50' : 'hover:bg-w-10 text-w-50 cursor-pointer'" rounded="lg" p="3" m-b="3" place="items-center" grid="~ flow-row"
-            class="place-content-center">
-            <div class="i-charm:apps" text="w-50" w="8" h="8"></div>
-            <span text="sm w-50" class="mt-2">التطبيقات</span>
-        </div>
-        <div :class="false ? 'bg-w-10 text-w-50' : 'hover:bg-w-10 text-w-50 cursor-pointer'" rounded="lg" p="3" m-b="3" place="items-center" grid="~ flow-row"
-            class="absolute bottom-2 left-2 place-content-center">
-            <div class="i-fluent:library-16-filled" text="w-50" w="8" h="8"></div>
-            <span text="sm w-50" class="mt-2">تطبيقاتي</span>
-        </div>
+      </div>
+      <span class="mt-2" text="w-90">الرئيسية</span>
     </div>
+    <!-- Apps -->
+    <div
+      @click="activePage = 'apps'"
+      p-x="3"
+      m-b="3"
+      place="items-center"
+      grid="~ flow-row"
+      class="place-content-center"
+    >
+      <div
+        :class="
+        activePage === 'apps'
+          ? 'bg-w-90 text-b-90'
+          : 'hover:bg-w-70 cursor-pointer text-w-90 hover:text-b-80'"
+          grid="~ flow-row"
+          rounded="lg"
+          class="place-content-center"
+          w="[64px]"
+          h="[64px]"
+        >
+        <div class="i-charm:apps"
+          w="[32px]"
+          h="[32px]"
+          >
+        </div>
+      </div>
+      <span class="mt-2" text="w-90">التطبيقات</span>
+    </div>
+    <!-- My Apps -->
+    <div
+      @click="activePage = 'myApps'"
+      p-x="3"
+      p-y="6"
+      m-b="3"
+      place="items-center"
+      grid="~ flow-row"
+      class="place-content-center"
+    >
+      <div
+        :class="
+        activePage === 'myApps'
+          ? 'bg-w-90 text-b-90'
+          : 'hover:bg-w-70 cursor-pointer text-w-90 hover:text-b-80'"
+          grid="~ flow-row"
+          rounded="lg"
+          class="place-content-center"
+          w="[64px]"
+          h="[64px]"
+        >
+        <div class="i-fluent:library-16-filled"
+          w="[32px]"
+          h="[32px]"
+          >
+        </div>
+      </div>
+      <span class="mt-2" text="w-90">تطبيقاتي</span>
+    </div>
+  </div>
 </template>
 
 <script setup>
-import { useToggle } from '@vueuse/core'
+import { ref } from "vue";
 const props = defineProps({
   app: {
     type: Object,
     required: true,
-  }
-})
-const [activeState,activeToggle] = useToggle()
+  },
+});
+const activePage = ref('home');
 </script>
 
-<style>
-</style>
+<style></style>

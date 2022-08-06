@@ -9,7 +9,7 @@ export default defineNuxtConfig({
     autoImports: {
         global: true
     },
-    
+
     // build: {
     //     analyze: true,
     // },
@@ -47,7 +47,7 @@ export default defineNuxtConfig({
 
         // Motion
         '@vueuse/motion/nuxt',
-        
+
 
     ],
 

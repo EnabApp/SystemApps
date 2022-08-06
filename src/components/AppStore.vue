@@ -2,12 +2,19 @@
   <!-- Application -->
   <Transition>
     <UiDesktopWindow v-if="app.running" v-show="!app.minimized" :app="app">
+      <div class="flex h-full bg-b-90">
         <!-- sidebare -->
-          <AppStoreSectionsSidebar :app="app" />
-        <!-- Content -->
-        <div class="fixed h-full right-[0rem] top-[0rem] scroll-smooth left-24 overflow-y-scroll overflow-x-hidden">
-          <AppStoreSectionsHome :app="app" />
+        <div class="flex place-content-center" w="[96px]" m-t="[36px]">
+          <AppStoreSectionsSidebar :app="app" w="[64px]" />
         </div>
+        <!-- Headet and Content  { 104px m-x } -->
+        <div flex="grow" m-x="[64px]" m-t="[36px]" >
+          <AppStoreSectionsHeader :app="app" />
+          <div class="overflow-hidden overflow-y-scroll h-200">
+            <AppStoreSectionsHome :app="app" />
+          </div>
+        </div>
+      </div>
     </UiDesktopWindow>
   </Transition>
 </template>
@@ -16,9 +23,9 @@
 const props = defineProps({
   app: {
     type: Object,
-    required: true
-  }
-})
+    required: true,
+  },
+});
 
 ///////////////////////////////
 </script>
