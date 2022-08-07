@@ -12,8 +12,8 @@
           <!-- Header -->
           <AppStoreHeader :app="app" />
           <div class="overflow-x-hidden overflow-y-scroll hide-scroll" h="cuts">
-            <!-- <AppStoreHome :app="app" /> -->
-            <AppStoreApps :app="app" />
+            <AppStoreHome v-if="appStore.selectedTab === 0" :app="app" />
+            <AppStoreApps v-if="appStore.selectedTab === 1" :app="app" />
           </div>
         </div>
       </div>

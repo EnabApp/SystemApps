@@ -2,7 +2,7 @@
   <div>
     <!-- Home -->
     <div
-      @click="activePage = 'home'"
+      @click="appStore.setSelectedTap(0)"
       p-x="3"
       m-b="3"
       place="items-center"
@@ -11,7 +11,7 @@
     >
       <div
         :class="
-        activePage === 'home'
+        focus === 0
           ? 'bg-primaryOp dark:bg-primary text-primary dark:text-primaryOp'
           : 'dark:hover:bg-primary hover:bg-secondaryOp text-primaryOp hover:text-primary dark:hover:text-primaryOp dark:text-primary cursor-pointer'"
           grid="~ flow-row"
@@ -30,7 +30,7 @@
     </div>
     <!-- Apps -->
     <div
-      @click="activePage = 'apps'"
+      @click="appStore.setSelectedTap(1)"
       p-x="3"
       m-b="3"
       place="items-center"
@@ -39,7 +39,7 @@
     >
       <div
         :class="
-        activePage === 'apps'
+        focus === 1
           ? 'bg-primaryOp dark:bg-primary text-primary dark:text-primaryOp'
           : 'dark:hover:bg-primary hover:bg-secondaryOp text-primaryOp hover:text-primary dark:hover:text-primaryOp dark:text-primary cursor-pointer'"
           grid="~ flow-row"
@@ -58,7 +58,7 @@
     </div>
     <!-- My Apps -->
     <div
-      @click="activePage = 'myApps'"
+      @click="appStore.setSelectedTap(2)"
       p-x="3"
       p-y="6"
       m-b="3"
@@ -68,7 +68,7 @@
     >
       <div
         :class="
-        activePage === 'myApps'
+        focus === 2
           ? 'bg-primaryOp dark:bg-primary text-primary dark:text-primaryOp'
           : 'dark:hover:bg-primary hover:bg-secondaryOp text-primaryOp hover:text-primary dark:hover:text-primaryOp dark:text-primary cursor-pointer'"
           grid="~ flow-row"
@@ -89,18 +89,14 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
-// import { useAppStore } from '~/composables/useAppStore';
-
 const props = defineProps({
   app: {
     type: Object,
     required: true,
   },
 });
-// const appStore = useAppStore();
-const activePage = ref('home');
-
+const appStore = useAppStore();
+const focus = appStore.selectedTab
 
 </script>
 

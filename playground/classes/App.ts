@@ -7,7 +7,7 @@ export default class App {
 
     title: string;
     icon: string;
-    minimized: boolean; 
+    minimized: boolean;
     maximized: boolean;
     maximizable: boolean;
     resizeable: boolean;
@@ -28,9 +28,11 @@ export default class App {
     widgets: Widget[];
     subApps: App[];
 
+    pack: string;
+
     // children: App[];
 
-   
+
     constructor(args) {
         this.id = args?.id
         this.name = args?.name
@@ -58,13 +60,15 @@ export default class App {
 
         this.widgets = args.widgets ?? []
         this.subApps = args.subApps ?? []
+
+        this.pack = args.owned ?? false
     }
-    
+
     open(){
         this.running = true
         this.minimized = false
     }
-    
+
     // Actions - Toggles
     toggleRunning(){
         this.running = !this.running
@@ -73,13 +77,13 @@ export default class App {
             this.subApps.forEach(app => app.running = false)
     }
 
-    
-    
+
+
     toggleMinimize() {
         this.minimized = !this.minimized
     }
 
-    
+
     toggleMaximize() {
         if (this.maximizable)
             this.maximized = !this.maximized

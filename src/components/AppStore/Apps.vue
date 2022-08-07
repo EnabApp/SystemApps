@@ -5,8 +5,10 @@
     </div> -->
     <div m-t="90px">
       <div class="grid grid-cols-8 gap-2">
-        <AppStoreAppsPackCard v-for="item in 3" :key="item" :app="app" />
-        <AppStoreAppsCard v-for="item2 in all" :key="item2" :app="app" />
+        <AppStoreAppsPackCard v-for="item in 20" :key="item" :app="app" />
+      </div>
+      <div class="grid grid-cols-8 gap-2">
+        <AppStoreAppsAppCard v-for="item2 in 20" :key="item2" :app="app" />
       </div>
     </div>
   </div>
@@ -19,9 +21,6 @@ const props = defineProps({
     required: true,
   },
 });
-const appStore = useAppStore()
-// const packs = appStore.getPacks
-const all = appStore.getAll
 </script>
 
 <style></style>

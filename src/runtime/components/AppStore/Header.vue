@@ -4,9 +4,9 @@
     <UiInput placeholder="البحث عن تطبيق" bg="primary dark:primaryOp" rounded="lg" icon="i-akar-icons:search" w="[484px]" />
   </div>
   <div class="flex place-items-center">
-    <span text="primaryOp dark:primary" m-l="6">الخدمات</span>
-    <span text="primaryOp dark:primary" m-l="6">التطبيقات</span>
-    <span text="primaryOp dark:primary" m-l="6">الحزم</span>
+    <span hover="cursor-pointer" text="primaryOp dark:primary" m-l="6">الخدمات</span>
+    <span hover="cursor-pointer" text="primaryOp dark:primary" m-l="6">التطبيقات</span>
+    <span hover="cursor-pointer" text="primaryOp dark:primary" m-l="6">الحزم</span>
   </div>
   <div class="flex place-items-center">
     <div class="i-ri:copper-coin-fill" text="primaryOp dark:primary" w="[32px]" h="[32px]"></div>
@@ -22,7 +22,6 @@ const props = defineProps({
     required: true,
   },
 });
-
 </script>
 
 <style>
