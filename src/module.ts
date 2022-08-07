@@ -15,25 +15,22 @@ export default defineNuxtModule<ModuleOptions>({
   defaults: {
     addPlugin: true,
   },
-  hooks: {
-    // COMPONENTS
-    "components:dirs"(dirs) {
-      // Add ./components dir to the list
-      dirs.push({
-        path: path.resolve(__dirname, "./components")
-      });
-    },
-
-    // COMPOSABLES
-    // "autoImports:dirs"(dirs) {
-    //  dirs.push(path.resolve(__dirname, "./composables"));
-    // },
-  },
   setup (options, nuxt) {
     if (options.addPlugin) {
       const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
       nuxt.options.build.transpile.push(runtimeDir)
       addPlugin(resolve(runtimeDir, 'plugin'))
+
+      nuxt.hook('components:dirs', (dirs) => {
+        dirs.push({
+          path: resolve(runtimeDir, 'components'),
+          global: true
+        })
+      })
+
+      nuxt.hook('autoImports:dirs', (dirs) => {
+        dirs.push(resolve(runtimeDir, 'composables'))
+      })
     }
   }
 })

@@ -14,12 +14,12 @@ export default defineNuxtConfig({
     //     analyze: true,
     // },
 
-    components: {
-        global: true,
-        dirs: [
-            '~/components',
-        ]
-    },
+    // components: {
+    //     global: true,
+    //     dirs: [
+    //         '~/components',
+    //     ]
+    // },
 
     modules: [
         MyModule,
