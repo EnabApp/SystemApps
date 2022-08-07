@@ -90,7 +90,7 @@
 
 <script setup>
 import { ref } from "vue";
-import { useAppStore } from '~/composables/useAppStore';
+// import { useAppStore } from '~/composables/useAppStore';
 
 const props = defineProps({
   app: {
@@ -98,7 +98,7 @@ const props = defineProps({
     required: true,
   },
 });
-const appStore = useAppStore();
+// const appStore = useAppStore();
 const activePage = ref('home');
 
 
