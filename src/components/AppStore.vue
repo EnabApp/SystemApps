@@ -2,19 +2,18 @@
   <!-- Application -->
   <Transition>
     <UiDesktopWindow v-if="app.running" v-show="!app.minimized" :app="app">
-      <div class="flex" bg="primary dark:primaryOp">
+      <div class="flex" bg="primary dark:primaryOp" h="full">
         <!-- sidebare -->
         <div class="flex place-content-center" w="[96px]" m-t="[36px]">
-          <AppStoreSectionsSidebar :app="app" w="[64px]" />
+          <AppStoreSidebar :app="app" w="[64px]" />
         </div>
         <!-- Headet and Content  { 104px m-x } -->
         <div flex="grow" m-x="[64px]" m-t="[36px]">
           <!-- Header -->
-          <AppStoreSectionsHeader :app="app" />
-          <div class="overflow-x-hidden overflow-y-scroll">
-            <!-- Home -->
-            <!-- <AppStoreSectionsHome :app="app" /> -->
-            <AppStoreSectionsApps :app="app" />
+          <AppStoreHeader :app="app" />
+          <div class="overflow-x-hidden overflow-y-scroll" h="cuts">
+            <!-- <AppStoreHome :app="app" /> -->
+            <AppStoreApps :app="app" />
           </div>
         </div>
       </div>
