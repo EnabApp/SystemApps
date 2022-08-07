@@ -25,9 +25,9 @@ export default defineNuxtModule<ModuleOptions>({
     },
 
     // COMPOSABLES
-    // "autoImports:dirs"(dirs) {
-    //  dirs.push(path.resolve(__dirname, "./composables"));
-    // },
+    "autoImports:dirs"(dirs) {
+     dirs.push(path.resolve(__dirname, "./composables"));
+    },
   },
   setup (options, nuxt) {
     if (options.addPlugin) {

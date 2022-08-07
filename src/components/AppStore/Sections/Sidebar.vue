@@ -2,7 +2,6 @@
   <div>
     <!-- Home -->
     <div
-    v-motion
       @click="activePage = 'home'"
       p-x="3"
       m-b="3"
@@ -13,8 +12,8 @@
       <div
         :class="
         activePage === 'home'
-          ? 'bg-w-90 text-b-90'
-          : 'hover:bg-w-70 cursor-pointer text-w-90 hover:text-b-80'"
+          ? 'bg-primaryOp dark:bg-primary text-primary dark:text-primaryOp'
+          : 'dark:hover:bg-primary hover:bg-secondaryOp text-primaryOp hover:text-primary dark:hover:text-primaryOp dark:text-primary cursor-pointer'"
           grid="~ flow-row"
           rounded="lg"
           class="place-content-center"
@@ -27,7 +26,7 @@
           >
         </div>
       </div>
-      <span class="mt-2" text="w-90">الرئيسية</span>
+      <span class="mt-2" text="primaryOp dark:primary">الرئيسية</span>
     </div>
     <!-- Apps -->
     <div
@@ -41,8 +40,8 @@
       <div
         :class="
         activePage === 'apps'
-          ? 'bg-w-90 text-b-90'
-          : 'hover:bg-w-70 cursor-pointer text-w-90 hover:text-b-80'"
+          ? 'bg-primaryOp dark:bg-primary text-primary dark:text-primaryOp'
+          : 'dark:hover:bg-primary hover:bg-secondaryOp text-primaryOp hover:text-primary dark:hover:text-primaryOp dark:text-primary cursor-pointer'"
           grid="~ flow-row"
           rounded="lg"
           class="place-content-center"
@@ -55,7 +54,7 @@
           >
         </div>
       </div>
-      <span class="mt-2" text="w-90">التطبيقات</span>
+      <span class="mt-2" text="primaryOp dark:primary">التطبيقات</span>
     </div>
     <!-- My Apps -->
     <div
@@ -70,8 +69,8 @@
       <div
         :class="
         activePage === 'myApps'
-          ? 'bg-w-90 text-b-90'
-          : 'hover:bg-w-70 cursor-pointer text-w-90 hover:text-b-80'"
+          ? 'bg-primaryOp dark:bg-primary text-primary dark:text-primaryOp'
+          : 'dark:hover:bg-primary hover:bg-secondaryOp text-primaryOp hover:text-primary dark:hover:text-primaryOp dark:text-primary cursor-pointer'"
           grid="~ flow-row"
           rounded="lg"
           class="place-content-center"
@@ -84,20 +83,25 @@
           >
         </div>
       </div>
-      <span class="mt-2" text="w-90">تطبيقاتي</span>
+      <span class="mt-2" text="primaryOp dark:primary">تطبيقاتي</span>
     </div>
   </div>
 </template>
 
 <script setup>
 import { ref } from "vue";
+// import { useAppStore } from '~/composables/useAppStore';
+
 const props = defineProps({
   app: {
     type: Object,
     required: true,
   },
 });
+// const appStore = useAppStore();
 const activePage = ref('home');
+
+
 </script>
 
 <style></style>
