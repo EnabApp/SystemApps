@@ -10,7 +10,7 @@ export const useAppStore = defineStore("app-store", {
     },
 
     actions: {
-      // setSelectedTab: state => id => state.selectedTab = id,
+      setSelectedTab: state => id => state.selectedTab = id,
     },
 });
 
