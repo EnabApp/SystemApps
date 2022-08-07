@@ -47,17 +47,6 @@ export const useStoreApps = defineStore("apps", {
                     }),
                 ]
             }),
-
-            new App({
-                id: 3,
-                name: 'appStore',
-                title: "متجر التطبيقات",
-                icon: "i-bxs-cart",
-                owned:true,
-                points:1999,
-                size: "min-w-xl min-h-3xl xl:min-w-xl xl:min-h-2xl md:min-w-xl md:min-h-2xl sm:min-w-xl sm:min-h-xl",
-                maximized: true,
-            }),
             new App({
                 id: 4,
                 name: 'Test3',
@@ -87,6 +76,9 @@ export const useStoreApps = defineStore("apps", {
         setFocus(title){
             this.focused = title;
         },
+        addApp(app){
+            this.apps.push(new App(app));
+        }
 
     },
 });

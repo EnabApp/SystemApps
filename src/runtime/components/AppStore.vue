@@ -29,7 +29,7 @@ const props = defineProps({
   },
 });
 ///////////////////////////////
-
+const appStore = useAppStore()
 </script>
 <style scoped>
 /* Hide scrollbar for Chrome, Safari and Opera */
