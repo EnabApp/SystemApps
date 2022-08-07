@@ -10,7 +10,7 @@
         <!-- Headet and Content  { 104px m-x } -->
         <div flex="grow" m-x="[64px]" m-t="[36px]">
           <AppStoreSectionsHeader :app="app" />
-          <div class="overflow-x-hidden overflow-y-scroll">
+          <div class="overflow-x-hidden overflow-y-scroll" h="cuts">
             <AppStoreSectionsHome :app="app" />
           </div>
         </div>
