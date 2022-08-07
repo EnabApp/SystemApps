@@ -1,19 +1,6 @@
 <template>
-  <!-- App -->
-  <div v-if="!pack" grid="~ flow-row" class="place-items-center" w="128px" h="160px" bg="primaryOp dark:primary" rounded="lg">
-    <div
-      class="i-ant-design:star-filled"
-      text="primary dark:primaryOp"
-      w="[55px]"
-      h="[55px]"
-    ></div>
-    <span text="primary dark:primaryOp lg">تطبيق الحاسبة</span>
-    <div w="108px" h="31px" grid="~ flow-row" class="place-items-center" rounded="lg" cursor="pointer" bg="primary dark:primaryOp">
-      <span text="md primaryOp dark:primary">مجانا</span>
-    </div>
-  </div>
   <!-- Pack -->
-  <div v-else grid="~ flow-col" class="col-span-2 place-items-center" w="280px" h="160px" rounded="lg" bg="primaryOp dark:primary">
+  <div grid="~ flow-col" class="col-span-2 place-items-center" w="280px" h="160px" rounded="lg" bg="primaryOp dark:primary">
     <div grid="~ flow-row" m-r="2">
       <div
         class="grid grid-cols-2 place-items-center"
@@ -49,10 +36,6 @@ const props = defineProps({
     type: Object,
     required: true,
   },
-  pack:{
-    type:Boolean,
-    defalut:false
-  }
 });
 </script>
 

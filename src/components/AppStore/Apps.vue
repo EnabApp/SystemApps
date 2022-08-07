@@ -4,8 +4,9 @@
       <span text="primaryOp dark:primary" align="right">التطبيقات</span>
     </div> -->
     <div m-t="90px">
-      <div class="grid grid-cols-8 gap-x-3 gap-y-5">
-        <AppStoreAppsCard v-for="item in 20" :key="item" :app="app" :pack="true" />
+      <div class="grid grid-cols-8 gap-2">
+        <AppStoreAppsPackCard v-for="item in 20" :key="item" :app="app" />
+        <AppStoreAppsAppCard v-for="item2 in 20" :key="item2" :app="app" />
       </div>
     </div>
   </div>

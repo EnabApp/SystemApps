@@ -11,7 +11,7 @@
         <div flex="grow" m-x="[64px]" m-t="[36px]">
           <!-- Header -->
           <AppStoreHeader :app="app" />
-          <div class="overflow-x-hidden overflow-y-scroll" h="cuts">
+          <div class="overflow-x-hidden overflow-y-scroll hide-scroll" h="cuts">
             <!-- <AppStoreHome :app="app" /> -->
             <AppStoreApps :app="app" />
           </div>
@@ -31,5 +31,14 @@ const props = defineProps({
 ///////////////////////////////
 </script>
 <style scoped>
-/* -ms-overflow-style: none; */
+/* Hide scrollbar for Chrome, Safari and Opera */
+.hide-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.hide-scroll {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
 </style>
