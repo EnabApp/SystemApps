@@ -7,19 +7,21 @@ export default defineNuxtConfig({
     ssr: false,
 
     autoImports: {
-        global: true
+        global: true,
     },
 
     // build: {
     //     analyze: true,
     // },
 
-    components: {
-        global: true,
-        dirs: [
-            '~/components',
-        ]
-    },
+    
+
+    // components: {
+    //     global: true,
+    //     dirs: [
+    //         '~/components',
+    //     ]
+    // },
 
     modules: [
         MyModule,
