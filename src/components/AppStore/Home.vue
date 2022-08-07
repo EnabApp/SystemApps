@@ -1,12 +1,12 @@
 <template>
   <div m-t="10">
     <!-- Slider -->
-    <AppStoreUtilitiesHomeSlider/>
+    <AppStoreHomeSlider/>
     <div m-t="4">
       <!-- Best Apps -->
-        <AppStoreUtilitiesHomeBestApps :apps="apps" />
+        <AppStoreHomeBestApps :apps="apps" />
       <!-- New Apps -->
-        <AppStoreUtilitiesHomeBestApps :apps="apps" m-t="8" />
+        <AppStoreHomeBestApps :apps="apps" m-t="8" />
     </div>
   </div>
 </template>
