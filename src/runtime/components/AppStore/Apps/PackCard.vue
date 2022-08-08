@@ -1,6 +1,6 @@
 <template>
   <!-- Pack -->
-  <div cursor="pointer" grid="~ flow-col" class="col-span-2 place-items-center" w="270px" h="160px" rounded="lg" bg="primaryOp dark:primary">
+  <div @click="appStore.setSelectedPack(app)" cursor="pointer" grid="~ flow-col" class="col-span-2 place-items-center" w="270px" h="160px" rounded="lg" bg="primaryOp dark:primary">
     <div grid="~ flow-row" m-r="2">
       <div
         class="grid grid-cols-2 place-items-center"
@@ -37,6 +37,7 @@ const props = defineProps({
     required: true,
   },
 });
+const appStore = useAppStore()
 </script>
 
 <style>

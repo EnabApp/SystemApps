@@ -61,20 +61,13 @@
         </div>
       </div>
     </div>
-    <!-- Left Section -->
-    <div w="280px" m-b="21px">
-      <span text="priamryOp dark:primary" font="bold">التطبيق متوفر في الحزم التالية :</span>
-      <AppStoreAppsPackCard  m-y="4" v-for="pack in packs" :key="'pack-'+ pack.id " :app="pack" />
-      <span text="priamryOp dark:primary" font="light">شراء الحزن يساعدك على توفير المال </span>
-    </div>
   </div>
 </template>
 
 <script setup>
 const appStore = useAppStore()
 
-const app = appStore.selectedApp
-const packs = appStore.getPacks
+const app = appStore.selectedPack
 </script>
 
 <style>

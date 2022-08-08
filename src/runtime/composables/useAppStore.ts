@@ -6,6 +6,7 @@ export const useAppStore = defineStore("appStore", {
       selectedTab: 0 ,
 
       selectedApp:null,
+      selectedPack:null,
 
       apps:[
 
@@ -52,12 +53,16 @@ export const useAppStore = defineStore("appStore", {
     actions: {
       setSelectedTap(id){
         this.selectedTab = id
-        console.log(this.selectedTab)
         this.selectedApp = null
+        this.selectedPack = null
       },
       setSelectedApp(app){
         this.selectedApp = null
         this.selectedApp = app
+      },
+      setSelectedPack(app){
+        this.selectedPack = null
+        this.selectedPack = app
       },
     },
 });
