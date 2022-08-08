@@ -4,7 +4,7 @@ import { defineNuxtModule, addPlugin } from '@nuxt/kit'
 import path from "path";
 
 export interface ModuleOptions {
-  addPlugin: boolean,
+  // addPlugin: boolean,
 }
 
 export default defineNuxtModule<ModuleOptions>({
@@ -13,24 +13,25 @@ export default defineNuxtModule<ModuleOptions>({
     configKey: 'moduleStarter'
   },
   defaults: {
-    addPlugin: true,
+    // addPlugin: true,
   },
   setup (options, nuxt) {
-    if (options.addPlugin) {
-      const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
-      nuxt.options.build.transpile.push(runtimeDir)
-      addPlugin(resolve(runtimeDir, 'plugin'))
+    // if (options.addPlugin) {}
+    const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
+    nuxt.options.build.transpile.push(runtimeDir)
+    addPlugin(resolve(runtimeDir, 'registerer'))
+    addPlugin(resolve(runtimeDir, 'plugin'))
 
-      nuxt.hook('components:dirs', (dirs) => {
-        dirs.push({
-          path: resolve(runtimeDir, 'components'),
-          global: true
-        })
+    nuxt.hook('components:dirs', (dirs) => {
+      dirs.push({
+        path: resolve(runtimeDir, 'components'),
+        global: true
       })
+    })
 
-      nuxt.hook('autoImports:dirs', (dirs) => {
-        dirs.push(resolve(runtimeDir, 'composables'))
-      })
-    }
+    nuxt.hook('autoImports:dirs', (dirs) => {
+      dirs.push(resolve(runtimeDir, 'composables'))
+      dirs.push(resolve(runtimeDir, 'stores'))
+    })
   }
 })
