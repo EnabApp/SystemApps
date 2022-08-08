@@ -89,6 +89,7 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
 const props = defineProps({
   app: {
     type: Object,
@@ -96,7 +97,7 @@ const props = defineProps({
   },
 });
 const appStore = useAppStore();
-const focus = appStore.selectedTab
+const focus = ref(appStore.selectedTab)
 
 </script>
 

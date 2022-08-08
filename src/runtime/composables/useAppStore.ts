@@ -3,7 +3,7 @@ import App from "~/classes/App";
 
 export const useAppStore = defineStore("appStore", {
     state: () => ({
-      selectedTab: 0,
+      selectedTab: 0 ,
 
       apps:[
 
