@@ -25,39 +25,41 @@
         <span text="primaryOp dark:secondaryOp 2xl">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni voluptate quod aperiam voluptates totam quis ea obcaecati, facilis animi tenetur accusamus est blanditiis explicabo esse iste dolor ullam aliquid nostrum.</span>
       </div>
       <!-- Extended Services -->
-      <div m-t="31px">
+      <div m-t="21px">
         <span text="primaryOp dark:primary 2xl">خدمات اضافية داخل التطبيق</span>
-        <!-- Service Card -->
-        <div cursor="pointer" m-t="31px" grid="~ flow-col" class="col-span-2 place-items-center" w="270px" h="160px" rounded="lg">
-          <div grid="~ flow-row" m-r="2">
-            <div
-              grid="~ flow-row"
-              class="place-items-center"
-              rounded="md"
-              bg="primaryOp dark:primary"
-              w="[82px]"
-              h="[82px]"
-            >
-              <div class="i-ci:check-bold" w="41px" h="41px"></div>
+        <!-- Service Cards -->
+        <div grid="~ flow-col" w="800px" h="290px" class="overflow-x-scroll overflow-y-hidden">
+          <div v-for="i in 8" :key="i" m-l="18px" cursor="pointer" m-t="11px" grid="~ flow-col" class="col-span-2 place-items-center" w="270px" h="160px" rounded="lg">
+            <div grid="~ flow-row" m-r="2">
+              <div
+                grid="~ flow-row"
+                class="place-items-center"
+                rounded="md"
+                bg="primaryOp dark:primary"
+                w="[82px]"
+                h="[82px]"
+              >
+                <div class="i-ci:check-bold" w="41px" h="41px"></div>
+              </div>
+              <div flex="~" justify="center" m-t="9px" w="82px" h="24px" grid="~ flow-row" class="place-items-center" rounded="sm" bg="primaryOp dark:secondaryOp">
+              <div class="i-charm:download" w="5" h="5" m-l="2" text="primary dark:primary"></div>
+              <span text="md primary dark:primary">
+                {{app.points >0 ? app.points : 'مجانا' }}
+              </span>
             </div>
-            <div flex="~" justify="center" m-t="9px" w="82px" h="24px" grid="~ flow-row" class="place-items-center" rounded="sm" bg="primaryOp dark:secondaryOp">
-            <div class="i-charm:download" w="5" h="5" m-l="2" text="primary dark:primary"></div>
-            <span text="md primary dark:primary">
-              {{app.points >0 ? app.points : 'مجانا' }}
-            </span>
-          </div>
-          </div>
-          <div grid="~ flow-row" m="2" m-r="6">
-            <span font="bold" text="lg primaryOp dark:primary" m-b="2">{{app.title}}</span>
-            <span text="md primary dark:secondaryOp" m-b="2">شرح شرح شرح شرح شرح شرح شرح شرح شرح شرح </span>
+            </div>
+            <div grid="~ flow-row" m="2" m-r="6">
+              <span font="bold" text="lg primaryOp dark:primary" m-b="2">{{app.title}}</span>
+              <span text="md primary dark:secondaryOp" m-b="2">شرح شرح شرح شرح شرح شرح شرح شرح شرح شرح </span>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <!-- Left Section -->
-    <div w="280px">
+    <div w="280px" m-b="21px">
       <span text="priamryOp dark:primary" font="bold">التطبيق متوفر في الحزم التالية :</span>
-      <AppStoreAppsPackCard m-y="2" v-for="pack in packs" :key="'pack-'+ pack.id " :app="pack" />
+      <AppStoreAppsPackCard  m-y="2" v-for="pack in packs" :key="'pack-'+ pack.id " :app="pack" />
       <span text="priamryOp dark:primary" font="light">شراء الحزن يساعدك على توفير المال </span>
     </div>
   </div>
