@@ -12,8 +12,13 @@
           <!-- Header -->
           <AppStoreHeader :app="app" />
           <div class="overflow-x-hidden overflow-y-scroll hide-scroll" h="cuts">
-            <AppStoreHome v-if="appStore.selectedTab === 0" :app="app" />
-            <AppStoreApps v-if="appStore.selectedTab === 1" :app="app" />
+            <!-- Pages -->
+            <div v-if="appStore.selectedApp === null">
+              <AppStoreHome v-if="appStore.selectedTab === 0" />
+              <AppStoreApps v-if="appStore.selectedTab === 1" />
+            </div>
+            <!-- App Info Page (if click app) -->
+            <AppStoreAppsCardInfo v-else :app="selectedApp" />
           </div>
         </div>
       </div>
@@ -22,13 +27,14 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+
 const props = defineProps({
   app: {
     type: Object,
     required: true,
   },
 });
+
 ///////////////////////////////
 const appStore = useAppStore()
 </script>

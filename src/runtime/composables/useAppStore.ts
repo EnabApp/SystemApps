@@ -5,6 +5,8 @@ export const useAppStore = defineStore("appStore", {
     state: () => ({
       selectedTab: 0 ,
 
+      selectedApp:null,
+
       apps:[
 
         new App({
@@ -13,7 +15,7 @@ export const useAppStore = defineStore("appStore", {
           title: "الحاسبة",
           owned: false,
           pack:false,
-          points: 1999,
+          points: 0,
           icon: "i-ic-baseline-calculate",
         }),
 
@@ -24,7 +26,7 @@ export const useAppStore = defineStore("appStore", {
           owned: false,
           pack:false,
           points: 1999,
-          icon: "i-ic-baseline-calculate",
+          icon: "i-ant-design:star-filled",
           }),
 
           new App({
@@ -41,14 +43,21 @@ export const useAppStore = defineStore("appStore", {
 
     getters: {
       getSelectedTab: (state) => state.selectedTab,
+      getSelectedApp: (state) => state.selectedApp,
       getAll: (state) => state.apps,
       getPacks: (state) => state.apps.filter(app => app.pack),
-      // getApps: (state) => state.apps.filter(app => !app.pack),
+      getApps: (state) => state.apps.filter(app => !app.pack),
     },
 
     actions: {
       setSelectedTap(id){
-        this.selectedTab = id;
+        this.selectedTab = id
+        console.log(this.selectedTab)
+        this.selectedApp = null
+      },
+      setSelectedApp(app){
+        this.selectedApp = null
+        this.selectedApp = app
       },
     },
 });

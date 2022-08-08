@@ -1,15 +1,22 @@
 <template>
   <!-- App -->
-  <div grid="~ flow-row" class="place-items-center" w="128px" h="160px" bg="primaryOp dark:primary" rounded="lg">
+  <div @click="appStore.setSelectedApp(app)" cursor="pointer" grid="~ flow-row" class="place-items-center" w="128px" h="160px" bg="primaryOp dark:primary" rounded="lg">
     <div
-      class="i-ant-design:star-filled"
+      :class="app.icon"
       text="primary dark:primaryOp"
       w="[55px]"
       h="[55px]"
     ></div>
-    <span text="primary dark:primaryOp lg">تطبيق الحاسبة</span>
-    <div w="108px" h="31px" grid="~ flow-row" class="place-items-center" rounded="lg" cursor="pointer" bg="primary dark:primaryOp">
-      <span text="md primaryOp dark:primary">مجانا</span>
+    <span text="primary dark:primaryOp lg">{{app.title}}</span>
+    <div v-if="!app.owned" w="108px" h="31px" grid="~ flow-row" class="place-items-center" rounded="lg" bg="primary dark:primaryOp">
+      <spa text="md primaryOp dark:primary">
+        {{ app.points > 0 ? app.points : "مجانا"}}
+      </spa>
+    </div>
+    <div v-else w="108px" h="31px" grid="~ flow-row" class="place-items-center" rounded="lg" bg="green dark:green">
+      <spa text="md primaryOp dark:primary">
+        <div class="i-ci:check-bold"></div>
+      </spa>
     </div>
   </div>
 </template>
@@ -19,8 +26,9 @@ const props = defineProps({
   app: {
     type: Object,
     required: true,
-  }
+  },
 });
+const appStore = useAppStore()
 </script>
 
 <style>
