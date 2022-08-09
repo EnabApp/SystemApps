@@ -5,26 +5,28 @@
     </div> -->
     <div m-t="90px">
       <div class="grid grid-cols-8 gap-x-2 gap-y-2">
-        <AppStoreAppsPackCard v-for="pack in packs" :key="'pack-'+ pack.id " :app="pack" />
+        <!-- <AppStoreAppsPackCard v-for="pack in packs" :key="'pack-'+ pack.id " :app="pack" /> -->
       </div>
       <div class="grid grid-cols-8 gap-x-2 gap-y-2 m-t-34px">
-        <AppStoreAppsCard v-for="card in apps" :key="'app-'+ card.id " :app="card" />
+        <!-- <AppStoreAppsCard v-for="card in apps" :key="'app-'+ card.id " :app="card" /> -->
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
+import { useAppManager } from '#imports'
+
 const props = defineProps({
   app: {
     type: Object,
     required: true,
   },
 });
-const appStore = useAppStore()
+const appManager = useAppManager()
 // const packs = appStore.getPacks
-const apps = appStore.getApps
-const packs = appStore.getPacks
+const apps = appManager.getApps
+const packs = appManager.getPacks
 </script>
 
 <style></style>

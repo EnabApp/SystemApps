@@ -31,6 +31,8 @@
 </template>
 
 <script setup>
+import { useAppStore } from '#imports'
+
 const props = defineProps({
   app: {
     type: Object,

@@ -89,7 +89,8 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { useAppStore, ref } from '#imports'
+
 const props = defineProps({
   app: {
     type: Object,

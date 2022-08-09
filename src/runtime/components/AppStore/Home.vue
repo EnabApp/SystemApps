@@ -12,12 +12,12 @@
 </template>
 
 <script setup>
-import { useStoreApps } from "~/composables/useStore/useStoreApps";
-import { ref } from "vue";
+// import { useStoreApps } from "~/composables/useStore/useStoreApps";
+import { useAppManager } from '#imports'
 
-const appsStore = useStoreApps();
+const appManager = useAppManager();
 
-const apps = appsStore.getApps;
+const apps = appManager.getApps;
 
 </script>
 

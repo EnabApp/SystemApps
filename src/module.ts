@@ -9,7 +9,7 @@ export interface ModuleOptions {
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
-    name: 'appstore',
+    name: 'app-store',
     configKey: 'appStore'
   },
   defaults: {
@@ -19,7 +19,7 @@ export default defineNuxtModule<ModuleOptions>({
     // if (options.addPlugin) {}
     const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
     nuxt.options.build.transpile.push(runtimeDir)
-    addPlugin(resolve(runtimeDir, 'plugin'))
+    addPlugin(resolve(runtimeDir, 'registerer'))
 
     nuxt.hook('components:dirs', (dirs) => {
       dirs.push({
@@ -30,6 +30,7 @@ export default defineNuxtModule<ModuleOptions>({
 
     nuxt.hook('autoImports:dirs', (dirs) => {
       dirs.push(resolve(runtimeDir, 'composables'))
+      dirs.push(resolve(runtimeDir, 'stores'))
     })
   }
 })

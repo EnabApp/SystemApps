@@ -13,14 +13,14 @@
           <AppStoreHeader :app="app" />
           <div class="overflow-x-hidden overflow-y-scroll hide-scroll" h="cuts">
             <!-- Pages -->
-            <div v-if="appStore.selectedApp === null && appStore.selectedPack === null">
-              <AppStoreHome v-if="appStore.selectedTab === 0" />
-              <AppStoreApps v-if="appStore.selectedTab === 1" />
+            <div v-if="appManager.selectedApp === null && appManager.selectedPack === null">
+              <AppStoreHome v-if="appManager.selectedTab === 0" />
+              <AppStoreApps v-if="appManager.selectedTab === 1" />
             </div>
             <!-- App Info Page (if click app) -->
-            <AppStoreAppsCardInfo v-if="appStore.selectedApp !== null" :app="selectedApp" />
+            <!-- <AppStoreAppsCardInfo v-if="appManager.selectedApp !== null" :app="selectedApp" /> -->
             <!-- Pack Info Page -->
-            <AppStoreAppsPackInfo v-if="appStore.selectedPack !== null" :app="selectedPack"/>
+            <!-- <AppStoreAppsPackInfo v-if="appManager.selectedPack !== null" :app="selectedPack"/> -->
           </div>
         </div>
       </div>
@@ -29,6 +29,7 @@
 </template>
 
 <script setup>
+import { useAppManager } from '#imports'
 
 const props = defineProps({
   app: {
@@ -38,7 +39,7 @@ const props = defineProps({
 });
 
 ///////////////////////////////
-const appStore = useAppStore()
+const appManager = useAppManager()
 </script>
 <style scoped>
 /* Hide scrollbar for Chrome, Safari and Opera */
