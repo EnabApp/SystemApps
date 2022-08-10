@@ -11,12 +11,6 @@ export default defineBuildConfig({
         //     input: './src/components/',
         //     outDir: './dist/components/'
         // },
-        // mkdist builder transpiles file-to-file keeping original sources structure
-        // {
-        //     builder: 'mkdist',
-        //     input: './src/composables/',
-        //     outDir: './dist/composables/'
-        // },
     ],
 
     // Change outDir, default is 'dist'

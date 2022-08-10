@@ -7,14 +7,12 @@ export default defineNuxtConfig({
     ssr: false,
 
     autoImports: {
-        global: true,
+        global: true
     },
-
+    
     // build: {
     //     analyze: true,
     // },
-
-    
 
     // components: {
     //     global: true,
@@ -25,7 +23,7 @@ export default defineNuxtConfig({
 
     modules: [
         MyModule,
-
+        
         '@enab/appstore',
 
         '@enab/calculator',
@@ -52,7 +50,7 @@ export default defineNuxtConfig({
 
         // Motion
         '@vueuse/motion/nuxt',
-
+        
 
     ],
 
@@ -206,7 +204,7 @@ export default defineNuxtConfig({
                 // 'secondary': {  DEFAULT: '#4B8673',  '50': '#B4D5CA',  '100': '#A7CEC1',  '200': '#8CBFAF',  '300': '#72B09C',  '400': '#5AA089',  '500': '#4B8673',  '600': '#376254',  '700': '#233E35',  '800': '#0F1A16',  '900': '#000000'},
                 // 'tertiary': {  DEFAULT: '#F6FBF4',  '50': '#F6FBF4',  '100': '#E5F4DF',  '200': '#C4E5B6',  '300': '#A2D68D',  '400': '#80C764',  '500': '#61B241',  '600': '#4B8932',  '700': '#346023',  '800': '#1E3614',  '900': '#070D05'},
                 // 'primary': {  DEFAULT: '#58134D',  '50': '#911F7E',  '100': '#8B1D78',  '200': '#7E1B6D',  '300': '#721863',  '400': '#651558',  '500': '#58134D',  '600': '#4C1042',  '700': '#3F0D37',  '800': '#330B2C',  '900': '#260821'},
-
+                
 
 
 
@@ -222,13 +220,12 @@ export default defineNuxtConfig({
                 'warning': {  DEFAULT: '#DF9606',  '50': '#FCDDA0',  '100': '#FCD68C',  '200': '#FBC865',  '300': '#FABA3D',  '400': '#F9AC15',  '500': '#DF9606',  '600': '#B77B05',  '700': '#906104',  '800': '#684603',  '900': '#402B02'},
                 'info': {  DEFAULT: '#0691DD',  '50': '#9EDBFC',  '100': '#8AD4FC',  '200': '#63C5FB',  '300': '#3BB6FA',  '400': '#13A8F9',  '500': '#0691DD',  '600': '#0577B5',  '700': '#045D8E',  '800': '#034366',  '900': '#02293E'},
 
-
+                
             },
             height: {
                 'sidebar': 'calc(100vh - 3.75rem)',
                 'main-content': 'calc(100vh - 2.25rem)',
                 'minus-bottombar': 'calc(100vh - 60px)',
-                'cuts': 'calc(100vh - 60px - 154px)',
             },
         },
     },
