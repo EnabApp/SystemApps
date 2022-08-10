@@ -18,9 +18,9 @@
               <AppStoreApps v-if="appStore.selectedTab === 1" />
             </div>
             <!-- App Info Page (if click app) -->
-            <AppStoreAppsCardInfo v-if="appStore.selectedApp !== null" :app="selectedApp" />
+            <AppStoreAppsCardInfo v-if="appStore.selectedApp !== null && appStore.selectedPack ===null" :app="selectedApp" />
             <!-- Pack Info Page -->
-            <AppStoreAppsPackInfo v-if="appStore.selectedPack !== null" :app="selectedPack"/>
+            <AppStoreAppsPackInfo v-if="appStore.selectedPack !== null && appStore.selectedApp ===null" :app="selectedPack"/>
           </div>
         </div>
       </div>

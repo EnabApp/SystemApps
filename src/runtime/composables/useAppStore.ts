@@ -58,10 +58,12 @@ export const useAppStore = defineStore("appStore", {
       },
       setSelectedApp(app){
         this.selectedApp = null
+        this.selectedPack = null
         this.selectedApp = app
       },
       setSelectedPack(app){
         this.selectedPack = null
+        this.selectedApp = null
         this.selectedPack = app
       },
     },
