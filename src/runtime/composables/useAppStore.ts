@@ -39,6 +39,16 @@ export const useAppStore = defineStore("appStore", {
             points: 1999,
             icon: "i-ic-baseline-calculate",
             }),
+
+            new App({
+              id: 4,
+              name: 'Management',
+              title: "حزمة",
+              owned: false,
+              pack:true,
+              points: 3999,
+              icon: "i-ic-baseline-calculate",
+            }),
       ]
     }),
 
