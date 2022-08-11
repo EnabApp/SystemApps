@@ -28,7 +28,7 @@ export default class App {
     widgets: Widget[];
     subApps: App[];
 
-    pack: string;
+    pack: boolean;
 
     // children: App[];
 
@@ -61,7 +61,7 @@ export default class App {
         this.widgets = args.widgets ?? []
         this.subApps = args.subApps ?? []
 
-        this.pack = args.owned ?? false
+        this.pack = args.pack ?? false
     }
 
     open(){

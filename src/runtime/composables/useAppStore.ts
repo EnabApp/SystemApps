@@ -43,7 +43,7 @@ export const useAppStore = defineStore("appStore", {
             new App({
               id: 4,
               name: 'Management',
-              title: "حزمة",
+              title: " حزمة الادارة",
               owned: false,
               pack:true,
               points: 3999,
@@ -63,7 +63,6 @@ export const useAppStore = defineStore("appStore", {
     actions: {
       setSelectedTap(id){
         this.selectedTab = id
-        console.log(this.selectedTab)
         this.selectedApp = null
         this.selectedPack = null
       },
