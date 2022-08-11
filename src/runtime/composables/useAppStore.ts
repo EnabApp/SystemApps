@@ -53,6 +53,7 @@ export const useAppStore = defineStore("appStore", {
     actions: {
       setSelectedTap(id){
         this.selectedTab = id
+        console.log(this.selectedTab)
         this.selectedApp = null
         this.selectedPack = null
       },

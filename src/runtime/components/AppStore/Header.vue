@@ -8,7 +8,7 @@
     <span hover="cursor-pointer" text="primaryOp dark:primary" m-l="6">التطبيقات</span>
     <span hover="cursor-pointer" text="primaryOp dark:primary" m-l="6">الحزم</span>
   </div>
-  <div class="flex place-items-center">
+  <div class="flex place-items-center" cursor="pointer" @click="appStore.setSelectedTap(3)">
     <div class="i-ri:copper-coin-fill" text="primaryOp dark:primary" w="[32px]" h="[32px]"></div>
     <span text="primaryOp dark:primary" m-r-3>1999</span>
   </div>
@@ -16,12 +16,14 @@
 </template>
 
 <script setup>
+import { useAppStore } from '#imports'
 const props = defineProps({
   app: {
     type: Object,
     required: true,
   },
 });
+const appStore = useAppStore();
 </script>
 
 <style>

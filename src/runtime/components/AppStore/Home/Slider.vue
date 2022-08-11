@@ -2,7 +2,7 @@
   <!-- Imgs banner and search -->
   <div w="full">
     <div cursor="pointer">
-      <nuxt-img v-if="banner" class="transition-all duration-300 ease-in delay-75" w="full" h="70" cursor="pointer" border="w-70" rounded="lg" :src="banner.src" />
+      <nuxt-img v-if="banner" :class="classes" w="full" h="70" cursor="pointer" border="w-70" rounded="lg" :src="banner.src" />
     </div>
   </div>
 </template>
@@ -21,18 +21,22 @@ const banners = computed(() => {
     {
       src:'https://adsterra.com/blog/wp-content/uploads/2021/06/how-banners-make-you-money.png',
       app:apps.value[0] ?? '',
+      classes:'transition-all duration-300 ease-in delay-75',
     },
     {
       src:'imgs/bg.jpg',
       app:apps.value[1] ?? '',
+      classes:'transition-all duration-300 ease-in delay-75',
     },
     {
       src:'https://adsterra.com/blog/wp-content/uploads/2021/06/how-banners-make-you-money.png',
       app:apps.value[2] ?? '',
+      classes:'transition-all duration-300 ease-in delay-75',
     },
     {
       src:'imgs/bg.jpg',
       app:apps.value[3] ?? '',
+      classes:'transition-all duration-300 ease-in delay-75',
     },
   ]
 })

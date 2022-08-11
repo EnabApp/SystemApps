@@ -16,6 +16,8 @@
             <div v-if="appStore.selectedApp === null && appStore.selectedPack === null">
               <AppStoreHome v-if="appStore.selectedTab === 0" />
               <AppStoreApps v-if="appStore.selectedTab === 1" />
+              <AppStoreMyApps v-if="appStore.selectedTab === 2" />
+              <AppStorePoints v-if="appStore.selectedTab === 3" />
             </div>
             <!-- App Info Page (if click app) -->
             <AppStoreAppsCardInfo v-if="appStore.selectedApp !== null && appStore.selectedPack ===null" :app="selectedApp" />
@@ -29,7 +31,6 @@
 </template>
 
 <script setup>
-
 const props = defineProps({
   app: {
     type: Object,
