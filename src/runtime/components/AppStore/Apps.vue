@@ -15,14 +15,7 @@
 </template>
 
 <script setup>
-const props = defineProps({
-  app: {
-    type: Object,
-    required: true,
-  },
-});
 const appStore = useAppStore()
-// const packs = appStore.getPacks
 const apps = appStore.getApps
 const packs = appStore.getPacks
 </script>

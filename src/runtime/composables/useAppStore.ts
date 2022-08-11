@@ -76,6 +76,10 @@ export const useAppStore = defineStore("appStore", {
         this.selectedApp = null
         this.selectedPack = app
       },
+      back(){
+        this.selectedPack = null
+        this.selectedApp = null
+      },
     },
 });
 

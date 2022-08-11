@@ -12,12 +12,8 @@
 </template>
 
 <script setup>
-import { useStoreApps } from "~/composables/useStore/useStoreApps";
-import { ref } from "vue";
-
-const appsStore = useStoreApps();
-
-const apps = appsStore.getApps;
+const appStore = useAppStore()
+const apps = appStore.getApps;
 
 </script>
 

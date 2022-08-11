@@ -1,7 +1,15 @@
 <template>
-  <div flex="~" m-t="64px">
+    <div>
+      <div @click="appStore.back" cursor="pointer" flex="~" justify="center" m-t="30px" w="122px" h="41px" grid="~ flow-row" class="place-items-center">
+        <div class="i-ant-design:arrow-right-outlined" w="5" h="5" m-l="2" text="primaryOp dark:primary"></div>
+        <span text="xl primaryOp dark:primary">
+          الرجوع
+        </span>
+      </div>
+    </div>
+  <div flex="~" m-t="29px">
     <!-- Right Section -->
-    <div flex="grow">
+    <div flex="grow" m-t="29px">
       <!-- Icom ,Name and install -->
       <div flex="~" m-b="3">
         <!-- Icon -->
