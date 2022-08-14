@@ -46,7 +46,7 @@
     "vue-toastification": "^2.0.0-rc.5"
   },
   "devDependencies": {
-    "@nuxt/image-edge": "^1.0.0-27628766.3629b9a",
+    "@nuxt/image-edge": "^1.0.0-27657146.da85542",
     "@nuxt/module-builder": "^0.1.7",
     "@nuxtjs/eslint-config-typescript": "latest",
     "eslint": "latest",

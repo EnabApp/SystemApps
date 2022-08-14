@@ -8,12 +8,12 @@
 </template>
 
 <script setup>
-import { useStoreApps } from '~/composables/useStore/useStoreApps'
+import { useAppManager } from '#imports'
 import { useCycleList } from '@vueuse/core'
 
-const appsStore = useStoreApps();
+const appManager = useAppManager();
 
-const apps = computed( () => appsStore.getApps)
+const apps = computed( () => appManager.getApps)
 
 const banners = computed(() => {
   if (apps.value.length <= 0) return []
