@@ -24,7 +24,7 @@
           <div flex="~">
             <div cursor="pointer" flex="~" justify="center" m-t="30px" w="122px" h="41px" grid="~ flow-row" class="place-items-center" rounded="lg" bg="primaryOp dark:primary">
               <div class="i-charm:download" w="5" h="5" m-l="2" text="primary dark:primaryOp"></div>
-              <span text="md primary dark:primaryOp">
+              <span text="md primary dark:primaryOp" cursor="pointer">
                 {{app.points >0 ? 'تنصيب' : 'مجانا' }}
               </span>
             </div>
@@ -71,19 +71,21 @@
       </div>
     </div>
     <!-- Left Section -->
-    <div w="280px" m-b="21px">
+    <!-- <div w="280px" m-b="21px">
       <span text="priamryOp dark:primary" font="bold">التطبيق متوفر في الحزم التالية :</span>
       <AppStoreAppsPackCard  m-y="4" v-for="pack in packs" :key="'pack-'+ pack.id " :app="pack" />
       <span text="priamryOp dark:primary" font="light">شراء الحزن يساعدك على توفير المال </span>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script setup>
+import { useAppStore } from "#imports"
+import { useAppManager } from "#imports"
 const appStore = useAppStore()
+const appManager = useAppManager()
 
 const app = appStore.selectedApp
-const packs = appStore.getPacks
 </script>
 
 <style>

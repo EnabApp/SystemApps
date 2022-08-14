@@ -12,8 +12,10 @@
 </template>
 
 <script setup>
-const appStore = useAppStore()
-const apps = appStore.getApps;
+import { useAppManager } from "#imports"
+
+const appManager = useAppManager()
+const apps = appManager.getApps;
 
 </script>
 

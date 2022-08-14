@@ -21,8 +21,8 @@
           <div class="i-fluent:library-16-filled" w="[32px]" h="[32px]" text="primaryOp dark:primary"></div>
         </div>
         <div grid="~ flow-row">
-          <span text="2xl">تطبيق الحاسبة </span>
-          <span text="sm">الحاسبة </span>
+          <span text="2xl">{{app.title}}</span>
+          <span text="sm">{{app.title}} </span>
         </div>
       </div>
       <div grid="~ flow-row" class="place-items-end" m-l="2">

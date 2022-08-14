@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@enab/calculator": "^1.0.7",
-    "@enab/core": "^1.4.3",
+    "@enab/core": "^1.4.4",
     "@enab/ui": "^1.4.4",
     "@iconify/json": "^2.1.77",
     "@nuxt/kit": "^3.0.0-rc.8",

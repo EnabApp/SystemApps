@@ -9,9 +9,9 @@
     ></div>
     <span text="primary dark:primaryOp lg">{{app.title}}</span>
     <div v-if="!app.owned" w="108px" h="31px" grid="~ flow-row" class="place-items-center" rounded="lg" bg="primary dark:primaryOp">
-      <spa text="md primaryOp dark:primary">
+      <span text="md primaryOp dark:primary">
         {{ app.points > 0 ? app.points : "مجانا"}}
-      </spa>
+      </span>
     </div>
     <div v-else w="108px" h="31px" grid="~ flow-row" class="place-items-center" rounded="lg" bg="green dark:green">
       <spa text="md primaryOp dark:primary">
@@ -22,6 +22,7 @@
 </template>
 
 <script setup>
+import { useAppStore } from "#imports"
 const props = defineProps({
   app: {
     type: Object,

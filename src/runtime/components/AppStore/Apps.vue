@@ -4,9 +4,9 @@
       <span text="primaryOp dark:primary" align="right">التطبيقات</span>
     </div> -->
     <div m-t="90px">
-      <div class="grid grid-cols-8 gap-x-2 gap-y-2">
+      <!-- <div class="grid grid-cols-8 gap-x-2 gap-y-2">
         <AppStoreAppsPackCard v-for="pack in packs" :key="'pack-'+ pack.id " :app="pack" />
-      </div>
+      </div> -->
       <div class="grid grid-cols-8 gap-x-2 gap-y-2 m-t-34px">
         <AppStoreAppsCard v-for="card in apps" :key="'app-'+ card.id " :app="card" />
       </div>
@@ -15,9 +15,11 @@
 </template>
 
 <script setup>
-const appStore = useAppStore()
-const apps = appStore.getApps
-const packs = appStore.getPacks
+import { useAppManager } from "#imports";
+
+const appManager = useAppManager()
+const apps = computed(() => appManager.getApps);
+// const packs = computed(() => appManager.getPacks);
 </script>
 
 <style></style>
