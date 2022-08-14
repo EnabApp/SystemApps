@@ -1,5 +1,4 @@
 import { acceptHMRUpdate, defineStore } from "pinia";
-import App from "~/classes/App";
 
 export const useAppStore = defineStore("appStore", {
     state: () => ({
@@ -10,45 +9,45 @@ export const useAppStore = defineStore("appStore", {
 
       apps:[
 
-        new App({
-          id: 1,
-          name: 'Calculator',
-          title: "الحاسبة",
-          owned: false,
-          pack:false,
-          points: 0,
-          icon: "i-ic-baseline-calculate",
-        }),
+        // new App({
+        //   id: 1,
+        //   name: 'Calculator',
+        //   title: "الحاسبة",
+        //   owned: false,
+        //   pack:false,
+        //   points: 0,
+        //   icon: "i-ic-baseline-calculate",
+        // }),
 
-        new App({
-          id: 2,
-          name: 'Calculator',
-          title: "تطبيق",
-          owned: false,
-          pack:false,
-          points: 1999,
-          icon: "i-ant-design:star-filled",
-          }),
+        // new App({
+        //   id: 2,
+        //   name: 'Calculator',
+        //   title: "تطبيق",
+        //   owned: false,
+        //   pack:false,
+        //   points: 1999,
+        //   icon: "i-ant-design:star-filled",
+        //   }),
 
-          new App({
-            id: 3,
-            name: 'Calculator',
-            title: "حزمة",
-            owned: true,
-            pack:true,
-            points: 1999,
-            icon: "i-ic-baseline-calculate",
-            }),
+        //   new App({
+        //     id: 3,
+        //     name: 'Calculator',
+        //     title: "حزمة",
+        //     owned: true,
+        //     pack:true,
+        //     points: 1999,
+        //     icon: "i-ic-baseline-calculate",
+        //     }),
 
-            new App({
-              id: 4,
-              name: 'Management',
-              title: " حزمة الادارة",
-              owned: false,
-              pack:true,
-              points: 3999,
-              icon: "i-ic-baseline-calculate",
-            }),
+        //     new App({
+        //       id: 4,
+        //       name: 'Management',
+        //       title: " حزمة الادارة",
+        //       owned: false,
+        //       pack:true,
+        //       points: 3999,
+        //       icon: "i-ic-baseline-calculate",
+        //     }),
       ]
     }),
 
