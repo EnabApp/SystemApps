@@ -1,15 +1,15 @@
 <template>
   <div m-t="90px">
-    <div bg="secondaryOp dark:secondary" rounded="lg" flex="~" w="full" h="81px" class="place-content-center gap-30">
-      <span text="primary dark:primaryOp xl">التطبيق</span>
-      <span text="primary dark:primaryOp xl">تاريخ الشراء</span>
-      <span text="primary dark:primaryOp xl">حالة الاشتراك</span>
-      <span text="primary dark:primaryOp xl">المدفوع</span>
-      <span text="primary dark:primaryOp xl">...</span>
+    <div bg="secondaryOp dark:secondary" rounded="lg" flex="~" grid="~ flow-row gap-120px" h="81px" class="place-items-center" align="center">
+      <span w="150px" text="primary dark:primaryOp xl">التطبيق</span>
+      <span w="120px" text="primary dark:primaryOp xl">تاريخ الشراء</span>
+      <span w="120px" text="primary dark:primaryOp xl">حالة الاشتراك</span>
+      <span w="120px" text="primary dark:primaryOp xl">المدفوع</span>
+      <span w="120px" text="primary dark:primaryOp xl">...</span>
     </div>
     <div h="420px" m-t="2" class="overflow-x-hidden overflow-y-scroll ">
-      <div v-for="app in apps" :key="'app-' + app.id" flex="~" w="full" h="81px" class="place-content-center gap-30">
-        <div flex="~" place="items-center">
+      <div v-for="app in apps" :key="'app-' + app.id"  flex="~" grid="~ flow-row gap-120px" h="81px" class="place-items-center" align="center">
+        <div flex="~" place="items-center" w="150px">
           <div
             class="i-ci:check-bold"
             text="primaryOp dark:primary"
@@ -17,16 +17,17 @@
             h="[64px]"
           ></div>
           <div>
-            <span text="primaryOp dark:primary lg">{{app.title}}</span><br>
-            <span text="primaryOp dark:primary sm" font="thin">{{app.points}}</span>
+            <span text="primaryOp dark:primary md">{{app.title}}</span><br>
           </div>
         </div>
-        <span text="dark:primary primaryOp xl">05/8/2021</span>
-        <div bg="green" w="74px" h="34px" rounded="lg" align="center" cursor="pointer">
-          <span text="primaryOp xl" justify="center">فعال</span>
+        <span w="120px" text="dark:primary primaryOp xl">05/8/2021</span>
+        <div w="120px">
+          <div bg="green" w="74px" h="34px" rounded="lg" align="center" cursor="pointer">
+            <span text="primaryOp xl" justify="center">فعال</span>
+          </div>
         </div>
-        <span text="dark:primary primaryOp xl">{{app.points}}</span>
-        <div flex="~">
+        <span w="120px" text="dark:primary primaryOp xl">{{app.points}}</span>
+        <div flex="~" w="120px">
           <div @click="deleteApp(app.id)" bg="red" w="96px" h="31px" rounded="lg" align="center" cursor="pointer">
             <span text="primary xl">حذف</span>
           </div>
