@@ -16,6 +16,17 @@
 </template>
 
 <script setup>
+// import { useSupabaseClient } from "#imports"
+
+// const supabase = useSupabaseClient()
+
+// const { data, error } = await supabase
+//   .from('user_protected')
+//   .select('points')
+//   .eq('user_id', supabase.auth.user().id)
+//   .limit(1)
+
+// console.log(data , error)
 </script>
 
 <style>
