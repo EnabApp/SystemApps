@@ -50,6 +50,7 @@ const supabase = useSupabaseClient();
 
 const apps = computed(() => appManager.getOwned);
 
+
 const deleteApp = async (id) => {
   const { data, error } = await supabase
   .from('users_apps')
