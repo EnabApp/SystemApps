@@ -22,15 +22,25 @@
           <h1 text="primaryOp dark:primary 3xl" font="semibold" m-b="13px">{{app.title}}</h1>
           <span text="primaryOp dark:secondaryOp 2xl" font="light">تطبيق</span>
           <div flex="~">
-            <div cursor="pointer" flex="~" justify="center" m-t="30px" w="122px" h="41px" grid="~ flow-row" class="place-items-center" rounded="lg" bg="primaryOp dark:primary">
-              <div class="i-charm:download" w="5" h="5" m-l="2" text="primary dark:primaryOp"></div>
-              <span text="md primary dark:primaryOp" cursor="pointer">
-                {{app.points >0 ? 'تنصيب' : 'مجانا' }}
+            <!-- Owned -->
+            <div v-if="app.owned" flex="~" justify="center" m-t="30px" w="122px" h="41px" grid="~ flow-row" class="place-items-center" rounded="lg" bg="green">
+              <div class="i-ci:check-bold" w="5" h="5" m-l="2" text="primaryOp"></div>
+              <span text="md primaryOp">
+                تم الشراء
               </span>
             </div>
-            <span flex="~" text="md primaryOp dark:primary 2xl" m-t="9" m-r="3">
-              <div class="i-ri:copper-coin-fill" w="32px" h="32px"></div> {{app.points >0 ? app.points : 'مجانا' }}
-            </span>
+            <!-- Not Owned -->
+            <div v-else flex="~">
+              <div @click="buyApp(app.id)" cursor="pointer" flex="~" justify="center" m-t="30px" w="122px" h="41px" grid="~ flow-row" class="place-items-center" rounded="lg" bg="primaryOp dark:primary">
+                <div class="i-charm:download" w="5" h="5" m-l="2" text="primary dark:primaryOp"></div>
+                <span text="md primary dark:primaryOp" cursor="pointer">
+                  {{app.points >0 ? 'تنصيب' : 'مجانا' }}
+                </span>
+              </div>
+              <span flex="~" text="md primaryOp dark:primary 2xl" m-t="9" m-r="3">
+                <div class="i-ri:copper-coin-fill" w="32px" h="32px"></div> {{app.points >0 ? app.points : 'مجانا' }}
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -82,10 +92,16 @@
 <script setup>
 import { useAppStore } from "#imports"
 import { useAppManager } from "#imports"
+
+
 const appStore = useAppStore()
 const appManager = useAppManager()
 
 const app = appStore.selectedApp
+const buyApp = (id) => {
+  appManager.buyApp(id)
+}
+
 </script>
 
 <style>
