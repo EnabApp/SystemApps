@@ -16,6 +16,7 @@
 
 <script setup>
 import { useAppManager } from "#imports";
+import { computed } from "vue";
 
 const appManager = useAppManager()
 const apps = computed(() => appManager.getApps);

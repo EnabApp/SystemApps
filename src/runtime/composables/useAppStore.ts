@@ -11,17 +11,17 @@ export const useAppStore = defineStore("appStore", {
     },
 
     actions: {
-      setSelectedTap(id){
+      setSelectedTap(id: any){
         this.selectedTab = id
         this.selectedApp = null
         this.selectedPack = null
       },
-      setSelectedApp(app){
+      setSelectedApp(app: any){
         this.selectedApp = null
         this.selectedPack = null
         this.selectedApp = app
       },
-      setSelectedPack(app){
+      setSelectedPack(app: any){
         this.selectedPack = null
         this.selectedApp = null
         this.selectedPack = app

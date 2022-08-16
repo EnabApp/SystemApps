@@ -42,6 +42,7 @@
 <script setup>
 import { useAppManager } from "#imports"
 import { useSupabaseClient } from "#imports"
+import { computed } from "vue"
 
 const appManager = useAppManager();
 const supabase = useSupabaseClient();
@@ -50,7 +51,7 @@ const apps = computed(() => appManager.getOwned);
 
 const deleteApp = async (id) => {
   const { data, error } = await supabase
-  .from('users_app')
+  .from('users_apps')
   .delete()
   .eq('app_id', id)
 
