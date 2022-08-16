@@ -92,15 +92,23 @@
 <script setup>
 import { useAppStore } from "#imports"
 import { useAppManager } from "#imports"
+import { useSupabaseClient } from "#imports"
 
 
 const appStore = useAppStore()
 const appManager = useAppManager()
+const supabase = useSupabaseClient()
 
 const app = appStore.selectedApp
+
 const buyApp = (id) => {
   appManager.buyApp(id)
 }
+const { data, error } = await supabase
+.from('user_protected')
+.select('points')
+console.log('done',data)
+
 
 </script>
 

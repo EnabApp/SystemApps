@@ -10,23 +10,22 @@
   </div>
   <div class="flex place-items-center">
     <div class="i-ri:copper-coin-fill" text="primaryOp dark:primary" w="[32px]" h="[32px]"></div>
-    <span text="primaryOp dark:primary" m-r-3>1999</span>
+    <span text="primaryOp dark:primary" m-r-3>{{points}}</span>
   </div>
 </div>
 </template>
 
 <script setup>
-// import { useSupabaseClient } from "#imports"
+import { useSupabaseClient } from "#imports"
+import { ref } from 'vue'
 
-// const supabase = useSupabaseClient()
+const supabase = useSupabaseClient()
 
-// const { data, error } = await supabase
-//   .from('user_protected')
-//   .select('points')
-//   .eq('user_id', supabase.auth.user().id)
-//   .limit(1)
+const { data, error } = await supabase
+.from('user_protected')
+.select('points')
 
-// console.log(data , error)
+const points = ref(data[0].points)
 </script>
 
 <style>
