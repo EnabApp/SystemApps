@@ -14,9 +14,9 @@
       </span>
     </div>
     <div v-else w="108px" h="31px" grid="~ flow-row" class="place-items-center" rounded="lg" bg="green dark:green">
-      <spa text="md primaryOp dark:primary">
+      <span text="md primaryOp dark:primary">
         <div class="i-ci:check-bold"></div>
-      </spa>
+      </span>
     </div>
   </div>
 </template>

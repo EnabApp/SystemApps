@@ -101,13 +101,15 @@ const supabase = useSupabaseClient()
 
 const app = appStore.selectedApp
 
-const buyApp = (id) => {
-  appManager.buyApp(id)
+// const buyApp = (id) => {
+//   appManager.buyApp(id)
+// }
+const buyApp = async (id) => {
+  const { data, error } = await appManager
+  .buyApp('id')
+
+  console.log("deleted" , data ,error)
 }
-const { data, error } = await supabase
-.from('user_protected')
-.select('points')
-console.log('done',data)
 
 
 </script>

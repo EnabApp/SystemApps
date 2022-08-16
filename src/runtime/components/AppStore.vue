@@ -31,6 +31,9 @@
 
 <script setup>
 import { useAppStore } from "#imports"
+
+const appStore = useAppStore()
+
 const props = defineProps({
   app: {
     type: Object,
@@ -39,7 +42,7 @@ const props = defineProps({
 });
 
 ///////////////////////////////
-const appStore = useAppStore()
+
 </script>
 <style scoped>
 /* Hide scrollbar for Chrome, Safari and Opera */
