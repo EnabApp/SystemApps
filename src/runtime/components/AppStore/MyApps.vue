@@ -28,8 +28,8 @@
         </div>
         <span w="120px" text="dark:primary primaryOp xl">{{app.points}}</span>
         <div flex="~" w="120px">
-          <div @click="deleteApp(app.id)" bg="red" w="96px" h="31px" rounded="lg" align="center" cursor="pointer">
-            <span text="primary xl">حذف</span>
+          <div bg="red" w="96px" h="31px" rounded="lg" align="center" cursor="pointer">
+            <span text="primary xl">تعطيل</span>
           </div>
           <div bg="primaryOp dark:primary" w="31px" h="31px" m-r="2" rounded="lg" align="center" cursor="pointer">
             <span text="dark:primaryOp primary xl">...</span>
@@ -41,8 +41,7 @@
 </template>
 
 <script setup>
-import { useAppStore } from "#imports"
-import { useSupabaseClient } from "#imports"
+import { useAppStore , useSupabaseClient } from "#imports"
 import { computed } from "vue"
 
 const appStore = useAppStore();
@@ -50,14 +49,14 @@ const supabase = useSupabaseClient();
 
 const apps = computed(() => appStore.getFilteredOwned());
 
-const deleteApp = async (id) => {
-  const { data, error } = await supabase
-  .from('users_apps')
-  .delete()
-  .eq('app_id', id)
+// const deleteApp = async (id) => {
+//   const { data, error } = await supabase
+//   .from('users_apps')
+//   .delete()
+//   .eq('app_id', id)
 
-  console.log("deleted" , data ,error)
-}
+//   console.log("deleted" , data ,error)
+// }
 
 </script>
 
