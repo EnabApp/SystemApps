@@ -16,10 +16,13 @@
 
 <script setup>
 import { useAppStore } from "#imports";
+import { useAppManager } from "#imports";
 import { computed } from "vue";
 
 const appStore = useAppStore()
-const apps = computed(() => appStore.getApps);
+const appManager = useAppManager()
+const apps = computed(() => appStore.filteredApps());
+
 // const packs = computed(() => appManager.getPacks);
 </script>
 

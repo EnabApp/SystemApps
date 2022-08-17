@@ -5,11 +5,12 @@ export const useAppStore = defineStore("appStore", {
       selectedTab: 0 ,
       selectedApp:null,
       selectedPack:null,
+      search:null,
       apps:[],
     }),
 
     getters: {
-      getApps: (state) => state.apps.filter(app => !app.owned),
+      // getApps: (state) => state.apps.filter(app => app.owned),
     },
 
     actions: {
@@ -31,6 +32,16 @@ export const useAppStore = defineStore("appStore", {
       back(){
         this.selectedPack = null
         this.selectedApp = null
+      },
+      filteredApps() {
+        return this.apps.filter(app => {
+          return app.title.toLowerCase().includes(this.search.toLowerCase())
+        })
+      },
+      getFilteredOwned() {
+        return this.apps.filter(app => {
+          return app.title.toLowerCase().includes(this.search.toLowerCase()) && app.owned
+        })
       },
     },
 });

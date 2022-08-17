@@ -1,7 +1,7 @@
 <template>
 <div class="flex justify-between grid-cols-3">
   <div class="flex place-items-center">
-    <UiInput placeholder="البحث عن تطبيق" bg="primary dark:primaryOp" rounded="lg" icon="i-akar-icons:search" w="[484px]" />
+    <UiInput v-model="search" placeholder="البحث عن تطبيق" bg="primary dark:primaryOp" rounded="lg" icon="i-akar-icons:search" w="[484px]" />
   </div>
   <div class="flex place-items-center">
     <span hover="cursor-pointer" text="primaryOp dark:primary" m-l="6">الخدمات</span>
@@ -17,9 +17,14 @@
 
 <script setup>
 import { useSupabaseClient } from "#imports"
+import { useAppStore } from "#imports"
 import { ref } from 'vue'
 
 const supabase = useSupabaseClient()
+const appStore = useAppStore()
+
+const search = ref('')
+appStore.search = search
 
 const { data, error } = await supabase
 .from('user_protected')

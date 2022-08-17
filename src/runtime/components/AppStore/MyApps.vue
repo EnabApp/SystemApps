@@ -41,15 +41,14 @@
 </template>
 
 <script setup>
-import { useAppManager } from "#imports"
+import { useAppStore } from "#imports"
 import { useSupabaseClient } from "#imports"
 import { computed } from "vue"
 
-const appManager = useAppManager();
+const appStore = useAppStore();
 const supabase = useSupabaseClient();
 
-const apps = computed(() => appManager.getOwned);
-console.log(apps)
+const apps = computed(() => appStore.getFilteredOwned());
 
 const deleteApp = async (id) => {
   const { data, error } = await supabase
