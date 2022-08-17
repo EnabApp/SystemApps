@@ -31,9 +31,12 @@
 
 <script setup>
 import { useAppStore } from "#imports"
+import { useAppManager } from "#imports"
 
 const appStore = useAppStore()
+const appManager = useAppManager()
 
+appStore.apps = appManager.getApps
 const props = defineProps({
   app: {
     type: Object,

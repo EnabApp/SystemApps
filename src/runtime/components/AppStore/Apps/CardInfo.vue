@@ -109,14 +109,14 @@ const app = appStore.selectedApp
 const loading = ref(false)
 
 const buyApp = async (id) => {
-  loading.value = true
-  const { data, error } = await appManager
-  .buyApp('id')
-  .catch(error => {
+  try{
+    loading.value = true
+    const { error } = await appManager.buyApp(id)
+  } catch (error){
     console.log(error)
-  }).finally(() => {
+  } finally {
     loading.value = false
-  })
+  }
 }
 
 

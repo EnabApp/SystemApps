@@ -5,9 +5,11 @@ export const useAppStore = defineStore("appStore", {
       selectedTab: 0 ,
       selectedApp:null,
       selectedPack:null,
+      apps:[],
     }),
 
     getters: {
+      getApps: (state) => state.apps.filter(app => !app.owned),
     },
 
     actions: {
