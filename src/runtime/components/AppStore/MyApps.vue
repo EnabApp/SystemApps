@@ -11,7 +11,7 @@
       <div v-for="app in apps" :key="'app-' + app.id"  flex="~" grid="~ flow-row gap-120px" h="81px" class="place-items-center" align="center">
         <div flex="~" place="items-center" w="150px">
           <div
-            class="i-ci:check-bold"
+            :class="app.icon"
             text="primaryOp dark:primary"
             w="[64px]"
             h="[64px]"
@@ -49,7 +49,7 @@ const appManager = useAppManager();
 const supabase = useSupabaseClient();
 
 const apps = computed(() => appManager.getOwned);
-
+console.log(apps)
 
 const deleteApp = async (id) => {
   const { data, error } = await supabase
