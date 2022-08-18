@@ -5,22 +5,23 @@
       <div class="flex" bg="primary dark:primaryOp" h="full">
         <!-- sidebare -->
         <div class="flex place-content-center" w="[96px]" m-t="[36px]">
-          <AppStoreSidebar :app="app" w="[64px]" />
+          <AppStoreSidebar w="[64px]" />
         </div>
         <!-- Headet and Content  { 104px m-x } -->
         <div flex="grow" m-x="[64px]" m-t="[36px]">
           <!-- Header -->
-          <AppStoreHeader :app="app" />
+          <AppStoreHeader />
           <div class="overflow-x-hidden overflow-y-scroll hide-scroll" h="cuts">
             <!-- Pages -->
-            <div v-if="appManager.selectedApp === null && appManager.selectedPack === null">
-              <AppStoreHome v-if="appManager.selectedTab === 0" />
-              <AppStoreApps v-if="appManager.selectedTab === 1" />
+            <div v-if="appStore.selectedApp === null && appStore.selectedPack === null">
+              <AppStoreHome v-if="appStore.selectedTab === 0" />
+              <AppStoreApps v-if="appStore.selectedTab === 1" />
+              <AppStoreMyApps v-if="appStore.selectedTab === 2" />
             </div>
             <!-- App Info Page (if click app) -->
-            <!-- <AppStoreAppsCardInfo v-if="appManager.selectedApp !== null" :app="selectedApp" /> -->
+            <AppStoreAppsCardInfo v-if="appStore.selectedApp !== null && appStore.selectedPack === null" :app="selectedApp" />
             <!-- Pack Info Page -->
-            <!-- <AppStoreAppsPackInfo v-if="appManager.selectedPack !== null" :app="selectedPack"/> -->
+            <AppStoreAppsPackInfo v-if="appStore.selectedPack !== null && appStore.selectedApp === null" :app="selectedPack"/>
           </div>
         </div>
       </div>
@@ -29,8 +30,12 @@
 </template>
 
 <script setup>
-import { useAppManager } from '#imports'
+import { useAppStore , useAppManager } from "#imports"
 
+const appStore = useAppStore()
+const appManager = useAppManager()
+
+appStore.apps = appManager.getApps
 const props = defineProps({
   app: {
     type: Object,
@@ -39,7 +44,7 @@ const props = defineProps({
 });
 
 ///////////////////////////////
-const appManager = useAppManager()
+
 </script>
 <style scoped>
 /* Hide scrollbar for Chrome, Safari and Opera */

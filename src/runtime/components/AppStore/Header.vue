@@ -1,7 +1,7 @@
 <template>
 <div class="flex justify-between grid-cols-3">
   <div class="flex place-items-center">
-    <UiInput placeholder="البحث عن تطبيق" bg="primary dark:primaryOp" rounded="lg" icon="i-akar-icons:search" w="[484px]" />
+    <UiInput v-model="search" placeholder="البحث عن تطبيق" bg="primary dark:primaryOp" rounded="lg" icon="i-akar-icons:search" w="[484px]" />
   </div>
   <div class="flex place-items-center">
     <span hover="cursor-pointer" text="primaryOp dark:primary" m-l="6">الخدمات</span>
@@ -10,18 +10,25 @@
   </div>
   <div class="flex place-items-center">
     <div class="i-ri:copper-coin-fill" text="primaryOp dark:primary" w="[32px]" h="[32px]"></div>
-    <span text="primaryOp dark:primary" m-r-3>1999</span>
+    <span text="primaryOp dark:primary" m-r-3>{{points}}</span>
   </div>
 </div>
 </template>
 
 <script setup>
-const props = defineProps({
-  app: {
-    type: Object,
-    required: true,
-  },
-});
+import { useSupabaseClient ,useAppStore,ref } from "#imports"
+
+const supabase = useSupabaseClient()
+const appStore = useAppStore()
+
+const search = ref('')
+appStore.search = search
+
+const { data, error } = await supabase
+.from('user_protected')
+.select('points')
+
+const points = ref(data[0].points)
 </script>
 
 <style>

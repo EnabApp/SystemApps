@@ -9,8 +9,8 @@ export interface ModuleOptions {
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
-    name: 'app-store',
-    configKey: 'appStore'
+    name: 'module-starter',
+    configKey: 'moduleStarter'
   },
   defaults: {
     // addPlugin: true,
@@ -20,6 +20,7 @@ export default defineNuxtModule<ModuleOptions>({
     const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
     nuxt.options.build.transpile.push(runtimeDir)
     addPlugin(resolve(runtimeDir, 'registerer'))
+    addPlugin(resolve(runtimeDir, 'plugin'))
 
     nuxt.hook('components:dirs', (dirs) => {
       dirs.push({

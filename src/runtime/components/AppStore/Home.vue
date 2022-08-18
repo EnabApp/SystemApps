@@ -4,19 +4,17 @@
     <AppStoreHomeSlider/>
     <div m-t="4">
       <!-- Best Apps -->
-        <AppStoreHomeBestApps :apps="apps" />
+        <AppStoreHomeBestApps />
       <!-- New Apps -->
-        <AppStoreHomeBestApps :apps="apps" m-t="8" />
+        <AppStoreHomeBestApps m-t="8" />
     </div>
   </div>
 </template>
 
 <script setup>
-// import { useStoreApps } from "~/composables/useStore/useStoreApps";
-import { useAppManager } from '#imports'
+import { useAppManager } from "#imports"
 
-const appManager = useAppManager();
-
+const appManager = useAppManager()
 const apps = appManager.getApps;
 
 </script>

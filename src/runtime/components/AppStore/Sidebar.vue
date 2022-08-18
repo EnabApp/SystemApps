@@ -11,7 +11,7 @@
     >
       <div
         :class="
-        focus === 0
+        appStore.selectedTab === 0
           ? 'bg-primaryOp dark:bg-primary text-primary dark:text-primaryOp'
           : 'dark:hover:bg-primary hover:bg-secondaryOp text-primaryOp hover:text-primary dark:hover:text-primaryOp dark:text-primary cursor-pointer'"
           grid="~ flow-row"
@@ -39,7 +39,7 @@
     >
       <div
         :class="
-        focus === 1
+        appStore.selectedTab === 1
           ? 'bg-primaryOp dark:bg-primary text-primary dark:text-primaryOp'
           : 'dark:hover:bg-primary hover:bg-secondaryOp text-primaryOp hover:text-primary dark:hover:text-primaryOp dark:text-primary cursor-pointer'"
           grid="~ flow-row"
@@ -60,15 +60,14 @@
     <div
       @click="appStore.setSelectedTap(2)"
       p-x="3"
-      p-y="6"
-      m-b="3"
+      p-y="3"
       place="items-center"
       grid="~ flow-row"
       class="place-content-center"
     >
       <div
         :class="
-        focus === 2
+        appStore.selectedTab === 2
           ? 'bg-primaryOp dark:bg-primary text-primary dark:text-primaryOp'
           : 'dark:hover:bg-primary hover:bg-secondaryOp text-primaryOp hover:text-primary dark:hover:text-primaryOp dark:text-primary cursor-pointer'"
           grid="~ flow-row"
@@ -89,17 +88,8 @@
 </template>
 
 <script setup>
-import { useAppStore, ref } from '#imports'
-
-const props = defineProps({
-  app: {
-    type: Object,
-    required: true,
-  },
-});
+import { useAppStore } from "#imports"
 const appStore = useAppStore();
-const focus = ref(appStore.selectedTab)
-
 </script>
 
 <style></style>

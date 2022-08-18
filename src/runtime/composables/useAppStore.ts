@@ -1,68 +1,54 @@
 import { acceptHMRUpdate, defineStore } from "pinia";
-// import app from "#imports";
-
+import { ref } from "#imports"
 export const useAppStore = defineStore("appStore", {
     state: () => ({
-      selectedTab: 0 ,
-
-      selectedApp:null,
-      selectedPack:null,
-
-      apps:[
-
-        // new App({
-        //   id: 1,
-        //   name: 'Calculator',
-        //   title: "الحاسبة",
-        //   owned: false,
-        //   pack:false,
-        //   points: 0,
-        //   icon: "i-ic-baseline-calculate",
-        // }),
-
-        // new App({
-        //   id: 2,
-        //   name: 'Calculator',
-        //   title: "تطبيق",
-        //   owned: false,
-        //   pack:false,
-        //   points: 1999,
-        //   icon: "i-ant-design:star-filled",
-        //   }),
-
-        //   new App({
-        //     id: 3,
-        //     name: 'Calculator',
-        //     title: "حزمة",
-        //     owned: true,
-        //     pack:true,
-        //     points: 1999,
-        //     icon: "i-ic-baseline-calculate",
-        //     }),
-      ]
+      selectedTab: ref(0),
+      selectedApp:ref(null),
+      selectedPack:ref(null),
+      search:ref(null),
+      apps:ref([]),
     }),
 
     getters: {
-      getSelectedTab: (state) => state.selectedTab,
-      getSelectedApp: (state) => state.selectedApp,
-      getAll: (state) => state.apps,
-      getPacks: (state) => state.apps.filter(app => app.pack),
-      getApps: (state) => state.apps.filter(app => !app.pack),
+      // No getters yet
     },
 
     actions: {
-      setSelectedTap(id){
+      // Set Selected Tap - sidebar( 0 = home, 1 = apps, 2 = myApps )
+      setSelectedTap(id: any){
         this.selectedTab = id
         this.selectedApp = null
         this.selectedPack = null
       },
-      setSelectedApp(app){
+      // Set Selected App
+      setSelectedApp(app: any){
         this.selectedApp = null
+        this.selectedPack = null
         this.selectedApp = app
       },
-      setSelectedPack(app){
+      // Set Selected Pack
+      setSelectedPack(app: any){
         this.selectedPack = null
+        this.selectedApp = null
         this.selectedPack = app
+      },
+      back(){
+        this.selectedPack = null
+        this.selectedApp = null
+      },
+      // Get all apps apps with filter
+      filteredApps() {
+        return this.apps.filter(app => {
+          return app.title.toLowerCase().includes(this.search.toLowerCase())
+        })
+      },
+      // Get ownd apps with filter
+      getFilteredOwned() {
+        return this.apps.filter(app => {
+          return app.title.toLowerCase().includes(this.search.toLowerCase())
+          && app.owned
+          && !app.core
+        })
       },
     },
 });
