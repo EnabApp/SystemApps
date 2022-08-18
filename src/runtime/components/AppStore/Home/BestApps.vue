@@ -4,16 +4,16 @@
     <span text="lg primaryOp dark:primary" >أفضل التطبيقات</span>
     <span text="lg primaryOp dark:primary" cursor="pointer" >مشاهدة الكل</span>
   </div>
-  <div class="grid grid-cols-3 gap-9">
+  <div class="grid gap-3 3xl:grid-cols-6 2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 ">
     <div
-      v-for="app in apps.slice(0, 3)"
+      v-for="app in apps.slice(0, 6)"
       :key="'app-' + app.id"
       grid="~ flow-row"
       p-y="2"
       bg="primaryOp dark:primary"
       text="primary dark:primaryOp"
       class="rounded-lg"
-      w="[355px]"
+      w="auto"
     >
     <div grid="~ flow-col" justify="between">
       <div grid="~ flow-col">
@@ -21,8 +21,7 @@
           <div class="i-fluent:library-16-filled" w="[32px]" h="[32px]" text="primaryOp dark:primary"></div>
         </div>
         <div grid="~ flow-row">
-          <span text="2xl">{{app.title}}</span>
-          <span text="sm">{{app.title}} </span>
+          <span text="lg">{{app.title}}</span>
         </div>
       </div>
       <div grid="~ flow-row" class="place-items-end" m-l="2">
@@ -38,12 +37,10 @@
 </template>
 
 <script setup>
-const props = defineProps({
-  apps: {
-    type: Object,
-    required: true,
-  },
-});
+import { useAppStore,computed } from '#imports'
+
+const appStore = useAppStore()
+const apps = computed(() => appStore.apps)
 </script>
 
 <style>

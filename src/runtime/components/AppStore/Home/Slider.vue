@@ -6,9 +6,7 @@
         v-if="banner"
         class="transition-all duration-300 ease-in delay-75"
         w="full"
-        h="70"
-        cursor="pointer"
-        border="w-70"
+        h="3xl:140 2xl:120 xl:80 lg:60 md:40 sm:40"
         rounded="lg"
         :src="banner.src"
       />

@@ -4,9 +4,9 @@
     <AppStoreHomeSlider/>
     <div m-t="4">
       <!-- Best Apps -->
-        <AppStoreHomeBestApps :apps="apps" />
+        <AppStoreHomeBestApps />
       <!-- New Apps -->
-        <AppStoreHomeBestApps :apps="apps" m-t="8" />
+        <AppStoreHomeBestApps m-t="8" />
     </div>
   </div>
 </template>

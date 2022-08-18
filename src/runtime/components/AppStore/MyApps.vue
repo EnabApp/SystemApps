@@ -1,15 +1,15 @@
 <template>
   <div m-t="90px">
     <div bg="secondaryOp dark:secondary" rounded="lg" flex="~" grid="~ flow-row gap-120px" h="81px" class="place-items-center" align="center">
-      <span w="150px" text="primary dark:primaryOp xl">التطبيق</span>
-      <span w="120px" text="primary dark:primaryOp xl">تاريخ الشراء</span>
-      <span w="120px" text="primary dark:primaryOp xl">حالة الاشتراك</span>
-      <span w="120px" text="primary dark:primaryOp xl">المدفوع</span>
-      <span w="120px" text="primary dark:primaryOp xl">...</span>
+      <span w="full" text="primary dark:primaryOp xl">التطبيق</span>
+      <span w="full" text="primary dark:primaryOp xl">تاريخ الشراء</span>
+      <span w="full" text="primary dark:primaryOp xl">حالة الاشتراك</span>
+      <span w="full" text="primary dark:primaryOp xl">المدفوع</span>
+      <span w="full" text="primary dark:primaryOp xl">...</span>
     </div>
     <div h="420px" m-t="2" class="overflow-x-hidden overflow-y-scroll ">
       <div v-for="app in apps" :key="'app-' + app.id"  flex="~" grid="~ flow-row gap-120px" h="81px" class="place-items-center" align="center">
-        <div flex="~" place="items-center" w="150px">
+        <div flex="~" place="items-center" w="full">
           <div
             :class="app.icon"
             text="primaryOp dark:primary"
@@ -20,14 +20,14 @@
             <span text="primaryOp dark:primary md">{{app.title}}</span><br>
           </div>
         </div>
-        <span w="120px" text="dark:primary primaryOp xl">05/8/2021</span>
-        <div w="120px">
+        <span w="full" text="dark:primary primaryOp xl">05/8/2021</span>
+        <div w="full">
           <div bg="green" w="74px" h="34px" rounded="lg" align="center" cursor="pointer">
             <span text="primaryOp xl" justify="center">فعال</span>
           </div>
         </div>
-        <span w="120px" text="dark:primary primaryOp xl">{{app.points}}</span>
-        <div flex="~" w="120px">
+        <span w="full" text="dark:primary primaryOp xl">{{app.points}}</span>
+        <div flex="~" w="full">
           <div bg="red" w="96px" h="31px" rounded="lg" align="center" cursor="pointer">
             <span text="primary xl">تعطيل</span>
           </div>
