@@ -101,7 +101,7 @@ const appManager = useAppManager()
 const supabase = useSupabaseClient()
 
 
-const app = appStore.selectedApp
+const app = ref(appStore.selectedApp)
 
 const loading = ref(false)
 

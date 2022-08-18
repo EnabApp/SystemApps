@@ -7,7 +7,7 @@
       w="2xl:110px xl:90px lg:90px md:90px sm:90px"
       h="2xl:110px xl:90px lg:90px md:90px sm:90px"
     ></div>
-    <span text="primary dark:primaryOp lg">{{app.title}}</span>
+    <span text="primary dark:primaryOp md">{{app.title}}</span>
     <div v-if="!app.owned" w="full" h="31px" m="2" grid="~ flow-row" class="place-items-center" rounded="lg" bg="primary dark:primaryOp">
       <span text="md primaryOp dark:primary">
         {{ app.points > 0 ? app.points : "مجانا"}}

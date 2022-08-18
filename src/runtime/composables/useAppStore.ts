@@ -1,12 +1,12 @@
 import { acceptHMRUpdate, defineStore } from "pinia";
-
+import { ref } from "#imports"
 export const useAppStore = defineStore("appStore", {
     state: () => ({
-      selectedTab: 0 ,
-      selectedApp:null,
-      selectedPack:null,
-      search:null,
-      apps:[],
+      selectedTab: ref(0),
+      selectedApp:ref(null),
+      selectedPack:ref(null),
+      search:ref(null),
+      apps:ref([]),
     }),
 
     getters: {
