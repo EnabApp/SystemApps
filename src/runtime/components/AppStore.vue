@@ -30,8 +30,7 @@
 </template>
 
 <script setup>
-import { useAppStore } from "#imports"
-import { useAppManager } from "#imports"
+import { useAppStore , useAppManager } from "#imports"
 
 const appStore = useAppStore()
 const appManager = useAppManager()

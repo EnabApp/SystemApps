@@ -93,10 +93,7 @@
 </template>
 
 <script setup>
-import { useAppStore } from "#imports"
-import { useAppManager } from "#imports"
-import { useSupabaseClient } from "#imports"
-import { ref } from "vue"
+import { useAppStore, useAppManager , useSupabaseClient ,ref } from "#imports"
 
 
 const appStore = useAppStore()
@@ -118,8 +115,6 @@ const buyApp = async (id) => {
     loading.value = false
   }
 }
-
-
 </script>
 
 <style>

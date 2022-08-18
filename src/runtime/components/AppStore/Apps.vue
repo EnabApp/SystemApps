@@ -15,9 +15,7 @@
 </template>
 
 <script setup>
-import { useAppStore } from "#imports";
-import { useAppManager } from "#imports";
-import { computed } from "vue";
+import { useAppStore , useAppManager ,computed } from "#imports";
 
 const appStore = useAppStore()
 const appManager = useAppManager()

@@ -41,8 +41,7 @@
 </template>
 
 <script setup>
-import { useAppStore , useSupabaseClient } from "#imports"
-import { computed } from "vue"
+import { useAppStore , useSupabaseClient , computed } from "#imports"
 
 const appStore = useAppStore();
 const supabase = useSupabaseClient();

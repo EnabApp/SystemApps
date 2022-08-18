@@ -17,9 +17,8 @@
 </template>
 
 <script setup>
-import { useAppManager } from "#imports";
+import { useAppManager ,computed} from "#imports";
 import { useCycleList } from "@vueuse/core";
-import { computed } from "vue";
 
 const appManager = useAppManager();
 

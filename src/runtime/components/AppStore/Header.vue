@@ -16,9 +16,7 @@
 </template>
 
 <script setup>
-import { useSupabaseClient } from "#imports"
-import { useAppStore } from "#imports"
-import { ref } from 'vue'
+import { useSupabaseClient ,useAppStore,ref } from "#imports"
 
 const supabase = useSupabaseClient()
 const appStore = useAppStore()
