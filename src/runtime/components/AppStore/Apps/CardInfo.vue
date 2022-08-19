@@ -26,12 +26,6 @@
             <div v-if="loading" flex="~" justify="center" m-t="30px" w="122px" h="41px" grid="~ flow-row" class="place-items-center" rounded="lg" bg="yellow">
               <div class="i-eos-icons:loading" w="5" h="5" m-l="2" text="primaryOp"></div>
             </div>
-            <div v-else-if="app.core" flex="~" justify="center" m-t="30px" w="122px" h="41px" grid="~ flow-row" class="place-items-center" rounded="lg" bg="warning">
-              <div class="i-carbon:settings-check" w="5" h="5" m-l="2" text="primaryOp"></div>
-              <span text="md primaryOp">
-                النظام
-              </span>
-            </div>
             <div v-else-if="app.owned" flex="~" justify="center" m-t="30px" w="122px" h="41px" grid="~ flow-row" class="place-items-center" rounded="lg" bg="green">
               <div class="i-ci:check-bold" w="5" h="5" m-l="2" text="primaryOp"></div>
               <span text="md primaryOp">
@@ -40,7 +34,7 @@
             </div>
             <!-- Not Owned -->
             <div v-else flex="~">
-              <div @click="buyApp(app.id)" cursor="pointer" flex="~" justify="center" m-t="30px" w="122px" h="41px" grid="~ flow-row" class="place-items-center" rounded="lg" bg="primaryOp dark:primary">
+              <div @click="toggleModal()" cursor="pointer" flex="~" justify="center" m-t="30px" w="122px" h="41px" grid="~ flow-row" class="place-items-center" rounded="lg" bg="primaryOp dark:primary">
                 <div class="i-charm:download" w="5" h="5" m-l="2" text="primary dark:primaryOp"></div>
                 <span text="md primary dark:primaryOp" cursor="pointer">
                   {{app.points >0 ? 'تنصيب' : 'مجانا' }}
@@ -50,6 +44,13 @@
                 <div class="i-ri:copper-coin-fill" w="32px" h="32px"></div> {{app.points >0 ? app.points : 'مجانا' }}
               </span>
             </div>
+            <!-- Modal -->
+            <Teleport to="body">
+              <UiModal v-model="stateModal" cancel="الغاء" confirm="شراء" @confirm="modalConfirmed(app.id)" @cancel="modalCanceled">
+                <template v-slot:title>تأكيد عملية الشراء</template>
+                <span text="primaryOp dark:primary 2xl center">هل انت متأكد من شرائك لتطبيق ( {{app.title}} )</span>
+              </UiModal>
+            </Teleport>
           </div>
         </div>
       </div>
@@ -101,6 +102,10 @@
 <script setup>
 import { useAppStore, useAppManager , useSupabaseClient ,ref } from "#imports"
 
+const modalCanceled = () => {
+  console.log("Canceled");
+  stateModal.value = false;
+};
 
 const appStore = useAppStore()
 const appManager = useAppManager()
@@ -111,7 +116,10 @@ const app = ref(appStore.selectedApp)
 
 const loading = ref(false)
 
-const buyApp = async (id) => {
+const [stateModal, toggleModal] = useToggle(false);
+
+const modalConfirmed = async (id) => {
+  stateModal.value = false;
   try{
     loading.value = true
     const { data, error } = await appManager.buyApp(id)
@@ -120,7 +128,7 @@ const buyApp = async (id) => {
   } finally {
     loading.value = false
   }
-}
+};
 </script>
 
 <style>
