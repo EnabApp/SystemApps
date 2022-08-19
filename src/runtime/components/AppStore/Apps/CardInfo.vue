@@ -26,6 +26,12 @@
             <div v-if="loading" flex="~" justify="center" m-t="30px" w="122px" h="41px" grid="~ flow-row" class="place-items-center" rounded="lg" bg="yellow">
               <div class="i-eos-icons:loading" w="5" h="5" m-l="2" text="primaryOp"></div>
             </div>
+            <div v-else-if="app.core" flex="~" justify="center" m-t="30px" w="122px" h="41px" grid="~ flow-row" class="place-items-center" rounded="lg" bg="warning">
+              <div class="i-carbon:settings-check" w="5" h="5" m-l="2" text="primaryOp"></div>
+              <span text="md primaryOp">
+                النظام
+              </span>
+            </div>
             <div v-else-if="app.owned" flex="~" justify="center" m-t="30px" w="122px" h="41px" grid="~ flow-row" class="place-items-center" rounded="lg" bg="green">
               <div class="i-ci:check-bold" w="5" h="5" m-l="2" text="primaryOp"></div>
               <span text="md primaryOp">
@@ -108,7 +114,7 @@ const loading = ref(false)
 const buyApp = async (id) => {
   try{
     loading.value = true
-    const { error } = await appManager.buyApp(id)
+    const error = await appManager.buyApp(id)
   } catch (error){
     console.log(error)
   } finally {

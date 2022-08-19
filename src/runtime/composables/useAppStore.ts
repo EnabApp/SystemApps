@@ -36,18 +36,32 @@ export const useAppStore = defineStore("appStore", {
         this.selectedPack = null
         this.selectedApp = null
       },
-      // Get all apps apps with filter
-      filteredApps() {
+      // Get all apps with filter
+      allApps() {
         return this.apps.filter(app => {
           return app.title.toLowerCase().includes(this.search.toLowerCase())
         })
       },
-      // Get ownd apps with filter
-      getFilteredOwned() {
+      // Get apps without core with filter
+      AppsWithoutCore() {
+        return this.apps.filter(app => {
+          return app.title.toLowerCase().includes(this.search.toLowerCase())
+          && !app.core
+        })
+      },
+      // Get owned apps without core apps
+      ownedAppsWithoutCore() {
         return this.apps.filter(app => {
           return app.title.toLowerCase().includes(this.search.toLowerCase())
           && app.owned
           && !app.core
+        })
+      },
+      // Get core apps
+      coreApps() {
+        return this.apps.filter(app => {
+          return app.title.toLowerCase().includes(this.search.toLowerCase())
+          && app.core
         })
       },
     },

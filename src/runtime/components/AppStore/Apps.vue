@@ -19,7 +19,10 @@ import { useAppStore , useAppManager ,computed } from "#imports";
 
 const appStore = useAppStore()
 const appManager = useAppManager()
-const apps = computed(() => appStore.filteredApps());
+const apps = computed(() => appStore.AppsWithoutCore());
+const appsw = computed(() => appStore.apps());
+console.log(apps)
+console.log(appStore.allApps())
 
 // const packs = computed(() => appManager.getPacks);
 </script>

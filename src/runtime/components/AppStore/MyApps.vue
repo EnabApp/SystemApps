@@ -46,7 +46,7 @@ import { useAppStore , useSupabaseClient , computed } from "#imports"
 const appStore = useAppStore();
 const supabase = useSupabaseClient();
 
-const apps = computed(() => appStore.getFilteredOwned());
+const apps = computed(() => appStore.ownedAppsWithoutCore());
 
 // const deleteApp = async (id) => {
 //   const { data, error } = await supabase
