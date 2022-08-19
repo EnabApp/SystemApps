@@ -114,7 +114,7 @@ const loading = ref(false)
 const buyApp = async (id) => {
   try{
     loading.value = true
-    const error = await appManager.buyApp(id)
+    const { data, error } = await appManager.buyApp(id)
   } catch (error){
     console.log(error)
   } finally {
