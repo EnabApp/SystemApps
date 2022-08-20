@@ -4,6 +4,7 @@ export const useAppStore = defineStore("appStore", {
     state: () => ({
       selectedTab: ref(0),
       user_id: ref(null),
+      points:ref(0),
       selectedApp:ref(null),
       selectedPack:ref(null),
       search:ref(null),

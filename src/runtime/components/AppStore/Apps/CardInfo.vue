@@ -106,7 +106,6 @@
 import { useAppStore, useAppManager, useNuxtApp ,ref } from "#imports"
 
 const modalCanceled = () => {
-  console.log("Canceled");
   stateModal.value = false;
 };
 
@@ -115,11 +114,10 @@ const appManager = useAppManager()
 
 
 const app = ref(appStore.selectedApp)
-
 const loading = ref(false)
-
 const [stateModal, toggleModal] = useToggle(false);
 
+// Buy App Function
 const modalConfirmed = async (id) => {
   stateModal.value = false;
   const { $toast } = useNuxtApp();
@@ -127,7 +125,7 @@ const modalConfirmed = async (id) => {
       loading.value = true
       const data = await appManager.buyApp(id)
       console.log(data)
-      if(data !== false) $toast.success("تم الاشتراك في تطبيق  " + app.value.title + " بنجاح")
+      if(data !== false) $toast.success("تم الاشتراك في تطبيق  " + app.value.title + " بنجاح 🥰")
     }finally {
       loading.value = false
     }

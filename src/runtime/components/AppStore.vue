@@ -36,9 +36,20 @@ const appStore = useAppStore()
 const appManager = useAppManager()
 const supabase = useSupabaseClient()
 
+// Set apps to composable
 appStore.apps = appManager.getApps
+
+// Set use_id to composable
 const user = supabase.auth.user()
 appStore.user_id = user.id
+
+// Set points to composable
+const { data, error } = await supabase
+.from('user_protected')
+.select('points')
+
+appStore.points = data[0].points
+
 const props = defineProps({
   app: {
     type: Object,

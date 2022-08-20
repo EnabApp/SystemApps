@@ -24,12 +24,7 @@ const appStore = useAppStore()
 const search = ref('')
 appStore.search = search
 
-const points = ref(0)
-const { data, error } = await supabase
-.from('user_protected')
-.select('points')
-
-points.value = data[0].points
+const points = appStore.points
 </script>
 
 <style>
