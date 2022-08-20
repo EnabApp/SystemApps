@@ -30,12 +30,15 @@
 </template>
 
 <script setup>
-import { useAppStore , useAppManager } from "#imports"
+import { useAppStore , useAppManager , useSupabaseClient } from "#imports"
 
 const appStore = useAppStore()
 const appManager = useAppManager()
+const supabase = useSupabaseClient()
 
 appStore.apps = appManager.getApps
+const user = supabase.auth.user()
+appStore.user_id = user.id
 const props = defineProps({
   app: {
     type: Object,

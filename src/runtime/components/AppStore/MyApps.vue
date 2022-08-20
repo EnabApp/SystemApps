@@ -5,7 +5,7 @@
       <span w="full" text="primary dark:primaryOp xl">تاريخ الشراء</span>
       <span w="full" text="primary dark:primaryOp xl">حالة الاشتراك</span>
       <span w="full" text="primary dark:primaryOp xl">المدفوع</span>
-      <span w="full" text="primary dark:primaryOp xl">...</span>
+      <!-- <span w="full" text="primary dark:primaryOp xl">...</span> -->
     </div>
     <div h="420px" m-t="2" class="overflow-x-hidden overflow-y-scroll ">
       <div v-for="app in apps" :key="'app-' + app.id"  flex="~" grid="~ flow-row gap-120px" h="81px" class="place-items-center" align="center">
@@ -27,14 +27,14 @@
           </div>
         </div>
         <span w="full" text="dark:primary primaryOp xl">{{app.points}}</span>
-        <div flex="~" w="full">
+        <!-- <div flex="~" w="full">
           <div bg="red" w="96px" h="31px" rounded="lg" align="center" cursor="pointer">
             <span text="primary xl">تعطيل</span>
           </div>
           <div bg="primaryOp dark:primary" w="31px" h="31px" m-r="2" rounded="lg" align="center" cursor="pointer">
             <span text="dark:primaryOp primary xl">...</span>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -47,15 +47,16 @@ const appStore = useAppStore();
 const supabase = useSupabaseClient();
 
 const apps = computed(() => appStore.ownedAppsWithoutCore());
+console.log(apps);
 
-// const deleteApp = async (id) => {
-//   const { data, error } = await supabase
-//   .from('users_apps')
-//   .delete()
-//   .eq('app_id', id)
+const deleteApp = async (id) => {
+  const { data, error } = await supabase
+  .from('users_apps')
+  .select('created_at')
+  .eq('users.id', appStore.user_id)
 
-//   console.log("deleted" , data ,error)
-// }
+  console.log("deleted" , data ,error)
+}
 
 </script>
 

@@ -3,10 +3,25 @@ import { ref } from "#imports"
 export const useAppStore = defineStore("appStore", {
     state: () => ({
       selectedTab: ref(0),
+      user_id: ref(null),
       selectedApp:ref(null),
       selectedPack:ref(null),
       search:ref(null),
       apps:ref([]),
+      banners:ref([
+                {
+                  src: "https://adsterra.com/blog/wp-content/uploads/2021/06/how-banners-make-you-money.png",
+                },
+                {
+                  src: "https://www.fotor.com/blog/wp-content/uploads/2019/07/3-solid-background.png",
+                },
+                {
+                  src: "https://gbsn.org/wp-content/uploads/2019/03/CBCB_AUC-event-banner.png",
+                },
+                {
+                  src:"https://ssb-prod.ec.aucegypt.edu/wtlgifs/main-banner-image.png",
+                },
+              ])
     }),
 
     getters: {

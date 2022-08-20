@@ -46,7 +46,7 @@
             </div>
             <!-- Modal -->
             <Teleport to="body">
-              <UiModal v-model="stateModal" cancel="الغاء" confirm="شراء" @confirm="modalConfirmed(app.id)" @cancel="modalCanceled" align="center">
+              <UiModal v-model="stateModal" cancel="الغاء" confirm="اشتراك" @confirm="modalConfirmed(app.id)" @cancel="modalCanceled" align="center">
                 <template v-slot:title>تأكيد عملية الاشتراك</template>
                 <span text="primaryOp dark:primary 2xl center" m="3">هل انت متأكد من اشتراكك في  تطبيق ( {{app.title}} )</span><hr m="4">
                 <div bg="secondary dark:secondaryOp" rounded="lg" m="3" w="400px" h="200px" align="center" >
@@ -103,7 +103,7 @@
 </template>
 
 <script setup>
-import { useAppStore, useAppManager , useSupabaseClient ,ref } from "#imports"
+import { useAppStore, useAppManager, useNuxtApp ,ref } from "#imports"
 
 const modalCanceled = () => {
   console.log("Canceled");
@@ -112,7 +112,6 @@ const modalCanceled = () => {
 
 const appStore = useAppStore()
 const appManager = useAppManager()
-const supabase = useSupabaseClient()
 
 
 const app = ref(appStore.selectedApp)
@@ -123,14 +122,15 @@ const [stateModal, toggleModal] = useToggle(false);
 
 const modalConfirmed = async (id) => {
   stateModal.value = false;
-  try{
-    loading.value = true
-    const { data, error } = await appManager.buyApp(id)
-  } catch (error){
-    console.log(error)
-  } finally {
-    loading.value = false
-  }
+  const { $toast } = useNuxtApp();
+  try {
+      loading.value = true
+      const data = await appManager.buyApp(id)
+      console.log(data)
+      if(data !== false) $toast.success("تم الاشتراك في تطبيق  " + app.value.title + " بنجاح")
+    }finally {
+      loading.value = false
+    }
 };
 </script>
 

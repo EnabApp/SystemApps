@@ -15,29 +15,17 @@
 </template>
 
 <script setup>
-import { useAppManager ,computed} from "#imports";
+import { useAppManager , useAppStore ,computed} from "#imports";
 import { useCycleList } from "@vueuse/core";
 
 const appManager = useAppManager();
+const appStore = useAppStore();
 
 const apps = computed(() => appManager.getApps);
 
 const banners = computed(() => {
   if (apps.value.length <= 0) return [];
-  return [
-    {
-      src: "https://adsterra.com/blog/wp-content/uploads/2021/06/how-banners-make-you-money.png",
-      app: apps.value[0] ?? "",
-    },
-    {
-      src: "https://www.jquery-az.com/html/images/banana.jpg",
-      app: apps.value[1] ?? "",
-    },
-    {
-      src: "https://adsterra.com/blog/wp-content/uploads/2021/06/how-banners-make-you-money.png",
-      app: apps.value[2] ?? "",
-    },
-  ];
+  return appStore.banners
 });
 
 const { state: banner, next, prev } = useCycleList(banners.value);
