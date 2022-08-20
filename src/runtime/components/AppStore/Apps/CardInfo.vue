@@ -49,9 +49,6 @@
               <UiModal v-model="stateModal" cancel="الغاء" confirm="اشتراك" @confirm="modalConfirmed(app.id)" @cancel="modalCanceled" align="center">
                 <template v-slot:title>تأكيد عملية الاشتراك</template>
                 <span text="primaryOp dark:primary 2xl center" m="3">هل انت متأكد من اشتراكك في  تطبيق ( {{app.title}} )</span><hr m="4">
-                <div bg="secondary dark:secondaryOp" rounded="lg" m="3" w="400px" h="200px" align="center" >
-                  <span text="primaryOp dark:primary lg" m="3">عند اشتراكك في التطبيق سوف يتم خصم النقاط من محفظتك </span>
-                </div>
               </UiModal>
             </Teleport>
           </div>
