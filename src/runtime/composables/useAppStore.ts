@@ -9,6 +9,114 @@ export const useAppStore = defineStore("appStore", {
       selectedPack:ref(null),
       search:ref(null),
       apps:ref([]),
+      packs:ref([
+        {
+          id:1,
+          title:"Pack 1",
+          description:"This is pack 1",
+          points:1999,
+          discount:20,//percentage
+          apps:[
+                {
+                  id:1,
+                  title:"App 1",
+                  points:10,
+                  description:"This is app 1",
+                  icon:"i-ri-todo-fill",
+                  owned:false,
+                },
+                {
+                  id:2,
+                  title:"App 2",
+                  points:20,
+                  description:"This is app 2",
+                  icon:"i-bxs-cart",
+                  owned:true,
+                },
+                {
+                  id:3,
+                  title:"App 3",
+                  points:30,
+                  description:"This is app 3",
+                  icon:"i-ri-todo-fill",
+                  owned:false,
+                },
+                {
+                  id:3,
+                  title:"App 3",
+                  points:30,
+                  description:"This is app 3",
+                  icon:"i-ri-todo-fill",
+                  owned:false,
+                },
+                {
+                  id:3,
+                  title:"App 3",
+                  points:30,
+                  description:"This is app 3",
+                  icon:"i-ri-todo-fill",
+                  owned:false,
+                },
+              ],
+          services:[
+            {
+              id:1,
+              title:"Service 1",
+              points:10,
+              description:"This is service 1",
+              icon:"i-ri-todo-fill",
+              owned:false,
+              //type 0 = app , 1 = service
+              type:1,
+            },
+            {
+              id:2,
+              title:"Service 2",
+              points:30,
+              description:"This is service 2",
+              icon:"i-ri-todo-fill",
+              owned:false,
+              //type 0 = app , 1 = service
+              type:1,
+            },
+          ],
+        },
+        {
+          id:2,
+          title:"Pack 2",
+          description:"This is pack 2",
+          points:2999,
+          discount:35, //percentage
+          apps:[
+                {
+                  id:4,
+                  title:"App 4",
+                  points:40,
+                  description:"This is app 4",
+                  icon:"i-ri-todo-fill",
+                  owned:false,
+                },
+                {
+                  id:5,
+                  title:"App 5",
+                  points:50,
+                  description:"This is app 5",
+                  icon:"i-bxs-cart",
+                  owned:false,
+                },
+                {
+                  id:6,
+                  title:"App 6",
+                  points:60,
+                  description:"This is app 6",
+                  icon:"i-ri-todo-fill",
+                  owned:false,
+                },
+              ],
+          services:[
+          ],
+        },
+      ]),
       banners:ref([
                 {
                   src: "https://adsterra.com/blog/wp-content/uploads/2021/06/how-banners-make-you-money.png",
@@ -43,10 +151,10 @@ export const useAppStore = defineStore("appStore", {
         this.selectedApp = app
       },
       // Set Selected Pack
-      setSelectedPack(app: any){
+      setSelectedPack(pack: any){
         this.selectedPack = null
         this.selectedApp = null
-        this.selectedPack = app
+        this.selectedPack = pack
       },
       back(){
         this.selectedPack = null

@@ -59,7 +59,8 @@
         <span text="primaryOp dark:secondaryOp 2xl">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni voluptate quod aperiam voluptates totam quis ea obcaecati, facilis animi tenetur accusamus est blanditiis explicabo esse iste dolor ullam aliquid nostrum.</span>
       </div>
       <!-- Extended Services -->
-      <div m-t="41px">
+      <!-- type 0 = app , 1 = service -->
+      <div m-t="41px" v-if="app.type == 0">
         <span text="primaryOp dark:primary 2xl">خدمات اضافية داخل التطبيق</span>
         <!-- Service Cards -->
         <div grid="~ flow-col" w="800px" h="290px" class="overflow-x-scroll overflow-y-hidden">
@@ -121,7 +122,6 @@ const modalConfirmed = async (id) => {
   try {
       loading.value = true
       const data = await appManager.buyApp(id)
-      console.log(data)
       if(data !== false) $toast.success("تم الاشتراك في تطبيق  " + app.value.title + " بنجاح 🥰")
     }finally {
       loading.value = false
