@@ -56,6 +56,28 @@ export const useAppStore = defineStore("appStore", {
                   description:"This is app 3",
                   icon:"i-ri-todo-fill",
                   owned:false,
+                  services:[
+                    {
+                      id:1,
+                      title:"Service 1",
+                      points:10,
+                      description:"This is service 1",
+                      icon:"i-ri-todo-fill",
+                      owned:false,
+                      //type 0 = app , 1 = service
+                      type:1,
+                    },
+                    {
+                      id:2,
+                      title:"Service 2",
+                      points:30,
+                      description:"This is service 2",
+                      icon:"i-ri-todo-fill",
+                      owned:false,
+                      //type 0 = app , 1 = service
+                      type:1,
+                    },
+                  ],
                 },
               ],
           services:[

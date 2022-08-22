@@ -22,10 +22,11 @@
           <h1 text="primaryOp dark:primary 3xl" font="semibold" m-b="13px">{{app.title}}</h1>
           <span text="primaryOp dark:secondaryOp 2xl" font="light">تطبيق</span>
           <div flex="~">
-            <!-- Owned -->
+            <!-- Loading -->
             <div v-if="loading" flex="~" justify="center" m-t="30px" w="122px" h="41px" grid="~ flow-row" class="place-items-center" rounded="lg" bg="yellow">
               <div class="i-eos-icons:loading" w="5" h="5" m-l="2" text="primaryOp"></div>
             </div>
+            <!-- Owned -->
             <div v-else-if="app.owned" flex="~" justify="center" m-t="30px" w="122px" h="41px" grid="~ flow-row" class="place-items-center" rounded="lg" bg="green">
               <div class="i-ci:check-bold" w="5" h="5" m-l="2" text="primaryOp"></div>
               <span text="md primaryOp">
@@ -60,7 +61,7 @@
       </div>
       <!-- Extended Services -->
       <!-- type 0 = app , 1 = service -->
-      <div m-t="41px" v-if="app.type == 0">
+      <div m-t="41px">
         <span text="primaryOp dark:primary 2xl">خدمات اضافية داخل التطبيق</span>
         <!-- Service Cards -->
         <div grid="~ flow-col" w="800px" h="290px" class="overflow-x-scroll overflow-y-hidden">
@@ -77,11 +78,11 @@
                 <div class="i-ci:check-bold" text="primary dark:primaryOp" w="41px" h="41px"></div>
               </div>
               <div flex="~" justify="center" m-t="9px" w="82px" h="24px" grid="~ flow-row" class="place-items-center" rounded="sm" bg="primaryOp dark:secondaryOp">
-              <div class="i-charm:download" w="5" h="5" m-l="2" text="primary dark:primary"></div>
-              <span text="md primary dark:primary">
-                {{app.points >0 ? app.points : 'مجانا' }}
-              </span>
-            </div>
+                <div class="i-charm:download" w="5" h="5" m-l="2" text="primary dark:primary"></div>
+                <span text="md primary dark:primary">
+                  {{app.points >0 ? app.points : 'مجانا' }}
+                </span>
+              </div>
             </div>
             <div grid="~ flow-row" m="2" m-r="6">
               <span font="bold" text="lg primaryOp dark:primary" m-b="2">{{app.title}}</span>
@@ -92,11 +93,11 @@
       </div>
     </div>
     <!-- Left Section -->
-    <!-- <div w="280px" m-b="21px">
+    <div w="280px" m-b="21px">
       <span text="priamryOp dark:primary" font="bold">التطبيق متوفر في الحزم التالية :</span>
-      <AppStoreAppsPackCard  m-y="4" v-for="pack in packs" :key="'pack-'+ pack.id " :app="pack" />
+      <AppStoreAppsPackCard  m-y="4" v-for="pack in packs" :key="'pack-'+ pack.id " :pack="pack" />
       <span text="priamryOp dark:primary" font="light">شراء الحزن يساعدك على توفير المال </span>
-    </div> -->
+    </div>
   </div>
 </template>
 
@@ -113,6 +114,7 @@ const appManager = useAppManager()
 
 const app = ref(appStore.selectedApp)
 const loading = ref(false)
+const packs = ref(appStore.packs)
 const [stateModal, toggleModal] = useToggle(false);
 
 // Buy App Function
@@ -120,11 +122,16 @@ const modalConfirmed = async (id) => {
   stateModal.value = false;
   const { $toast } = useNuxtApp();
   try {
-      loading.value = true
+    loading.value = true
       const data = await appManager.buyApp(id)
-      if(data !== false) $toast.success("تم الاشتراك في تطبيق  " + app.value.title + " بنجاح 🥰")
+      if(data !== false) $toast.success(" تم الاشتراك في " + app.value.title + " بنجاح 🥰")
     }finally {
       loading.value = false
+    const newApp = appManager.getApp(id)
+    appStore.setSelectedApp(newApp)
+    app === newApp
+    console.log("after")
+    console.log(newApp)
     }
 };
 </script>
