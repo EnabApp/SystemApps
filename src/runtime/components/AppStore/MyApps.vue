@@ -22,8 +22,8 @@
         </div>
         <span w="full" text="dark:primary primaryOp xl">05/8/2021</span>
         <div w="full">
-          <div bg="green" w="74px" h="34px" rounded="lg" align="center" cursor="pointer">
-            <span text="primaryOp xl" justify="center">فعال</span>
+          <div :class="6 <= 10 ? 'bg-warning' : 'bg-green'" w="74px" h="34px" rounded="lg" align="center" cursor="pointer">
+            <span text="primaryOp xl" justify="center">6 يوم</span>
           </div>
         </div>
         <span w="full" text="dark:primary primaryOp xl">{{app.points}}</span>
@@ -47,7 +47,6 @@ const appStore = useAppStore();
 const supabase = useSupabaseClient();
 
 const apps = computed(() => appStore.ownedAppsWithoutCore());
-console.log(apps);
 
 const deleteApp = async (id) => {
   const { data, error } = await supabase

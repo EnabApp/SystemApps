@@ -38,6 +38,14 @@
       <div m-t="31px" m-l="72px">
         <span text="primaryOp dark:secondaryOp 2xl">{{pack.description}}</span>
       </div>
+      <!-- Extended Apps -->
+      <div m-t="41px">
+        <span text="primaryOp dark:primary 2xl">التطبيقات داخل الحزمة</span>
+        <!-- Service Cards -->
+        <div grid="~ flow-col" w="800px" h="290px" class="overflow-x-scroll overflow-y-hidden ">
+          <AppStoreAppsCard v-for="app in pack.apps" :key="'service-' + app.id" :app="app" m-l="2" m-t="3" w="128px" h="160px" />
+        </div>
+      </div>
       <!-- Extended Services -->
       <div m-t="41px">
         <span text="primaryOp dark:primary 2xl">خدمات اضافية داخل الحزمة</span>
