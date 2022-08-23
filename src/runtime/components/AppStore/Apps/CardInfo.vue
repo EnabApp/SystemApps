@@ -19,7 +19,7 @@
         </div>
         <!-- Name and install -->
         <div m-r="50px" h="151px">
-          <h1 text="primaryOp dark:primary 3xl" font="semibold" m-b="13px">{{app.title}}</h1>
+          <h1 text="primaryOp dark:primary 3xl" font="semibold" m-b="13px">{{appStore.selectedApp.title}}</h1>
           <span text="primaryOp dark:secondaryOp 2xl" font="light">تطبيق</span>
           <div flex="~">
             <!-- Loading -->
@@ -27,7 +27,7 @@
               <div class="i-eos-icons:loading" w="5" h="5" m-l="2" text="primaryOp"></div>
             </div>
             <!-- Owned -->
-            <div v-else-if="app.owned" flex="~" justify="center" m-t="30px" w="122px" h="41px" grid="~ flow-row" class="place-items-center" rounded="lg" bg="green">
+            <div v-else-if="appStore.selectedApp.owned" flex="~" justify="center" m-t="30px" w="122px" h="41px" grid="~ flow-row" class="place-items-center" rounded="lg" bg="green">
               <div class="i-ci:check-bold" w="5" h="5" m-l="2" text="primaryOp"></div>
               <span text="md primaryOp">
                 تم الشراء
@@ -38,18 +38,18 @@
               <div @click="toggleModal()" cursor="pointer" flex="~" justify="center" m-t="30px" w="122px" h="41px" grid="~ flow-row" class="place-items-center" rounded="lg" bg="primaryOp dark:primary">
                 <div class="i-charm:download" w="5" h="5" m-l="2" text="primary dark:primaryOp"></div>
                 <span text="md primary dark:primaryOp" cursor="pointer">
-                  {{app.points >0 ? 'تنصيب' : 'مجانا' }}
+                  {{appStore.selectedApp.points >0 ? 'تنصيب' : 'مجانا' }}
                 </span>
               </div>
               <span flex="~" text="md primaryOp dark:primary 2xl" m-t="9" m-r="3">
-                <div class="i-ri:copper-coin-fill" w="32px" h="32px"></div> {{app.points >0 ? app.points : 'مجانا' }}
+                <div class="i-ri:copper-coin-fill" w="32px" h="32px"></div> {{appStore.selectedApp.points >0 ? appStore.selectedApp.points : 'مجانا' }}
               </span>
             </div>
             <!-- Buy App Modal -->
             <Teleport to="body">
-              <UiModal v-model="stateModal" cancel="الغاء" confirm="اشتراك" @confirm="byuService(app.id)" @cancel="modalCanceled" align="center">
+              <UiModal v-model="stateModal" cancel="الغاء" confirm="اشتراك" @confirm="buyApp(appStore.selectedApp.id)" @cancel="modalCanceled" align="center">
                 <template v-slot:title>تأكيد عملية الاشتراك</template>
-                <span text="primaryOp dark:primary 2xl center" m="3">هل انت متأكد من اشتراكك في  تطبيق ( {{app.title}} )</span><hr m="4">
+                <span text="primaryOp dark:primary 2xl center" m="3">هل انت متأكد من اشتراكك في  تطبيق ( {{appStore.selectedApp.title}} )</span><hr m="4">
               </UiModal>
             </Teleport>
           </div>
@@ -63,11 +63,23 @@
       <div m-t="41px">
         <span text="primaryOp dark:primary 2xl">خدمات اضافية داخل التطبيق</span>
         <!-- Service Cards -->
-        <div v-if="!loading" grid="~ flow-col" w="800px" h="290px" class="overflow-x-scroll overflow-y-hidden">
-          <AppStoreAppsServiceCard v-for="service in apps_services" :key="'service-'+service" :service="service" />
+        <div v-if="skeleton">
+          <div class="animate-pulse flex space-x-4" bg="slate-500" rounded="lg" m="4" w="270px" h="160px">
+            <div class="rounded-full bg-slate-700 h-10 w-10"></div>
+            <div class="flex-1 space-y-6 py-1">
+              <div class="h-2 bg-slate-700 rounded"></div>
+              <div class="space-y-3">
+                <div class="grid grid-cols-3 gap-4">
+                  <div class="h-2 bg-slate-700 rounded col-span-2"></div>
+                  <div class="h-2 bg-slate-700 rounded col-span-1"></div>
+                </div>
+                <div class="h-2 bg-slate-700 rounded"></div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div v-else>
-          <span text="primary">loadinggg .....</span>
+        <div v-else grid="~ flow-col" w="800px" h="290px" class="overflow-x-scroll overflow-y-hidden">
+          <AppStoreAppsServiceCard v-for="service in apps_services" :key="'service-'+service" :service="service" />
         </div>
       </div>
     </div>
@@ -92,35 +104,34 @@ const appManager = useAppManager()
 const supabase = useSupabaseClient()
 
 
-const app = ref(appStore.selectedApp)
-const loading = ref(true)
+const loading = ref(false)
+const skeleton = ref(true)
 const packs = ref(appStore.packs)
 const [stateModal, toggleModal] = useToggle(false);
+
 
 // Buy App Function
 let { data: apps_services, error } = await supabase
   .from('apps_services')
   .select('*')
   .eq('app_id', appStore.selectedApp.id)
-  if(apps_services !== null)
-    loading.value= false
-  console.log(apps_services)
+console.log(apps_services)
+if(apps_services !== null)
+skeleton.value= false
 
 
-const byuApp = async (id) => {
+const buyApp = async (id) => {
   stateModal.value = false;
   const { $toast } = useNuxtApp();
   try {
     loading.value = true
       const data = await appManager.buyApp(id)
-      if(data !== false) $toast.success(" تم الاشتراك في " + app.value.title + " بنجاح 🥰")
+      if(data !== false) $toast.success(" تم الاشتراك في " +appStore.selectedApp.title + " بنجاح 🥰")
     }finally {
       loading.value = false
-    const newApp = appManager.getApp(id)
+    const newApp = await appManager.getApp(id)
     appStore.setSelectedApp(newApp)
-    app === newApp
     console.log("after")
-    console.log(newApp)
     }
 };
 
