@@ -13,15 +13,17 @@
           <AppStoreHeader />
           <div class="overflow-x-hidden overflow-y-scroll hide-scroll" h="cuts">
             <!-- Pages -->
-            <div v-if="appStore.selectedApp === null && appStore.selectedPack === null">
+            <div v-if="appStore.selectedApp === null && appStore.selectedPack === null && appStore.selectedService === null">
               <AppStoreHome v-if="appStore.selectedTab === 0" />
               <AppStoreApps v-if="appStore.selectedTab === 1" />
               <AppStoreMyApps v-if="appStore.selectedTab === 2" />
             </div>
             <!-- App Info Page (if click app) -->
-            <AppStoreAppsCardInfo v-if="appStore.selectedApp !== null && appStore.selectedPack === null" :app="selectedApp" />
+            <AppStoreAppsCardInfo v-if="appStore.selectedApp !== null && appStore.selectedPack === null && appStore.selectedService === null" :app="selectedApp" />
             <!-- Pack Info Page -->
-            <AppStoreAppsPackInfo v-if="appStore.selectedPack !== null && appStore.selectedApp === null" :app="selectedPack"/>
+            <AppStoreAppsPackInfo v-if="appStore.selectedPack !== null && appStore.selectedApp === null && appStore.selectedService === null" :app="selectedPack"/>
+            <!-- Service Info Page -->
+            <AppStoreAppsServiceInfo v-if="appStore.selectedService !== null"/>
           </div>
         </div>
       </div>

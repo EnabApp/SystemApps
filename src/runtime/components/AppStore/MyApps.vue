@@ -3,7 +3,7 @@
     <div bg="secondaryOp dark:secondary" rounded="lg" flex="~" grid="~ flow-row gap-120px" h="81px" class="place-items-center" align="center">
       <span w="full" text="primary dark:primaryOp xl">التطبيق</span>
       <span w="full" text="primary dark:primaryOp xl">تاريخ الشراء</span>
-      <span w="full" text="primary dark:primaryOp xl">حالة الاشتراك</span>
+      <span w="full" text="primary dark:primaryOp xl">موعد الانتهاء</span>
       <span w="full" text="primary dark:primaryOp xl">المدفوع</span>
       <!-- <span w="full" text="primary dark:primaryOp xl">...</span> -->
     </div>

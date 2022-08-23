@@ -6,10 +6,12 @@ export const useAppStore = defineStore("appStore", {
       user_id: ref(null),
       points:ref(0),
       selectedApp:ref(null),
+      selectedService:ref(null),
       selectedPack:ref(null),
       search:ref(null),
       apps:ref([]),
       packs:ref([
+        // Pack 1
         {
           id:1,
           title:"Pack 1",
@@ -56,28 +58,6 @@ export const useAppStore = defineStore("appStore", {
                   description:"This is app 3",
                   icon:"i-ri-todo-fill",
                   owned:false,
-                  services:[
-                    {
-                      id:1,
-                      title:"Service 1",
-                      points:10,
-                      description:"This is service 1",
-                      icon:"i-ri-todo-fill",
-                      owned:false,
-                      //type 0 = app , 1 = service
-                      type:1,
-                    },
-                    {
-                      id:2,
-                      title:"Service 2",
-                      points:30,
-                      description:"This is service 2",
-                      icon:"i-ri-todo-fill",
-                      owned:false,
-                      //type 0 = app , 1 = service
-                      type:1,
-                    },
-                  ],
                 },
               ],
           services:[
@@ -103,6 +83,7 @@ export const useAppStore = defineStore("appStore", {
             },
           ],
         },
+        // Pack 2
         {
           id:2,
           title:"Pack 2",
@@ -164,23 +145,30 @@ export const useAppStore = defineStore("appStore", {
       setSelectedTap(id: any){
         this.selectedTab = id
         this.selectedApp = null
+        this.selectedService = null
         this.selectedPack = null
       },
       // Set Selected App
       setSelectedApp(app: any){
-        this.selectedApp = null
         this.selectedPack = null
+        this.selectedService = null
         this.selectedApp = app
       },
       // Set Selected Pack
       setSelectedPack(pack: any){
-        this.selectedPack = null
         this.selectedApp = null
+        this.selectedService = null
         this.selectedPack = pack
+      },
+      // Set Selected Service
+      setSelectedService(service: any){
+        this.selectedPack = null
+        this.selectedService = service
       },
       back(){
         this.selectedPack = null
         this.selectedApp = null
+        this.selectedService = null
       },
       // Get all apps with filter
       allApps() {
