@@ -1,5 +1,5 @@
 import { acceptHMRUpdate, defineStore } from "pinia";
-import { ref,useSupabaseClient } from "#imports";
+import { ref,useSupabaseClient , useUser , useNuxtApp } from "#imports";
 export const useAppStore = defineStore("appStore", {
     state: () => ({
       selectedTab: ref(0),
@@ -10,6 +10,7 @@ export const useAppStore = defineStore("appStore", {
       selectedPack:ref(null),
       search:ref(null),
       apps:ref([]),
+      services:ref([]),
       packs:ref([
         // Pack 1
         {
@@ -206,6 +207,17 @@ export const useAppStore = defineStore("appStore", {
         .eq('app_id', app_id)
         console.log(apps_services)
         return apps_services
+      },
+      async buyService(){
+        const user = useUser()
+        const supabase = useSupabaseClient();
+        const { $toast } = useNuxtApp();
+        let { data, error } = await supabase
+        .rpc('buyService', {
+          _service_id:this.selectedService.id,
+          _user_id :this.user_id
+        })
+        if(error) $toast.success("حدث خطأ اثناء الاشتراك")
       }
     },
 });

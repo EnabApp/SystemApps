@@ -82,14 +82,17 @@ const [stateModal, toggleModal] = useToggle(false);
 
 // Byu services
 const byuService = async () => {
-  let { data, error } = await supabase
-    .rpc('buyService', {
-      _service_id:appStore.selectedService.id,
-      _user_id :user.value.id
-    })
-
-  if (error) console.error(error)
-  else console.log(data)
+  stateModal.value = false;
+  const { $toast } = useNuxtApp();
+  try {
+    loading.value = true
+      const data = await appStore.buyService()
+      if(data !== false) $toast.success(" تم الاشتراك في " +appStore.selectedService.title + " بنجاح 🥰")
+    }finally {
+      loading.value = false
+    // const service = await appManager.getApp(id)
+    // appStore.setSelectedService(service)
+    }
 }
 </script>
 

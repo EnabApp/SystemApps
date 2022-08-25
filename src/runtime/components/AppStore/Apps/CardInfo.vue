@@ -56,7 +56,7 @@
         </div>
       </div>
       <!-- Content description -->
-      <div m-t="31px" m-l="72px">
+      <div m-t="31px" w="600px">
         <span text="primaryOp dark:secondaryOp 2xl">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni voluptate quod aperiam voluptates totam quis ea obcaecati, facilis animi tenetur accusamus est blanditiis explicabo esse iste dolor ullam aliquid nostrum.</span>
       </div>
       <!-- Extended Services -->
@@ -125,29 +125,13 @@ console.log('after' + skeleton.value)
 const buyApp = async (id) => {
   stateModal.value = false;
   const { $toast } = useNuxtApp();
-  try {
     loading.value = true
-      const data = await appManager.buyApp(id)
-      if(data !== false) $toast.success(" تم الاشتراك في " +appStore.selectedApp.title + " بنجاح 🥰")
-    }finally {
-      loading.value = false
-    const newApp = await appManager.getApp(id)
-    appStore.setSelectedApp(newApp)
-    console.log("after")
-    }
+    const data = await appManager.buyApp(id)
+    if(data !== false)
+      $toast.success(" تم الاشتراك في " +appStore.selectedApp.title + " بنجاح 🥰")
+    loading.value = false
+    appStore.selectedApp.owned = true
 };
-
-// Byu services
-const byuService = async (user_id , service_id) => {
-  let { data, error } = await supabase
-    .rpc('buyService', {
-      service_id,
-      user_id
-    })
-
-  if (error) console.error(error)
-  else console.log(data)
-}
 </script>
 
 <style>
