@@ -55,7 +55,7 @@
           </div>
         </div>
       </div>
-      <!-- Content -->
+      <!-- Content description -->
       <div m-t="31px" m-l="72px">
         <span text="primaryOp dark:secondaryOp 2xl">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni voluptate quod aperiam voluptates totam quis ea obcaecati, facilis animi tenetur accusamus est blanditiis explicabo esse iste dolor ullam aliquid nostrum.</span>
       </div>
@@ -79,7 +79,7 @@
           </div>
         </div>
         <div v-else grid="~ flow-col" w="800px" h="290px" class="overflow-x-scroll overflow-y-hidden">
-          <AppStoreAppsServiceCard v-for="service in apps_services" :key="'service-'+service" :service="service" />
+          <LazyAppStoreAppsServiceCard v-for="service in apps_services" :key="'service-'+service" :service="service" />
         </div>
       </div>
     </div>
@@ -104,22 +104,24 @@ const appManager = useAppManager()
 const supabase = useSupabaseClient()
 
 
-const loading = ref(false)
 const skeleton = ref(true)
+const loading = ref(false)
 const packs = ref(appStore.packs)
 const [stateModal, toggleModal] = useToggle(false);
 
+console.log('before' + skeleton.value)
+
+const apps_services = ref(null)
+onMounted( async () => {
+  apps_services.value = await appStore.servicesApp(appStore.selectedApp.id)
+
+  if(apps_services !== null) skeleton.value = false
+})
+
+console.log(apps_services)
+console.log('after' + skeleton.value)
 
 // Buy App Function
-let { data: apps_services, error } = await supabase
-  .from('apps_services')
-  .select('*')
-  .eq('app_id', appStore.selectedApp.id)
-console.log(apps_services)
-if(apps_services !== null)
-skeleton.value= false
-
-
 const buyApp = async (id) => {
   stateModal.value = false;
   const { $toast } = useNuxtApp();

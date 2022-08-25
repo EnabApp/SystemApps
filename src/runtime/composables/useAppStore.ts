@@ -1,5 +1,5 @@
 import { acceptHMRUpdate, defineStore } from "pinia";
-import { ref } from "#imports"
+import { ref,useSupabaseClient } from "#imports";
 export const useAppStore = defineStore("appStore", {
     state: () => ({
       selectedTab: ref(0),
@@ -198,6 +198,15 @@ export const useAppStore = defineStore("appStore", {
           && app.core
         })
       },
+      async servicesApp(app_id : any){
+        const supabase = useSupabaseClient();
+        let { data: apps_services, error } = await supabase
+        .from('apps_services')
+        .select('*')
+        .eq('app_id', app_id)
+        console.log(apps_services)
+        return apps_services
+      }
     },
 });
 

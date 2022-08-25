@@ -15,19 +15,19 @@
       <div div flex="~">
         <!-- Icon -->
         <div w="151px" h="151px" bg="primaryOp dark:primary" rounded="lg" grid="~ flow-row" class="place-items-center">
-          <div :class="service.icon" text="primary dark:primaryOp" w="88px" h="88px"></div>
+          <div :class="appStore.selectedService.icon" text="primary dark:primaryOp" w="88px" h="88px"></div>
         </div>
         <!-- Name and install -->
         <div m-r="50px" h="151px">
-          <h1 text="primaryOp dark:primary 3xl" font="semibold" m-b="13px">{{service.title}}</h1>
-          <span text="primaryOp dark:secondaryOp 2xl" font="light">تطبيق</span>
+          <h1 text="primaryOp dark:primary 3xl" font="semibold" m-b="13px">{{appStore.selectedService.title}}</h1>
+          <span text="primaryOp dark:secondaryOp 2xl" font="light">خدمة</span>
           <div flex="~">
             <!-- Loading -->
             <div v-if="loading" flex="~" justify="center" m-t="30px" w="122px" h="41px" grid="~ flow-row" class="place-items-center" rounded="lg" bg="yellow">
               <div class="i-eos-icons:loading" w="5" h="5" m-l="2" text="primaryOp"></div>
             </div>
             <!-- Owned -->
-            <div v-else-if="service.owned" flex="~" justify="center" m-t="30px" w="122px" h="41px" grid="~ flow-row" class="place-items-center" rounded="lg" bg="green">
+            <div v-else-if="appStore.selectedService.owned" flex="~" justify="center" m-t="30px" w="122px" h="41px" grid="~ flow-row" class="place-items-center" rounded="lg" bg="green">
               <div class="i-ci:check-bold" w="5" h="5" m-l="2" text="primaryOp"></div>
               <span text="md primaryOp">
                 تم الشراء
@@ -38,18 +38,18 @@
               <div @click="toggleModal()" cursor="pointer" flex="~" justify="center" m-t="30px" w="122px" h="41px" grid="~ flow-row" class="place-items-center" rounded="lg" bg="primaryOp dark:primary">
                 <div class="i-charm:download" w="5" h="5" m-l="2" text="primary dark:primaryOp"></div>
                 <span text="md primary dark:primaryOp" cursor="pointer">
-                  {{service.points >0 ? 'تنصيب' : 'مجانا' }}
+                  {{appStore.selectedService.points >0 ? 'تنصيب' : 'مجانا' }}
                 </span>
               </div>
               <span flex="~" text="md primaryOp dark:primary 2xl" m-t="9" m-r="3">
-                <div class="i-ri:copper-coin-fill" w="32px" h="32px"></div> {{service.points >0 ? service.points : 'مجانا' }}
+                <div class="i-ri:copper-coin-fill" w="32px" h="32px"></div> {{appStore.selectedService.points >0 ? appStore.selectedService.points : 'مجانا' }}
               </span>
             </div>
             <!-- Buy service Modal -->
             <Teleport to="body">
-              <UiModal v-model="stateModal" cancel="الغاء" confirm="اشتراك" @confirm="byuService(service.id)" @cancel="modalCanceled" align="center">
+              <UiModal v-model="stateModal" cancel="الغاء" confirm="اشتراك" @confirm="byuService()" @cancel="modalCanceled" align="center">
                 <template v-slot:title>تأكيد عملية الاشتراك</template>
-                <span text="primaryOp dark:primary 2xl center" m="3">هل انت متأكد من اشتراكك في  تطبيق ( {{service.title}} )</span><hr m="4">
+                <span text="primaryOp dark:primary 2xl center" m="3">هل انت متأكد من اشتراكك في  تطبيق ( {{appStore.selectedService.title}} )</span><hr m="4">
               </UiModal>
             </Teleport>
           </div>
@@ -64,7 +64,7 @@
 </template>
 
 <script setup>
-import { useAppStore,useSupabaseClient, useAppManager, useNuxtApp ,ref } from "#imports"
+import { useAppStore,useSupabaseClient, useAppManager,useUser, useNuxtApp ,ref } from "#imports"
 
 const modalCanceled = () => {
   stateModal.value = false;
@@ -73,6 +73,7 @@ const modalCanceled = () => {
 const appStore = useAppStore()
 const appManager = useAppManager()
 const supabase = useSupabaseClient()
+const user = useUser()
 
 
 const service = ref(appStore.selectedService)
@@ -80,11 +81,11 @@ const loading = ref(false)
 const [stateModal, toggleModal] = useToggle(false);
 
 // Byu services
-const byuService = async (user_id , service_id) => {
+const byuService = async () => {
   let { data, error } = await supabase
     .rpc('buyService', {
-      service_id,
-      user_id
+      _service_id:appStore.selectedService.id,
+      _user_id :user.value.id
     })
 
   if (error) console.error(error)

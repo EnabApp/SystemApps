@@ -10,7 +10,8 @@
   </div> -->
   <div class="flex place-items-center">
     <div class="i-ri:copper-coin-fill" text="primaryOp dark:primary" w="[32px]" h="[32px]"></div>
-    <span text="primaryOp dark:primary" m-r-3>{{points}}</span>
+    <span v-if="skeleton" text="primaryOp dark:primary" m-r="3" >Loading...</span>
+    <span v-else text="primaryOp dark:primary" m-r="3" >{{appStore.points}}</span>
   </div>
 </div>
 </template>
@@ -20,11 +21,12 @@ import { useSupabaseClient ,useAppStore,ref } from "#imports"
 
 const supabase = useSupabaseClient()
 const appStore = useAppStore()
+const skeleton = ref(true)
 
 const search = ref('')
 appStore.search = search
 
-const points = appStore.points
+if(appStore.points != 0) skeleton.value = false
 </script>
 
 <style>

@@ -14,16 +14,16 @@
           <div class="overflow-x-hidden overflow-y-scroll hide-scroll" h="cuts">
             <!-- Pages -->
             <div v-if="appStore.selectedApp === null && appStore.selectedPack === null && appStore.selectedService === null">
-              <AppStoreHome v-if="appStore.selectedTab === 0" />
-              <AppStoreApps v-if="appStore.selectedTab === 1" />
-              <AppStoreMyApps v-if="appStore.selectedTab === 2" />
+              <LazyAppStoreHome v-if="appStore.selectedTab === 0" />
+              <LazyAppStoreApps v-if="appStore.selectedTab === 1" />
+              <LazyAppStoreMyApps v-if="appStore.selectedTab === 2" />
             </div>
             <!-- App Info Page (if click app) -->
-            <AppStoreAppsCardInfo v-if="appStore.selectedApp !== null && appStore.selectedPack === null && appStore.selectedService === null" :app="selectedApp" />
+            <LazyAppStoreAppsCardInfo v-if="appStore.selectedApp !== null && appStore.selectedPack === null && appStore.selectedService === null" :app="selectedApp" />
             <!-- Pack Info Page -->
-            <AppStoreAppsPackInfo v-if="appStore.selectedPack !== null && appStore.selectedApp === null && appStore.selectedService === null" :app="selectedPack"/>
+            <LazyAppStoreAppsPackInfo v-if="appStore.selectedPack !== null && appStore.selectedApp === null && appStore.selectedService === null" :app="selectedPack"/>
             <!-- Service Info Page -->
-            <AppStoreAppsServiceInfo v-if="appStore.selectedService !== null"/>
+            <LazyAppStoreAppsServiceInfo v-if="appStore.selectedService !== null"/>
           </div>
         </div>
       </div>
@@ -32,25 +32,35 @@
 </template>
 
 <script setup>
-import { useAppStore , useAppManager , useSupabaseClient } from "#imports"
+import { useAppStore , useAppManager , useUser, useSupabaseClient } from "#imports"
 
 const appStore = useAppStore()
 const appManager = useAppManager()
 const supabase = useSupabaseClient()
+const user = useUser()
+
 
 // Set apps to composable
 appStore.apps = appManager.getApps
 
 // Set use_id to composable
-const user = supabase.auth.user()
-appStore.user_id = user.id
+appStore.user_id = user.value.id
 
-// Set points to composable
-const { data, error } = await supabase
-.from('user_protected')
-.select('points')
+  // Set points to composable
+  const { data, error } = await supabase
+  .from('user_protected')
+  .select('points')
+  .eq('user_id' , user.value.id)
 
-appStore.points = data[0].points
+  appStore.points = data[0].points
+// onMounted( async () => {
+
+
+
+// })
+
+
+
 
 const props = defineProps({
   app: {
