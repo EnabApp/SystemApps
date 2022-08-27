@@ -23,8 +23,7 @@
       </div>
     </div>
     <div grid="~ flow-row" m="2">
-      <span font="bold" text="lg primary dark:primaryOp" m-b="2">{{pack.title}}</span>
-      <span text="md primary dark:primaryOp" m-b="2">{{pack.description}}</span>
+      <span font="bold" text="primary dark:primaryOp 2xl" m-b="2">{{pack.title}}</span>
       <span font="semibold" text="md primary dark:primaryOp">{{pack.apps.length}} تطبيقات</span>
     </div>
   </div>

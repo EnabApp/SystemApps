@@ -26,6 +26,18 @@ const skeleton = ref(true)
 const search = ref('')
 appStore.search = search
 
+watch(search.value, (newX) => {
+  appStore.selectedTab == 1
+})
+
+watch(
+  () => search.value ,
+  (sum) => {
+    if(search.value != null && appStore.selectedTab != 2)
+    appStore.selectedTab = 1
+  }
+)
+
 if(appStore.points != 0) skeleton.value = false
 </script>
 

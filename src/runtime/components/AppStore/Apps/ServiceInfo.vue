@@ -39,7 +39,7 @@
                 <div class="i-ri:copper-coin-fill" w="32px" h="32px"></div> {{appStore.selectedService.points >0 ? appStore.selectedService.points : 'مجانا' }}
               </span>
               <div v-if="!appStore.selectedApp.owned">
-                <span text="primaryOp dark:primary 2xl"> يجب عليك شراء التطبيق لكي تقوم بشراء هذه الخدمة</span>
+                <span text="primaryOp dark:primary 2xl"> يجب عليك شراء التطبيق لكي تقوم بشراء هذه الخدمة 🥰</span>
               </div>
               <div v-else @click="toggleModal()" cursor="pointer" flex="~" justify="center" w="122px" h="41px" grid="~ flow-row" class="place-items-center" rounded="lg" bg="primaryOp dark:primary">
                 <div class="i-charm:download" w="5" h="5" m-l="2" text="primary dark:primaryOp"></div>

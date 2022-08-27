@@ -46,14 +46,6 @@
           <AppStoreAppsCard v-for="app in pack.apps" :key="'service-' + app.id" :app="app" m-l="2" m-t="3" w="128px" h="160px" />
         </div>
       </div>
-      <!-- Extended Services -->
-      <div m-t="41px">
-        <span text="primaryOp dark:primary 2xl">خدمات اضافية داخل الحزمة</span>
-        <!-- Service Cards -->
-        <div grid="~ flow-col" w="800px" h="290px" class="overflow-x-scroll overflow-y-hidden ">
-          <AppStoreAppsCard v-for="service in pack.services" :key="'service-' + service.id" :app="service" m-l="2" m-t="3" w="128px" h="160px" />
-        </div>
-      </div>
     </div>
   </div>
 </template>
