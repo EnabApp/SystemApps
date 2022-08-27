@@ -58,6 +58,7 @@
       <!-- Content description -->
       <div m-t="31px" w="600px">
         <span text="primaryOp dark:secondaryOp 2xl">{{appStore.selectedApp.description}}</span>
+        <span text="primaryOp dark:secondaryOp 2xl">Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam voluptates harum corporis amet alias temporibus id dignissimos quae molestiae. Esse odit nam ipsa debitis facilis cumque omnis odio perferendis nostrum!</span>
       </div>
       <!-- Extended Services -->
       <div m-t="41px">
