@@ -138,7 +138,14 @@ export const useAppStore = defineStore("appStore", {
     }),
 
     getters: {
-      // No getters yet
+      // All apps with filter
+      allApps: (state) => state.apps.filter((app) => app.title.includes(state.search)),
+      // Get apps without core with filter
+      appsWithoutCore: (state) => state.apps.filter((app) => app.title.includes(state.search) && !app.core),
+      // Get owned apps without core apps with filter
+      ownedAppsWithoutCore: (state) => state.apps.filter((app) => app.title.includes(state.search) && !app.core && app.owned ),
+      // Get core apps with filter
+      coreApps: (state) => state.apps.filter((app) => app.title.includes(state.search) && app.core ),
     },
 
     actions: {
@@ -167,37 +174,12 @@ export const useAppStore = defineStore("appStore", {
         this.selectedService = service
       },
       back(){
-        this.selectedPack = null
-        this.selectedApp = null
         this.selectedService = null
+        this.selectedApp = null
+        this.selectedPack = null
       },
-      // Get all apps with filter
-      allApps() {
-        return this.apps.filter(app => {
-          return app.title.toLowerCase().includes(this.search.toLowerCase())
-        })
-      },
-      // Get apps without core with filter
-      AppsWithoutCore() {
-        return this.apps.filter(app => {
-          return app.title.toLowerCase().includes(this.search.toLowerCase())
-          && !app.core
-        })
-      },
-      // Get owned apps without core apps
-      ownedAppsWithoutCore() {
-        return this.apps.filter(app => {
-          return app.title.toLowerCase().includes(this.search.toLowerCase())
-          && app.owned
-          && !app.core
-        })
-      },
-      // Get core apps
-      coreApps() {
-        return this.apps.filter(app => {
-          return app.title.toLowerCase().includes(this.search.toLowerCase())
-          && app.core
-        })
+      serviceBack(){
+        this.selectedService = null
       },
       async servicesApp(app_id : any){
         const supabase = useSupabaseClient();

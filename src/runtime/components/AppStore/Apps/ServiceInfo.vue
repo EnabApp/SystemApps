@@ -1,7 +1,7 @@
 <template>
 <!-- Back Button -->
   <div m-t="29px">
-    <div @click="appStore.back(0)" cursor="pointer" flex="~" justify="center" m-t="30px" w="122px" h="41px" grid="~ flow-row" class="place-items-center">
+    <div @click="appStore.serviceBack()" cursor="pointer" flex="~" justify="center" m-t="30px" w="122px" h="41px" grid="~ flow-row" class="place-items-center">
       <div class="i-ant-design:arrow-right-outlined" w="5" h="5" m-l="2" text="primaryOp dark:primary"></div>
       <span text="xl primaryOp dark:primary">
         الرجوع
@@ -34,22 +34,25 @@
               </span>
             </div>
             <!-- Not Owned -->
-            <div v-else flex="~">
-              <div @click="toggleModal()" cursor="pointer" flex="~" justify="center" m-t="30px" w="122px" h="41px" grid="~ flow-row" class="place-items-center" rounded="lg" bg="primaryOp dark:primary">
+            <div v-else flex="~" m-t="3">
+              <span flex="~" text="md primaryOp dark:primary 2xl" m-l="4">
+                <div class="i-ri:copper-coin-fill" w="32px" h="32px"></div> {{appStore.selectedService.points >0 ? appStore.selectedService.points : 'مجانا' }}
+              </span>
+              <div v-if="!appStore.selectedApp.owned">
+                <span text="primaryOp dark:primary 2xl"> يجب عليك شراء التطبيق لكي تقوم بشراء هذه الخدمة</span>
+              </div>
+              <div v-else @click="toggleModal()" cursor="pointer" flex="~" justify="center" w="122px" h="41px" grid="~ flow-row" class="place-items-center" rounded="lg" bg="primaryOp dark:primary">
                 <div class="i-charm:download" w="5" h="5" m-l="2" text="primary dark:primaryOp"></div>
                 <span text="md primary dark:primaryOp" cursor="pointer">
                   {{appStore.selectedService.points >0 ? 'تنصيب' : 'مجانا' }}
                 </span>
               </div>
-              <span flex="~" text="md primaryOp dark:primary 2xl" m-t="9" m-r="3">
-                <div class="i-ri:copper-coin-fill" w="32px" h="32px"></div> {{appStore.selectedService.points >0 ? appStore.selectedService.points : 'مجانا' }}
-              </span>
             </div>
             <!-- Buy service Modal -->
             <Teleport to="body">
-              <UiModal v-model="stateModal" cancel="الغاء" confirm="اشتراك" @confirm="byuService()" @cancel="modalCanceled" align="center">
+              <UiModal v-model="stateModal" cancel="الغاء" confirm="اشتراك" @confirm="buy()" @cancel="modalCanceled" align="center">
                 <template v-slot:title>تأكيد عملية الاشتراك</template>
-                <span text="primaryOp dark:primary 2xl center" m="3">هل انت متأكد من اشتراكك في  تطبيق ( {{appStore.selectedService.title}} )</span><hr m="4">
+                <span text="primaryOp dark:primary 2xl center" m="3">هل انت متأكد من اشتراكك في  الخدمة ( {{appStore.selectedService.title}} )</span><hr m="4">
               </UiModal>
             </Teleport>
           </div>
@@ -57,45 +60,37 @@
       </div>
       <!-- Content -->
       <div m-t="31px" m-l="72px">
-        <span text="primaryOp dark:secondaryOp 2xl">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni voluptate quod aperiam voluptates totam quis ea obcaecati, facilis animi tenetur accusamus est blanditiis explicabo esse iste dolor ullam aliquid nostrum.</span>
+        <span text="primaryOp dark:secondaryOp 2xl">{{appStore.selectedService.description}}</span>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { useAppStore,useSupabaseClient, useAppManager,useUser, useNuxtApp ,ref } from "#imports"
+import { useAppStore, useAppManager, useNuxtApp ,ref } from "#imports"
 
 const modalCanceled = () => {
   stateModal.value = false;
 };
+const [stateModal, toggleModal] = useToggle(false);
 
 const appStore = useAppStore()
 const appManager = useAppManager()
-const supabase = useSupabaseClient()
-const user = useUser()
 
-
-const service = ref(appStore.selectedService)
 const loading = ref(false)
-const [stateModal, toggleModal] = useToggle(false);
 
 // Byu services
-const byuService = async () => {
+const buy = async () => {
   stateModal.value = false;
   const { $toast } = useNuxtApp();
-  try {
     loading.value = true
-      const data = await appStore.buyService()
-      if(data !== false) $toast.success(" تم الاشتراك في " +appStore.selectedService.title + " بنجاح 🥰")
-    }finally {
-      loading.value = false
-    // const service = await appManager.getApp(id)
-    // appStore.setSelectedService(service)
-    }
+    const data = await appManager.buyService(appStore.selectedService.id)
+    if(data !== false)
+      $toast.success(" تم الاشتراك في " +appStore.selectedService.title + " بنجاح 🥰")
+    loading.value = false
+    appStore.selectedService.owned = true
 }
 </script>
 
 <style>
-
 </style>

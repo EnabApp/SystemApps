@@ -57,29 +57,19 @@
       </div>
       <!-- Content description -->
       <div m-t="31px" w="600px">
-        <span text="primaryOp dark:secondaryOp 2xl">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni voluptate quod aperiam voluptates totam quis ea obcaecati, facilis animi tenetur accusamus est blanditiis explicabo esse iste dolor ullam aliquid nostrum.</span>
+        <span text="primaryOp dark:secondaryOp 2xl">{{appStore.selectedApp.description}}</span>
       </div>
       <!-- Extended Services -->
       <div m-t="41px">
-        <span text="primaryOp dark:primary 2xl">خدمات اضافية داخل التطبيق</span>
         <!-- Service Cards -->
-        <div v-if="skeleton">
-          <div class="animate-pulse flex space-x-4" bg="slate-500" rounded="lg" m="4" w="270px" h="160px">
-            <div class="rounded-full bg-slate-700 h-10 w-10"></div>
-            <div class="flex-1 space-y-6 py-1">
-              <div class="h-2 bg-slate-700 rounded"></div>
-              <div class="space-y-3">
-                <div class="grid grid-cols-3 gap-4">
-                  <div class="h-2 bg-slate-700 rounded col-span-2"></div>
-                  <div class="h-2 bg-slate-700 rounded col-span-1"></div>
-                </div>
-                <div class="h-2 bg-slate-700 rounded"></div>
-              </div>
-            </div>
+        <div v-if="appStore.selectedApp.getAllServices()">
+          <span text="primaryOp dark:primary 2xl" > خدمات اضافية داخل التطبيق </span>
+          <div grid="~ flow-col" w="800px" h="290px" class="overflow-x-scroll overflow-y-hidden">
+            <LazyAppStoreAppsServiceCard v-for="service in appStore.selectedApp.getAllServices()" :key="'service-'+service" :service="service" />
           </div>
         </div>
-        <div v-else grid="~ flow-col" w="800px" h="290px" class="overflow-x-scroll overflow-y-hidden">
-          <LazyAppStoreAppsServiceCard v-for="service in apps_services" :key="'service-'+service" :service="service" />
+        <div v-else>
+          <span text="primaryOp dark:primary 2xl" >لا توجد خدمات لهذا التطبيق حاليا</span>
         </div>
       </div>
     </div>
@@ -109,18 +99,7 @@ const loading = ref(false)
 const packs = ref(appStore.packs)
 const [stateModal, toggleModal] = useToggle(false);
 
-console.log('before' + skeleton.value)
-
-const apps_services = ref(null)
-onMounted( async () => {
-  apps_services.value = await appStore.servicesApp(appStore.selectedApp.id)
-
-  if(apps_services !== null) skeleton.value = false
-})
-
-console.log(apps_services)
-console.log('after' + skeleton.value)
-
+console.log(appStore.selectedApp.getAllServices())
 // Buy App Function
 const buyApp = async (id) => {
   stateModal.value = false;

@@ -8,7 +8,7 @@
       <!-- <span w="full" text="primary dark:primaryOp xl">...</span> -->
     </div>
     <div h="420px" m-t="2" class="overflow-x-hidden overflow-y-scroll ">
-      <div v-for="app in apps" :key="'app-' + app.id"  flex="~" grid="~ flow-row gap-120px" h="81px" class="place-items-center" align="center">
+      <div v-for="app in appStore.ownedAppsWithoutCore" :key="'app-' + app.id"  flex="~" grid="~ flow-row gap-120px" h="81px" class="place-items-center" align="center">
         <div flex="~" place="items-center" w="full">
           <div
             :class="app.icon"
@@ -41,21 +41,10 @@
 </template>
 
 <script setup>
-import { useAppStore , useSupabaseClient , computed } from "#imports"
+import { useAppStore } from "#imports"
 
 const appStore = useAppStore();
 const supabase = useSupabaseClient();
-
-const apps = computed(() => appStore.ownedAppsWithoutCore());
-
-const deleteApp = async (id) => {
-  const { data, error } = await supabase
-  .from('users_apps')
-  .select('created_at')
-  .eq('users.id', appStore.user_id)
-
-  console.log("deleted" , data ,error)
-}
 
 </script>
 

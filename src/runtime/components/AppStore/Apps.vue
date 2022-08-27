@@ -5,7 +5,7 @@
         <AppStoreAppsPackCard v-for="pack in packs" :key="'pack-'+ pack.id " :pack="pack" />
       </div>
       <div m-t="3" class="grid 2xl:grid-cols-10 xl:grid-cols-8 lg:grid-cols-6 md:grid-cols-4 sm:grid-cols-2 gap-x-2 gap-y-2">
-        <AppStoreAppsCard v-for="card in apps" :key="'app-'+ card.id " :app="card" />
+        <AppStoreAppsCard v-for="card in appStore.appsWithoutCore" :key="'app-'+ card.id " :app="card" />
       </div>
     </div>
   </div>

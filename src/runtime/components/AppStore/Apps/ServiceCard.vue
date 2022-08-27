@@ -11,7 +11,13 @@
       >
         <div :class="service.icon" text="primary dark:primaryOp" w="41px" h="41px"></div>
       </div>
-      <div flex="~" justify="center" m-t="9px" w="82px" h="24px" grid="~ flow-row" class="place-items-center" rounded="sm" bg="primaryOp dark:secondaryOp">
+      <div v-if="service.owned" flex="~" justify="center" m-t="9px" w="82px" h="24px" grid="~ flow-row" class="place-items-center" rounded="sm" bg="green">
+        <div class="i-akar-icons:check-box-fill" w="5" h="5" m-l="2" text="primary dark:primary"></div>
+        <span text="md primary dark:primary">
+          مشتريها
+        </span>
+      </div>
+      <div v-else flex="~" justify="center" m-t="9px" w="82px" h="24px" grid="~ flow-row" class="place-items-center" rounded="sm" bg="primaryOp dark:secondaryOp">
         <div class="i-charm:download" w="5" h="5" m-l="2" text="primary dark:primary"></div>
         <span text="md primary dark:primary">
           {{service.points >0 ? service.points : 'مجانا' }}
