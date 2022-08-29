@@ -1,6 +1,6 @@
 {
   "name": "@enab/appstore",
-  "version": "1.0.7-beta.0",
+  "version": "1.0.8-beta.0",
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -22,9 +22,12 @@
     "release": "cd scripts && node --loader ts-node/esm release.ts"
   },
   "dependencies": {
-    "@enab/calculator": "^1.0.7",
-    "@enab/core": "^1.7.10",
-    "@enab/ui": "^1.4.8",
+    "@enab/calculator": "^1.1.6",
+    "@enab/core": "^1.8.20",
+    "@enab/recharge": "^1.0.1",
+    "@enab/todo": "^1.1.0",
+    "@enab/ui": "^1.4.94-beta.1",
+    "@enab/utilities": "^1.0.13-beta.0",
     "@iconify/json": "^2.1.77",
     "@nuxt/kit": "^3.0.0-rc.8",
     "@nuxt/schema": "^3.0.0-rc.8",
