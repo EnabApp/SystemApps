@@ -15,7 +15,7 @@
 import { useAppManager } from "#imports"
 
 const appManager = useAppManager()
-const apps = appManager.getApps;
+const apps = appManager.apps;
 
 </script>
 

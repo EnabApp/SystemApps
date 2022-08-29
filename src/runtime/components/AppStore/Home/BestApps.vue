@@ -6,7 +6,7 @@
   </div>
   <div class="grid gap-3 3xl:grid-cols-6 2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 ">
     <div
-      v-for="app in apps.slice(0, 6)"
+      v-for="app in apps.slice(0,6)"
       :key="'app-' + app.id"
       grid="~ flow-row"
       p-y="2"

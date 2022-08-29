@@ -404,6 +404,36 @@
     pinia "^2.0.16"
     vue-toastification "^2.0.0-rc.5"
 
+"@enab/appstore@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@enab/appstore/-/appstore-1.0.6.tgz#b5d6bdf930d120ccdace98efe7abb29e8a612723"
+  integrity sha512-mJ/S0GcZz/9ygV9yi9I8WEUE7trbgVCKoqf7gI5QIL/lO8Y7BSJEZQmoX/oJ+x5ebz+SEK0N8UDp39g8hD9FAg==
+  dependencies:
+    "@enab/calculator" "^1.0.7"
+    "@enab/core" "^1.6.0"
+    "@enab/ui" "^1.4.4"
+    "@iconify/json" "^2.1.77"
+    "@nuxt/kit" "^3.0.0-rc.8"
+    "@nuxt/schema" "^3.0.0-rc.8"
+    "@nuxtjs/color-mode" "^3.1.4"
+    "@nuxtjs/composition-api" "^0.33.0"
+    "@nuxtjs/supabase" "^0.1.19"
+    "@pinia/nuxt" "^0.3.0"
+    "@tauri-apps/api" "^1.0.2"
+    "@unocss/inspector" "^0.44.2"
+    "@unocss/nuxt" "^0.44.0"
+    "@unocss/preset-attributify" "^0.44.1"
+    "@unocss/preset-icons" "^0.44.1"
+    "@unocss/preset-typography" "^0.44.1"
+    "@unocss/preset-web-fonts" "^0.44.1"
+    "@vueuse/core" "^9.0.2"
+    "@vueuse/motion" "^2.0.0-beta.18"
+    "@vueuse/nuxt" "^9.0.2"
+    mathjs "^11.0.1"
+    nuxt-lodash "^2.2.0"
+    pinia "^2.0.16"
+    vue-toastification "^2.0.0-rc.5"
+
 "@enab/calculator@^1.0.7":
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/@enab/calculator/-/calculator-1.0.7.tgz#deff0b61e5e5c403a3167eb613da36ea38ae8d23"
@@ -509,6 +539,80 @@
     "@enab/ui" "^1.4.4"
     "@iconify/json" "^2.1.77"
     "@nuxt/image-edge" "^1.0.0-27628766.3629b9a"
+    "@nuxt/kit" "^3.0.0-rc.8"
+    "@nuxt/module-builder" "^0.1.7"
+    "@nuxt/schema" "^3.0.0-rc.8"
+    "@nuxtjs/color-mode" "^3.1.4"
+    "@nuxtjs/composition-api" "^0.33.0"
+    "@nuxtjs/eslint-config-typescript" latest
+    "@pinia/nuxt" "^0.3.0"
+    "@tauri-apps/api" "^1.0.2"
+    "@types/node" "^18.6.4"
+    "@unocss/inspector" "^0.44.2"
+    "@unocss/nuxt" "^0.44.0"
+    "@unocss/preset-attributify" "^0.44.1"
+    "@unocss/preset-icons" "^0.44.1"
+    "@unocss/preset-typography" "^0.44.1"
+    "@unocss/preset-web-fonts" "^0.44.1"
+    "@vueuse/core" "^9.0.2"
+    "@vueuse/motion" "^2.0.0-beta.18"
+    "@vueuse/nuxt" "^9.0.2"
+    eslint latest
+    mathjs "^11.0.1"
+    nuxt "^3.0.0-rc.6"
+    nuxt-lodash "^2.2.0"
+    pinia "^2.0.16"
+    unbuild "^0.7.6"
+    vue-toastification "^2.0.0-rc.5"
+
+"@enab/core@^1.6.6":
+  version "1.6.8"
+  resolved "https://registry.yarnpkg.com/@enab/core/-/core-1.6.8.tgz#ce4a306439ab2b397910c8c57bd89effd0f3d994"
+  integrity sha512-UIzLw1Bzbxa8R18vk3CmErTU08vWpR7uDAn36WfLyy21uGT5C/V0654IfWsvVM31rp9u1rKNnAu+JL0CnGZoWQ==
+  dependencies:
+    "@enab/appstore" "^1.0.6"
+    "@enab/core" "^1.6.6"
+    "@enab/todo" "^1.0.8"
+    "@enab/ui" "^1.4.8"
+    "@iconify/json" "^2.1.77"
+    "@nuxt/image-edge" "^1.0.0-27657146.da85542"
+    "@nuxt/kit" "^3.0.0-rc.8"
+    "@nuxt/module-builder" "^0.1.7"
+    "@nuxt/schema" "^3.0.0-rc.8"
+    "@nuxtjs/color-mode" "^3.1.4"
+    "@nuxtjs/composition-api" "^0.33.0"
+    "@nuxtjs/eslint-config-typescript" latest
+    "@pinia/nuxt" "^0.3.0"
+    "@tauri-apps/api" "^1.0.2"
+    "@types/node" "^18.6.4"
+    "@unocss/inspector" "^0.44.2"
+    "@unocss/nuxt" "^0.44.0"
+    "@unocss/preset-attributify" "^0.44.1"
+    "@unocss/preset-icons" "^0.44.1"
+    "@unocss/preset-typography" "^0.44.1"
+    "@unocss/preset-web-fonts" "^0.44.1"
+    "@vueuse/core" "^9.0.2"
+    "@vueuse/motion" "^2.0.0-beta.18"
+    "@vueuse/nuxt" "^9.0.2"
+    eslint latest
+    mathjs "^11.0.1"
+    nuxt "^3.0.0-rc.6"
+    nuxt-lodash "^2.2.0"
+    pinia "^2.0.16"
+    unbuild "^0.7.6"
+    vue-toastification "^2.0.0-rc.5"
+
+"@enab/core@^1.7.10":
+  version "1.7.10"
+  resolved "https://registry.yarnpkg.com/@enab/core/-/core-1.7.10.tgz#c722d63f10dba9e808f3d10e8a456f13505f5d8b"
+  integrity sha512-1vGUAVvozz+U5LegFAKGNyUzJKcgkxHRZEKipTf0ZPD6AZ0b0+BfSlLQlYhHdrCYQtinX19ZoT1tYmevJkn+Rw==
+  dependencies:
+    "@enab/appstore" "^1.0.6"
+    "@enab/core" "^1.6.6"
+    "@enab/todo" "^1.0.8"
+    "@enab/ui" "^1.4.8"
+    "@iconify/json" "^2.1.77"
+    "@nuxt/image-edge" "^1.0.0-27657146.da85542"
     "@nuxt/kit" "^3.0.0-rc.8"
     "@nuxt/module-builder" "^0.1.7"
     "@nuxt/schema" "^3.0.0-rc.8"
@@ -654,6 +758,34 @@
     "@nuxt/kit" "^3.0.0-rc.6"
     "@nuxtjs/color-mode" "^3.1.4"
     "@nuxtjs/composition-api" "^0.33.0"
+    "@pinia/nuxt" "^0.3.0"
+    "@tauri-apps/api" "^1.0.2"
+    "@unocss/inspector" "^0.44.2"
+    "@unocss/nuxt" "^0.44.0"
+    "@unocss/preset-attributify" "^0.44.1"
+    "@unocss/preset-icons" "^0.44.1"
+    "@unocss/preset-typography" "^0.44.1"
+    "@unocss/preset-web-fonts" "^0.44.1"
+    "@vueuse/core" "^9.0.2"
+    "@vueuse/motion" "^2.0.0-beta.18"
+    "@vueuse/nuxt" "^9.0.2"
+    mathjs "^11.0.1"
+    nuxt-lodash "^2.2.0"
+    pinia "^2.0.16"
+    vue-toastification "^2.0.0-rc.5"
+
+"@enab/ui@^1.4.8":
+  version "1.4.8"
+  resolved "https://registry.yarnpkg.com/@enab/ui/-/ui-1.4.8.tgz#81de81234ee11999493abee289e9e085666071ec"
+  integrity sha512-xcKF5KB+y32RMuH9NPNDfEc7gbYezhgGrgfz7qcfbJpEqmQfgMfIaF1Duw22SnMJCN4+iWpBE0p0q4bHNAqeCg==
+  dependencies:
+    "@enab/core" "^1.6.0"
+    "@iconify/json" "^2.1.77"
+    "@nuxt/kit" "^3.0.0-rc.8"
+    "@nuxt/schema" "^3.0.0-rc.8"
+    "@nuxtjs/color-mode" "^3.1.4"
+    "@nuxtjs/composition-api" "^0.33.0"
+    "@nuxtjs/supabase" "0.1.23"
     "@pinia/nuxt" "^0.3.0"
     "@tauri-apps/api" "^1.0.2"
     "@unocss/inspector" "^0.44.2"
@@ -1113,6 +1245,16 @@
     eslint-plugin-unicorn "^42.0.0"
     eslint-plugin-vue "^8.7.1"
 
+"@nuxtjs/supabase@0.1.23":
+  version "0.1.23"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/supabase/-/supabase-0.1.23.tgz#f7d00c103b70e96bd55471a477ea867facd60dd2"
+  integrity sha512-gCBI7cm552RGcbbDzUAlA+NFCuLZXVcfpsvbTVLneOUzh3cvYxLK04qYRTE81x2L/FV9FFWSG0h7Mp6kacGEiw==
+  dependencies:
+    "@nuxt/kit" "^3.0.0-rc.8"
+    "@supabase/supabase-js" "^1.35.6"
+    defu "^6.0.0"
+    pathe "^0.3.4"
+
 "@nuxtjs/supabase@^0.1.19":
   version "0.1.19"
   resolved "https://registry.yarnpkg.com/@nuxtjs/supabase/-/supabase-0.1.19.tgz#763e9280505565481db280681f32fa837cc79a55"
@@ -1271,7 +1413,7 @@
   dependencies:
     cross-fetch "^3.1.0"
 
-"@supabase/supabase-js@^1.35.4":
+"@supabase/supabase-js@^1.35.4", "@supabase/supabase-js@^1.35.6":
   version "1.35.6"
   resolved "https://registry.yarnpkg.com/@supabase/supabase-js/-/supabase-js-1.35.6.tgz#df5a2c132035ab9e5462ed474587902b3e767a66"
   integrity sha512-KDRXRr+kdGwruIUizZPALbe5YccMYFVyZJf1sFWKLncaLYSFiM6iKFnqCrNeQ4JFoZZiICkiTl1FUuai62jVpg==

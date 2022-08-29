@@ -13,15 +13,17 @@
           <AppStoreHeader />
           <div class="overflow-x-hidden overflow-y-scroll hide-scroll" h="cuts">
             <!-- Pages -->
-            <div v-if="appStore.selectedApp === null && appStore.selectedPack === null">
-              <AppStoreHome v-if="appStore.selectedTab === 0" />
-              <AppStoreApps v-if="appStore.selectedTab === 1" />
-              <AppStoreMyApps v-if="appStore.selectedTab === 2" />
+            <div v-if="appStore.selectedApp === null && appStore.selectedPack === null && appStore.selectedService === null">
+              <LazyAppStoreHome v-if="appStore.selectedTab === 0" />
+              <LazyAppStoreApps v-if="appStore.selectedTab === 1" />
+              <LazyAppStoreMyApps v-if="appStore.selectedTab === 2" />
             </div>
             <!-- App Info Page (if click app) -->
-            <AppStoreAppsCardInfo v-if="appStore.selectedApp !== null && appStore.selectedPack === null" :app="selectedApp" />
+            <LazyAppStoreAppsCardInfo v-if="appStore.selectedApp !== null && appStore.selectedPack === null && appStore.selectedService === null" :app="selectedApp" />
             <!-- Pack Info Page -->
-            <AppStoreAppsPackInfo v-if="appStore.selectedPack !== null && appStore.selectedApp === null" :app="selectedPack"/>
+            <LazyAppStoreAppsPackInfo v-if="appStore.selectedPack !== null && appStore.selectedApp === null && appStore.selectedService === null" :app="selectedPack"/>
+            <!-- Service Info Page -->
+            <LazyAppStoreAppsServiceInfo v-if="appStore.selectedService !== null"/>
           </div>
         </div>
       </div>
@@ -30,12 +32,36 @@
 </template>
 
 <script setup>
-import { useAppStore , useAppManager } from "#imports"
+import { useAppStore , useAppManager , useUser, useSupabaseClient } from "#imports"
 
 const appStore = useAppStore()
 const appManager = useAppManager()
+const supabase = useSupabaseClient()
+const user = useUser()
 
+
+// Set apps to composable
 appStore.apps = appManager.getApps
+
+// Set use_id to composable
+appStore.user_id = user.value.id
+
+  // Set points to composable
+  const { data, error } = await supabase
+  .from('user_protected')
+  .select('points')
+  .eq('user_id' , user.value.id)
+
+  appStore.points = data[0].points
+// onMounted( async () => {
+
+
+
+// })
+
+
+
+
 const props = defineProps({
   app: {
     type: Object,
