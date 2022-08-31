@@ -8,6 +8,7 @@
       </span>
     </div>
   </div>
+  <LazyAppStoreAppsPricePlans :app="appStore.selectedApp"/>
   <div flex="~" m-t="10px">
     <!-- Main Section -->
     <div flex="grow">
@@ -46,15 +47,22 @@
               </span>
             </div>
             <!-- Buy App Modal -->
-            <Teleport to="body">
+            <Teleport to="body" w="950px" h="630px">
               <UiModal v-model="stateModal" cancel="الغاء" confirm="اشتراك" @confirm="buyApp(appStore.selectedApp.id)" @cancel="modalCanceled" align="center">
                 <template v-slot:title>تأكيد عملية الاشتراك</template>
-                <span text="primaryOp dark:primary 2xl center" m="3">هل انت متأكد من اشتراكك في  تطبيق ( {{appStore.selectedApp.title}} )</span><hr m="4">
+                <div>
+                  <span text="primaryOp dark:primary 2xl center" m="3">هل انت متأكد من اشتراكك في  تطبيق ( {{appStore.selectedApp.title}} )</span><hr m="4">
+
+                </div>
+                <UiButton color="error" :outline=true :loading=true w="96" @click="modalCanceled">
+                  Delete
+                </UiButton>
               </UiModal>
             </Teleport>
           </div>
         </div>
       </div>
+
       <!-- Content description -->
       <div m-t="31px" w="600px">
         <span text="primaryOp dark:secondaryOp 2xl">{{appStore.selectedApp.description}}</span>
