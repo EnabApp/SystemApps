@@ -184,6 +184,17 @@ export const useAppStore = defineStore("appStore", {
           _user_id: this.user_id
         })
       if (error) $toast.success("حدث خطأ اثناء الاشتراك")
+    },
+    async buyPack() {
+      const supabase = useSupabaseClient();
+      let { data, error } = await supabase
+        .rpc('buyPack', {
+          _pack_id: this.selectedPack.id,
+          _user_id: this.user_id
+        })
+
+      if (error) console.error(error)
+      else console.log(data)
     }
   },
 });
