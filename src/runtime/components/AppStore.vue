@@ -60,8 +60,6 @@ appStore.user_id = user.value.id
 // })
 
 
-
-
 const props = defineProps({
   app: {
     type: Object,
