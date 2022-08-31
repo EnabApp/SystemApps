@@ -53,14 +53,6 @@ appStore.user_id = user.value.id
   .eq('user_id' , user.value.id)
 
   appStore.points = data[0].points
-// onMounted( async () => {
-
-
-
-// })
-
-
-
 
 const props = defineProps({
   app: {
