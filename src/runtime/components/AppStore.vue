@@ -64,7 +64,7 @@ const props = defineProps({
 ///////////////////////////////
 
 </script>
-<style scoped>
+<style>
 /* Hide scrollbar for Chrome, Safari and Opera */
 .hide-scroll::-webkit-scrollbar {
     display: none;
