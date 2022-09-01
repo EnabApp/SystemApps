@@ -1,35 +1,43 @@
 <template>
   <!-- Application -->
-  <div class="flex" bg="primary dark:primaryOp" h="full">
-    <!-- sidebare -->
-    <div class="flex place-content-center" w="[96px]" m-t="[36px]">
-      <AppStoreSidebar w="[64px]" />
-    </div>
-    <!-- Headet and Content  { 104px m-x } -->
-    <div flex="grow" m-x="[64px]" m-t="[36px]">
-      <!-- Header -->
-      <AppStoreHeader />
-      <div class="overflow-x-hidden overflow-y-scroll hide-scroll" h="cuts">
-        <!-- Pages -->
-        <div
-          v-if="appStore.selectedApp === null && appStore.selectedPack === null && appStore.selectedService === null">
-          <LazyAppStoreHome v-if="appStore.selectedTab === 0" />
-          <LazyAppStoreApps v-if="appStore.selectedTab === 1" />
-          <LazyAppStoreMyApps v-if="appStore.selectedTab === 2" />
+  <Suspense>
+    <!-- component with nested async dependencies -->
+    <div class="flex" bg="primary dark:primaryOp" h="full">
+      <!-- sidebare -->
+      <div class="flex place-content-center" w="[96px]" m-t="[36px]">
+        <AppStoreSidebar w="[64px]" />
+      </div>
+      <!-- Headet and Content  { 104px m-x } -->
+      <div flex="grow" m-x="[64px]" m-t="[36px]">
+        <!-- Header -->
+        <AppStoreHeader />
+        <div class="overflow-x-hidden overflow-y-scroll hide-scroll" h="cuts">
+          <!-- Pages -->
+          <div
+            v-if="appStore.selectedApp === null && appStore.selectedPack === null && appStore.selectedService === null">
+            <LazyAppStoreHome v-if="appStore.selectedTab === 0" />
+            <LazyAppStoreApps v-if="appStore.selectedTab === 1" />
+            <LazyAppStoreMyApps v-if="appStore.selectedTab === 2" />
+          </div>
+          <!-- App Info Page (if click app) -->
+          <LazyAppStoreAppsCardInfo
+            v-if="appStore.selectedApp !== null && appStore.selectedPack === null && appStore.selectedService === null"
+            :app="selectedApp" />
+          <!-- Pack Info Page -->
+          <LazyAppStoreAppsPackInfo
+            v-if="appStore.selectedPack !== null && appStore.selectedApp === null && appStore.selectedService === null"
+            :app="selectedPack" />
+          <!-- Service Info Page -->
+          <LazyAppStoreAppsServiceInfo v-if="appStore.selectedService !== null" />
         </div>
-        <!-- App Info Page (if click app) -->
-        <LazyAppStoreAppsCardInfo
-          v-if="appStore.selectedApp !== null && appStore.selectedPack === null && appStore.selectedService === null"
-          :app="selectedApp" />
-        <!-- Pack Info Page -->
-        <LazyAppStoreAppsPackInfo
-          v-if="appStore.selectedPack !== null && appStore.selectedApp === null && appStore.selectedService === null"
-          :app="selectedPack" />
-        <!-- Service Info Page -->
-        <LazyAppStoreAppsServiceInfo v-if="appStore.selectedService !== null" />
       </div>
     </div>
-  </div>
+
+    <!-- loading state via #fallback slot -->
+    <template #fallback>
+      Loading...
+    </template>
+  </Suspense>
 </template>
 
 <script setup>
