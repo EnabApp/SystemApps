@@ -44,7 +44,6 @@
 import { useAppStore } from "#imports"
 
 const appStore = useAppStore();
-const supabase = useSupabaseClient();
 
 </script>
 
