@@ -8,7 +8,6 @@
       </span>
     </div>
   </div>
-  <LazyAppStoreAppsPricePlans :app="appStore.selectedApp"/>
   <div flex="~" m-t="10px">
     <!-- Main Section -->
     <div flex="grow">
@@ -50,7 +49,7 @@
             <Teleport to="body" w="950px" h="630px">
               <UiModal v-model="stateModal" cancel="الغاء" confirm="اشتراك" @confirm="buyApp(appStore.selectedApp.id)" @cancel="modalCanceled" align="center">
                 <template v-slot:title>تأكيد عملية الاشتراك</template>
-                <LazyAppStoreAppsPricePlans :app="appStore.selectedApp"/>
+                <UiButton color="primary" w="32" @click="buyApp(appStore.selectedApp.id)">شراء</UiButton>
               </UiModal>
             </Teleport>
           </div>
@@ -67,7 +66,7 @@
         <!-- Service Cards -->
         <div v-if="appStore.selectedApp.getAllServices()">
           <span text="primaryOp dark:primary 2xl" > خدمات اضافية داخل التطبيق </span>
-          <div grid="~ flow-col" w="800px" h="290px" class="overflow-x-scroll overflow-y-hidden">
+          <div grid="~ flow-col" w="800px" h="230px" class="overflow-x-scroll overflow-y-hidden">
             <LazyAppStoreAppsServiceCard v-for="service in appStore.selectedApp.getAllServices()" :key="'service-'+service" :service="service" />
           </div>
         </div>
@@ -75,6 +74,8 @@
           <span text="primaryOp dark:primary 2xl" >لا توجد خدمات لهذا التطبيق حاليا</span>
         </div>
       </div>
+      <h1 text="primaryOp dark:primary 3xl center" font="semibold" m-b="13px">خطط الشراء</h1>
+      <LazyAppStoreAppsPricePlans :app="appStore.selectedApp"/>
     </div>
     <!-- Left Section - Packs -  -->
     <div w="280px" m-b="21px">

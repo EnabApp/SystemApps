@@ -1,7 +1,7 @@
 <template>
   <!-- App -->
   <div>
-    <div mt="4" w="950px" h="630px" bg="secondaryOp" overflow="x-hidden y-scroll" class="hide-scroll">
+    <div w="950px" h="630px" overflow="x-hidden y-scroll" class="hide-scroll">
       <!-- Header -->
       <div class="flex gap-2 justify-center">
         <div v-for="(step, id, i) in stepper.steps.value" :key="id" class="">
@@ -19,7 +19,7 @@
           <div v-if="stepper.isCurrent('step1')">
             <div place="content-center" gap="2" flex="~ row">
               <!-- First Card -->
-              <div @click="steps.step1 = 0" :class="steps.step1 === 0 ? 'ease-in-out duration-300 scale-100 border-3 border-green' : 'ease-in-out duration-300 scale-90 border-3 border-secondary'" cursor="pointer" bg="secondaryOp dark:secondary" w="300px" h="auto" rounded="xl" p-y="4">
+              <div @click="steps.step1 = 0" :class="steps.step1 === 0 ? 'ease-in-out duration-300 scale-100 border-3 border-green' : 'ease-in-out duration-300 scale-90 border-3 border-secondary'" cursor="pointer" bg="secondary" w="300px" h="auto" rounded="xl" p-y="4">
                 <!-- Title and icon -->
                 <div align="center">
                   <div class="i-fa:plane" w="80px" h="80px"></div>
@@ -45,7 +45,7 @@
                   <span text="3xl" font="bold">5000</span>
                 </div>
               </div>
-              <!-- First Card -->
+              <!-- Second Card -->
               <div text="white" @click="steps.step1 = 1" :class="steps.step1 === 1 ? 'ease-in-out duration-300 scale-100 border-3 border-green' : 'ease-in-out duration-300 scale-90 border-3 border-blue-800'" cursor="pointer" bg="blue-800 dark:blue-800" w="300px" h="auto" rounded="xl" p-y="4">
                 <!-- Title and icon -->
                 <div align="center">
@@ -76,14 +76,58 @@
           </div>
           <!-- Second Step -->
           <div v-if="stepper.isCurrent('step2')">
-            <input v-model="steps.step2" type="text">
+            <div place="content-center" gap="2" flex="~ row">
+              <!-- Title and icon -->
+              <div align="center" :class="steps.step1 === 0 ? 'text-black dark:text-white' : 'text-blue'">
+                <div :class="steps.step1 === 0 ? 'i-fa:plane' : 'i-icomoon-free:rocket'" w="100px" h="100px"></div>
+                <span text="4xl" font="bold">{{steps.step1 === 0 ? 'الاقتصادي' : 'السوبر' }}</span><br>
+                <div m-t="7">
+                  <span text="xl" font="bold">بما انك اول مره تنزل التطبيق ف الك شهر بلوشي اجرب كلشي بي مجانا حتى لا تذب فلوسك بلاش</span><br>
+                </div>
+              </div>
+            </div>
+            <div align="start" m-t="4" text="black dark:white">
+              <span text="md" font="bold"> يحتوي العرض على :</span>
+              <div class="grid grid-cols-4 gap-3" m-t="4">
+                <div v-for="i in steps.step1 === 0 ? 3 : 7" :key="i" gap="2" flex="~ row">
+                  <div class="i-akar-icons:check" w="32px" h="32px"></div>
+                  <span text="lg" font="semibold"> 3000 منتج يتحمل </span>
+                </div>
+              </div>
+            </div>
           </div>
           <!-- Third Step -->
           <div v-if="stepper.isCurrent('step3')">
-            <input v-model="steps.step3" type="text">
+            <div place="content-center" gap="2" flex="~ row">
+              <!-- Title and icon -->
+              <div align="center" :class="steps.step1 === 0 ? 'text-black dark:text-white' : 'text-blue'">
+                <div :class="steps.step1 === 0 ? 'i-fa:plane' : 'i-icomoon-free:rocket'" w="100px" h="100px"></div>
+                <span text="4xl" font="bold">{{steps.step1 === 0 ? 'الاقتصادي' : 'السوبر' }}</span><br>
+                <div m-t="7">
+                  <span text="3xl" font="bold">تفاصيل العرض</span><br>
+                </div>
+              </div>
+            </div>
+            <div align="start" m-t="4" text="black dark:white">
+              <span text="xl" font="bold"> السعر : 0</span>
+              <UiInput placeholder="ادخل كود الخصم" w="40"  m-y="4"/>
+              <h1 text="xl" font="bold"> السعر بعد الخصم : 0</h1><br>
+              <h1 text="xl" font="bold"> السعر النهائي : 0</h1><br>
+              <h1 text="xl" font="bold"> نقاطك بعد الشراء : 2000</h1><br>
+            </div>
+            <div align="start" m-t="4" text="black dark:white">
+              <span text="md" font="bold"> شروط الخدمة والبنود و التصريحات</span>
+              <UiCheckBox
+                m-t="3"
+                v-model="steps.step3"
+                :options="[
+                  { name: 'اوافق على شروط الخدمة', id: 1 },
+                ]"
+              />
+            </div>
           </div>
 
-        <div flex="~ row" gap="3" place="content-center">
+        <div flex="~ row" gap="3" place="content-center" m-t="5">
           <UiButton @click="next" color="primary" v-if="!stepper.isLast.value && stepper.current.value.isValid()" :disabled="!stepper.current.value.isValid()" w="32">
             التالي
           </UiButton>
@@ -103,8 +147,8 @@ import { useStepper } from '@vueuse/core'
 
 const steps = reactive({
   step1: '',
-  step2: '',
-  step3: '',
+  step2: 'done',
+  step3: null,
 })
 const stepper = useStepper({
   'step1': {
@@ -117,7 +161,7 @@ const stepper = useStepper({
   },
   'step3': {
     title: 'Bill',
-    isValid: () => steps.step3 !== '',
+    isValid: () => steps.step3 !== null ,
   },
 })
 function next() {

@@ -53,6 +53,7 @@
               <UiModal v-model="stateModal" cancel="الغاء" confirm="اشتراك" @confirm="buy()" @cancel="modalCanceled" align="center">
                 <template v-slot:title>تأكيد عملية الاشتراك</template>
                 <span text="primaryOp dark:primary 2xl center" m="3">هل انت متأكد من اشتراكك في  الخدمة ( {{appStore.selectedService.title}} )</span><hr m="4">
+                <UiButton color="primary" w="32" @click="buy()">شراء</UiButton>
               </UiModal>
             </Teleport>
           </div>

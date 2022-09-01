@@ -35,7 +35,10 @@
 
     <!-- loading state via #fallback slot -->
     <template #fallback>
-      Loading...
+      <div place="content-center" gap="2" flex="~ row">
+        <div class="i-eos-icons:loading" w="400px" h="400px" text="primaryOp"></div>
+        <div text="primary dark:primaryOp">جار تحميل البيانات 😍</div>
+      </div>
     </template>
   </Suspense>
 </template>
