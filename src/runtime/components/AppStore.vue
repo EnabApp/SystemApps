@@ -57,17 +57,7 @@ const { data, error } = await supabase
   .select('points')
   .eq('user_id', user.value.id)
 
-<<<<<<< Updated upstream
   appStore.points = data[0].points
-=======
-
-appStore.points = data[0].points
-// onMounted( async () => {
-
-
-
-// })
->>>>>>> Stashed changes
 
 const props = defineProps({
   app: {
