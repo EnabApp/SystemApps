@@ -1,23 +1,32 @@
 <template>
   <!-- App -->
-  <div @click="appStore.setSelectedApp(app)" cursor="pointer" grid="~ flow-row" class="place-items-center" w="auto" h="auto" p="3" bg="primaryOp dark:primary" rounded="lg">
-    <div
-      :class="app.icon"
-      text="primary dark:primaryOp"
-      w="2xl:110px xl:90px lg:90px md:90px sm:90px"
-      h="2xl:110px xl:90px lg:90px md:90px sm:90px"
-    ></div>
-    <span text="primary dark:primaryOp md">{{app.title}}</span>
-    <div v-if="!app.owned" w="full" h="31px" m="2" m-t="10" grid="~ flow-row" class="place-items-center" rounded="lg" bg="primary dark:primaryOp">
-      <span text="md primaryOp dark:primary">
-        {{ app.points > 0 ? app.points : "مجانا"}}
-      </span>
+  <div @click="appStore.setSelectedApp(app)" cursor="pointer" h="150px" w="75%" flex="~ gap-2 col" items="center" justify="start" class="group" p="3" bg="primaryOp dark:primary" rounded="~ lg" position="relative" transition="~ 0.15s ease-in-out" transform="~ active:scale-95">
+
+    <!-- App Icon -->
+    <div h="full" w="60%">
+      <div :class="app.icon" h="full" w="full"></div>
     </div>
-    <div v-else w="full" h="31px" m="2" m-t="10" grid="~ flow-row" class="place-items-center" rounded="lg" bg="green dark:green">
-      <span text="md primaryOp dark:primary">
-        <div class="i-ci:check-bold"></div>
-      </span>
+
+    <div flex="~ col gap-2" justify="center" items="center">
+      <!-- App Title -->
+      <span text="primary dark:primaryOp md center">{{ app.title }}</span>
+  
+        
+      <!-- Not Owned - Points -->
+        <div v-if="!app.owned" flex="~ gap-2" items="center" justify="end" rounded="lg">
+          <span text="sm primary dark:primaryOp">
+            {{ app.points > 0 ? app.points : "مجانا" }}
+          </span>
+          <div class="i-ri:copper-coin-fill" h="4" w="4"></div>
+        </div>
+    
+      <div v-else rounded="~" text="sm primary dark:primaryOp">
+        <div h="4" w="4" class="i-ci:check-bold"></div>    
+      </div>
     </div>
+    
+
+    
   </div>
 </template>
 
@@ -33,5 +42,13 @@ const appStore = useAppStore()
 </script>
 
 <style>
+  .v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
 
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
 </style>

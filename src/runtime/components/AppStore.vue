@@ -2,33 +2,35 @@
   <!-- Application -->
   <Suspense>
     <!-- component with nested async dependencies -->
-    <div class="flex" bg="primary dark:primaryOp" h="full">
-      <!-- sidebare -->
-      <div class="flex place-content-center" w="[96px]" m-t="[36px]">
+    <div class="flex" bg="primary dark:primaryOp" h="full" pt="4">
+      <!-- sidebar -->
+      <div flex="~" justify="center" min-w="96px">
         <AppStoreSidebar w="[64px]" />
       </div>
-      <!-- Headet and Content  { 104px m-x } -->
-      <div flex="grow" m-x="[64px]" m-t="[36px]">
+      <!-- Header and Content  { 104px m-x } -->
+      <div flex="grow" px="10">
         <!-- Header -->
         <AppStoreHeader />
         <div class="overflow-x-hidden overflow-y-scroll hide-scroll" h="cuts">
           <!-- Pages -->
-          <div
-            v-if="appStore.selectedApp === null && appStore.selectedPack === null && appStore.selectedService === null">
-            <LazyAppStoreHome v-if="appStore.selectedTab === 0" />
-            <LazyAppStoreApps v-if="appStore.selectedTab === 1" />
-            <LazyAppStoreMyApps v-if="appStore.selectedTab === 2" />
-          </div>
-          <!-- App Info Page (if click app) -->
-          <LazyAppStoreAppsCardInfo
-            v-if="appStore.selectedApp !== null && appStore.selectedPack === null && appStore.selectedService === null"
-            :app="selectedApp" />
-          <!-- Pack Info Page -->
-          <LazyAppStoreAppsPackInfo
-            v-if="appStore.selectedPack !== null && appStore.selectedApp === null && appStore.selectedService === null"
-            :app="selectedPack" />
-          <!-- Service Info Page -->
-          <LazyAppStoreAppsServiceInfo v-if="appStore.selectedService !== null" />
+          <TransitionGroup>
+            <div
+              v-if="appStore.selectedApp === null && appStore.selectedPack === null && appStore.selectedService === null">
+              <LazyAppStoreHome v-if="appStore.selectedTab === 0" />
+              <LazyAppStoreApps v-if="appStore.selectedTab === 1" />
+              <LazyAppStoreMyApps v-if="appStore.selectedTab === 2" />
+            </div>
+            <!-- App Info Page (if click app) -->
+            <AppStoreAppsCardInfo
+              v-if="appStore.selectedApp !== null && appStore.selectedPack === null && appStore.selectedService === null"
+              :app="selectedApp" key="appInfoPage" />
+            <!-- Pack Info Page -->
+            <AppStoreAppsPackInfo
+              v-if="appStore.selectedPack !== null && appStore.selectedApp === null && appStore.selectedService === null"
+              :app="selectedPack" key="packInfoPage" />
+            <!-- Service Info Page -->
+            <AppStoreAppsServiceInfo v-if="appStore.selectedService !== null" key="serviceInfoPage" />
+          </TransitionGroup>
         </div>
       </div>
     </div>
@@ -88,5 +90,16 @@ const props = defineProps({
   /* IE and Edge */
   scrollbar-width: none;
   /* Firefox */
+}
+
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
 }
 </style>

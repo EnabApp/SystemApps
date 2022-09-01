@@ -1,91 +1,15 @@
 <template>
-  <div>
+  <div flex="~ col gap-4">
     <!-- Home -->
-    <div
-      @click="appStore.setSelectedTap(0)"
-      p-x="3"
-      m-b="3"
-      cursor="pointer"
-      place="items-center"
-      grid="~ flow-row"
-      class="place-content-center"
-    >
-      <div
-        :class="
-        appStore.selectedTab === 0
-          ? 'bg-primaryOp dark:bg-primary text-primary dark:text-primaryOp'
-          : 'dark:hover:bg-primary hover:bg-secondaryOp text-primaryOp hover:text-primary dark:hover:text-primaryOp dark:text-primary cursor-pointer'"
-          grid="~ flow-row"
-          rounded="lg"
-          class="place-content-center"
-          w="[64px]"
-          h="[64px]"
-        >
-        <div class="i-ant-design:home-filled"
-          w="[32px]"
-          h="[32px]"
-          >
+    <div v-for="(tab, index) in tabs" :key="tab.title" @click="appStore.setSelectedTap(index)" cursor="pointer" class="group" flex="~ col gap-2" items="center">
+      <div :class="
+      appStore.selectedTab === index
+        ? 'bg-primaryOp dark:bg-primary text-primary dark:text-primaryOp'
+        : 'dark:group-hover:bg-primary group-hover:bg-secondaryOp text-primaryOp group-hover:text-primary dark:group-hover:text-primaryOp dark:text-primary cursor-pointer'" rounded="lg" flex="~" items="center" justify="center" w="64px" h="64px">
+        <div :class="tab.icon" w="32px" h="32px">
         </div>
       </div>
-      <span class="mt-2" text="primaryOp dark:primary">الرئيسية</span>
-    </div>
-    <!-- Apps -->
-    <div
-      @click="appStore.setSelectedTap(1)"
-      p-x="3"
-      m-b="3"
-      cursor="pointer"
-      place="items-center"
-      grid="~ flow-row"
-      class="place-content-center"
-    >
-      <div
-        :class="
-        appStore.selectedTab === 1
-          ? 'bg-primaryOp dark:bg-primary text-primary dark:text-primaryOp'
-          : 'dark:hover:bg-primary hover:bg-secondaryOp text-primaryOp hover:text-primary dark:hover:text-primaryOp dark:text-primary cursor-pointer'"
-          grid="~ flow-row"
-          rounded="lg"
-          class="place-content-center"
-          w="[64px]"
-          h="[64px]"
-        >
-        <div class="i-charm:apps"
-          w="[32px]"
-          h="[32px]"
-          >
-        </div>
-      </div>
-      <span class="mt-2" text="primaryOp dark:primary">التطبيقات</span>
-    </div>
-    <!-- My Apps -->
-    <div
-      @click="appStore.setSelectedTap(2)"
-      p-x="3"
-      p-y="3"
-      cursor="pointer"
-      place="items-center"
-      grid="~ flow-row"
-      class="place-content-center"
-    >
-      <div
-        :class="
-        appStore.selectedTab === 2
-          ? 'bg-primaryOp dark:bg-primary text-primary dark:text-primaryOp'
-          : 'dark:hover:bg-primary hover:bg-secondaryOp text-primaryOp hover:text-primary dark:hover:text-primaryOp dark:text-primary cursor-pointer'"
-          grid="~ flow-row"
-          rounded="lg"
-          class="place-content-center"
-          w="[64px]"
-          h="[64px]"
-        >
-        <div class="i-fluent:library-16-filled"
-          w="[32px]"
-          h="[32px]"
-          >
-        </div>
-      </div>
-      <span class="mt-2" text="primaryOp dark:primary">تطبيقاتي</span>
+      <span text="primaryOp dark:primary">{{ tab.title }}</span>
     </div>
   </div>
 </template>
@@ -93,6 +17,21 @@
 <script setup>
 import { useAppStore } from "#imports"
 const appStore = useAppStore();
+const tabs = [
+  {
+    title: "الرئيسية",
+    icon: "i-ant-design:home-filled",
+  },
+  {
+    title: "التطبيقات",
+    icon: "i-charm:apps",
+  },
+  {
+    title: "تطبيقاتي",
+    icon: "i-fluent:library-16-filled",
+  },
+]
 </script>
 
-<style></style>
+<style>
+</style>

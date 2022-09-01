@@ -1,6 +1,7 @@
 <template>
-<!-- Back Button -->
-  <div m-t="29px">
+  <div>
+    <!-- Back Button -->
+    <div m-t="29px">
     <div @click="appStore.back()" cursor="pointer" flex="~" justify="center" m-t="30px" w="122px" h="41px" grid="~ flow-row" class="place-items-center">
       <div class="i-ant-design:arrow-right-outlined" w="5" h="5" m-l="2" text="primaryOp dark:primary"></div>
       <span text="xl primaryOp dark:primary">
@@ -83,6 +84,7 @@
       <AppStoreAppsPackCard  m-y="4" v-for="pack in packs" :key="'pack-'+ pack.id " :pack="pack" />
       <span text="priamryOp dark:primary" font="light">شراء الحزن يساعدك على توفير المال </span>
     </div>
+  </div>
   </div>
 </template>
 
