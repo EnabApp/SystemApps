@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
-import { useSupabaseClient ,useAppStore,ref } from "#imports"
+import { useSupabaseClient ,useAppStore,ref,watch } from "#imports"
 
 const supabase = useSupabaseClient()
 const appStore = useAppStore()

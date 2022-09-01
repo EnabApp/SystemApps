@@ -84,7 +84,7 @@
           </div>
 
         <div flex="~ row" gap="3" place="content-center">
-          <UiButton @click="next" color="success" v-if="!stepper.isLast.value && stepper.current.value.isValid()" :disabled="!stepper.current.value.isValid()" w="32">
+          <UiButton @click="next" color="primary" v-if="!stepper.isLast.value && stepper.current.value.isValid()" :disabled="!stepper.current.value.isValid()" w="32">
             التالي
           </UiButton>
           <UiButton @click="next" color="success" v-if="stepper.isLast.value && stepper.current.value.isValid()" :disabled="!stepper.current.value.isValid()" w="32">

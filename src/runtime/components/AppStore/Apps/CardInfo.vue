@@ -50,13 +50,7 @@
             <Teleport to="body" w="950px" h="630px">
               <UiModal v-model="stateModal" cancel="الغاء" confirm="اشتراك" @confirm="buyApp(appStore.selectedApp.id)" @cancel="modalCanceled" align="center">
                 <template v-slot:title>تأكيد عملية الاشتراك</template>
-                <div>
-                  <span text="primaryOp dark:primary 2xl center" m="3">هل انت متأكد من اشتراكك في  تطبيق ( {{appStore.selectedApp.title}} )</span><hr m="4">
-
-                </div>
-                <UiButton color="error" :outline=true :loading=true w="96" @click="modalCanceled">
-                  Delete
-                </UiButton>
+                <LazyAppStoreAppsPricePlans :app="appStore.selectedApp"/>
               </UiModal>
             </Teleport>
           </div>
