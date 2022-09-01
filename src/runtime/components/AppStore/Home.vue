@@ -1,8 +1,8 @@
 <template>
-  <div m-t="10">
+  <div mt="4">
     <!-- Slider -->
     <AppStoreHomeSlider/>
-    <div m-t="4">
+    <div mt="4">
       <!-- Best Apps -->
         <AppStoreHomeBestApps />
       <!-- New Apps -->

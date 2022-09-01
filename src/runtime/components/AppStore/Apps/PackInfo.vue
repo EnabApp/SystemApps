@@ -35,7 +35,7 @@
           </div>
         </div>
         <span text="primaryOp dark:primary xl" flex="~">
-          <div class="i-emojione-monotone:exclamation-mark" w="15px" h="15px" text="warning"></div>شراس هذه الحزمة يساعدك على توفير <span text="warning xl"> {{ pack.discount }} %</span> من المال
+          <div class="i-emojione-monotone:exclamation-mark" w="15px" h="15px" text="warning"></div>شراء هذه الحزمة يساعدك على توفير <span text="warning xl"> {{ pack.discount }} %</span> من المال
         </span>
         <!-- Content -->
         <div m-t="31px" m-l="72px">

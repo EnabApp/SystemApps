@@ -82,7 +82,7 @@
     <div w="280px" m-b="21px">
       <span text="priamryOp dark:primary" font="bold">التطبيق متوفر في الحزم التالية :</span>
       <AppStoreAppsPackCard  m-y="4" v-for="pack in packs" :key="'pack-'+ pack.id " :pack="pack" />
-      <span text="priamryOp dark:primary" font="light">شراء الحزن يساعدك على توفير المال </span>
+      <span text="priamryOp dark:primary" font="light">شراء الحزم يساعدك على توفير المال </span>
     </div>
   </div>
   </div>
