@@ -67,7 +67,7 @@
 </template>
 
 <script setup>
-import { useAppStore, useAppManager, useNuxtApp ,ref } from "#imports"
+import { useAppStore, useAppManager, useNuxtApp ,ref,useToggle } from "#imports"
 
 const modalCanceled = () => {
   stateModal.value = false;

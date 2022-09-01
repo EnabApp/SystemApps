@@ -86,7 +86,7 @@
 </template>
 
 <script setup>
-import { useAppStore,useSupabaseClient, useAppManager, useNuxtApp ,ref } from "#imports"
+import { useAppStore,useSupabaseClient, useAppManager, useNuxtApp ,ref,useToggle } from "#imports"
 
 const modalCanceled = () => {
   stateModal.value = false;
