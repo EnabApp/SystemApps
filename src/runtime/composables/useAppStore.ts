@@ -1,5 +1,5 @@
 import { acceptHMRUpdate, defineStore } from "pinia";
-import { ref, useSupabaseClient, useUser, useNuxtApp } from "#imports";
+import { ref, useSupabaseClient, useUser, useNuxtApp,useAppManager } from "#imports";
 export const useAppStore = defineStore("appStore", {
   state: () => ({
     selectedTab: ref(0),

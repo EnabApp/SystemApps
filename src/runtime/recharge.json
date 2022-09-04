@@ -1,0 +1,10 @@
+{
+  "name": "Recharge",
+  "title": "محفظتي",
+  "icon": "i-bxs-cart",
+  "owned":true,
+  "points":1999,
+  "minWidth": 300,
+  "minHeight": 200,
+  "maximized": true
+}

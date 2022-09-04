@@ -1,10 +1,12 @@
 import { defineNuxtPlugin } from '#app'
 import { useAppManager } from '#imports'
-import config from './config.json'
+import appstore from './appstore.json'
+import recharge from './recharge.json'
 
 
 export default defineNuxtPlugin((nuxtApp) => {
     // Registering App
     const appManager = useAppManager()
-    appManager.addApp(config)
+    appManager.addApp(appstore)
+    appManager.addApp(recharge)
 })

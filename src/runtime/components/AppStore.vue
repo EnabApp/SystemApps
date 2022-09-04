@@ -53,14 +53,11 @@ const appManager = useAppManager()
 const supabase = useSupabaseClient()
 const user = useUser()
 
-
 // Set apps to composable
 appStore.apps = appManager.getApps
-
 // Set use_id to composable
 appStore.user_id = user.value.id
 
-console.log(user)
 // Set points to composable
 const { data, error } = await supabase
   .from('user_protected')

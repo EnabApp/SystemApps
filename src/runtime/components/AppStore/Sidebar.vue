@@ -30,10 +30,6 @@ const tabs = [
     title: "تطبيقاتي",
     icon: "i-fluent:library-16-filled",
   },
-  {
-    title: "نقاطي",
-    icon: "i-ri:copper-coin-fill",
-  },
 ]
 </script>
 
