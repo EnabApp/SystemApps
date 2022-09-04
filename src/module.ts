@@ -29,7 +29,7 @@ export default defineNuxtModule<ModuleOptions>({
       })
     })
 
-    nuxt.hook('autoImports:dirs', (dirs) => {
+    nuxt.hook('imports:dirs', (dirs) => {
       dirs.push(resolve(runtimeDir, 'composables'))
       dirs.push(resolve(runtimeDir, 'stores'))
     })
