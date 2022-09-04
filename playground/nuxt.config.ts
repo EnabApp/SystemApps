@@ -7,7 +7,7 @@ export default defineNuxtConfig({
     
     modules: [
         MyModule,
-        '@enab/utilities',
+        // '@enab/utilities',
         '@enab/core',
         '@nuxtjs/supabase',
         '@pinia/nuxt',
