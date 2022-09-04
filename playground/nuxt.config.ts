@@ -7,12 +7,11 @@ export default defineNuxtConfig({
 
     modules: [
         MyModule,
-        '@enab/ui',
+        '@enab/utilities',
         '@enab/core',
         '@nuxtjs/supabase',
         '@pinia/nuxt',
         '@vueuse/nuxt',
-        '@nuxt/image-edge',
         '@unocss/nuxt',
         "@nuxtjs/color-mode",
     ],
