@@ -66,7 +66,7 @@ appStore.user_id = user.value.id
 //   .select('points')
 //   .eq('user_id', user.value.id)
 
-appStore.points = 999
+  appStore.points = 999
 
 const props = defineProps({
   app: {
