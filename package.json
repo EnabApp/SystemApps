@@ -1,6 +1,6 @@
 {
   "name": "@enab/systemapps",
-  "version": "1.0.1-beta.1",
+  "version": "1.0.1-beta.2",
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -36,6 +36,7 @@
   },
   "devDependencies": {
     "@enab/core": "^1.8.22-beta.11",
+    "@enab/utilities": "^1.0.14-beta.4",
     "@nuxt/module-builder": "latest",
     "@tauri-apps/api": "^1.0.2",
     "bumpp": "^8.2.1",
