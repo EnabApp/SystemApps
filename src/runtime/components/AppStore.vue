@@ -54,7 +54,6 @@ const supabase = useSupabaseClient()
 const user = useUser()
 const userProfile = useUserProfile()
 
-console.log(userProfile)
 // Set apps to composable
 appStore.apps = appManager.getApps
 
@@ -62,12 +61,12 @@ appStore.apps = appManager.getApps
 appStore.user_id = user.value.id
 
 // Set points to composable
-const { data, error } = await supabase
-  .from('user_protected')
-  .select('points')
-  .eq('user_id', user.value.id)
+// const { data, error } = await supabase
+//   .from('user_protected')
+//   .select('points')
+//   .eq('user_id', user.value.id)
 
-  appStore.points = data[0].points
+appStore.points = 999
 
 const props = defineProps({
   app: {
