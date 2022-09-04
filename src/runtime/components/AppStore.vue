@@ -60,6 +60,7 @@ appStore.apps = appManager.getApps
 // Set use_id to composable
 appStore.user_id = user.value.id
 
+console.log(user)
 // Set points to composable
 const { data, error } = await supabase
   .from('user_protected')
