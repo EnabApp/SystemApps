@@ -46,15 +46,18 @@
 </template>
 
 <script setup>
-import { useAppStore, useAppManager, useUser, useSupabaseClient } from "#imports"
+import { useAppStore, useAppManager, useUser, useSupabaseClient , useUserProfile  } from "#imports"
 
 const appStore = useAppStore()
 const appManager = useAppManager()
 const supabase = useSupabaseClient()
 const user = useUser()
+const userProfile = useUserProfile()
 
+console.log(userProfile)
 // Set apps to composable
 appStore.apps = appManager.getApps
+
 // Set use_id to composable
 appStore.user_id = user.value.id
 
