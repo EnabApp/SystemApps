@@ -301,6 +301,23 @@
   dependencies:
     "@jridgewell/trace-mapping" "0.3.9"
 
+"@enab/core@^1.8.22-beta.10":
+  version "1.8.22-beta.10"
+  resolved "https://registry.yarnpkg.com/@enab/core/-/core-1.8.22-beta.10.tgz#0f13471f78e3c9c979221689cd5c516889016c16"
+  integrity sha512-FvatsF7XCbt8BVqkaH/kgMnMpHHuaqV366koDyvGUvcFl4YXGpNjBgVOZbHQQlegDcrkYMNvsvbN3xsJsa7LeQ==
+  dependencies:
+    "@nuxt/kit" "npm:@nuxt/kit-edge@latest"
+    "@nuxtjs/color-mode" "^3.1.4"
+    "@nuxtjs/supabase" "^0.1.23"
+    "@pinia/nuxt" "^0.4.1"
+    "@unocss/inspector" "^0.44.2"
+    "@unocss/nuxt" "^0.44.0"
+    "@unocss/preset-attributify" "^0.44.1"
+    "@unocss/preset-typography" "^0.44.1"
+    "@unocss/preset-web-fonts" "^0.44.1"
+    "@vueuse/core" "^9.1.1"
+    "@vueuse/nuxt" "^9.1.1"
+
 "@esbuild/linux-loong64@0.14.54":
   version "0.14.54"
   resolved "https://registry.yarnpkg.com/@esbuild/linux-loong64/-/linux-loong64-0.14.54.tgz#de2a4be678bd4d0d1ffbb86e6de779cde5999028"
