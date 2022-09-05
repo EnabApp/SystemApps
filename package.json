@@ -35,7 +35,7 @@
     "@vueuse/nuxt": "^9.1.1"
   },
   "devDependencies": {
-    "@enab/core": "^1.8.22-beta.11",
+    "@enab/core": "^1.8.22-beta.12",
     "@enab/utilities": "^1.0.14-beta.4",
     "@nuxt/image-edge": "^1.0.0-27703825.db0934c",
     "@nuxt/module-builder": "latest",

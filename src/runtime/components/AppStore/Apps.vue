@@ -15,9 +15,6 @@
 import { useAppStore ,computed } from "#imports";
 
 const appStore = useAppStore()
-
-console.log(appStore.appsWithoutCore)
-// const apps = computed(() => appStore.AppsWithoutCore());
 const packs = computed(() => appStore.packs);
 </script>
 

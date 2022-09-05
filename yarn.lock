@@ -301,10 +301,10 @@
   dependencies:
     "@jridgewell/trace-mapping" "0.3.9"
 
-"@enab/core@^1.8.22-beta.11":
-  version "1.8.22-beta.11"
-  resolved "https://registry.yarnpkg.com/@enab/core/-/core-1.8.22-beta.11.tgz#7b4a4d9fa348114f4f2d09713d5c9076281c4ef5"
-  integrity sha512-HEukWLDFgkZ4RCvH1+wx81+1NbOtGJJrGEG/pMFHnQfTbZUuFruK70oCKzKU9ZHNPqjWrFVqfcBveQfSQby4Ag==
+"@enab/core@^1.8.22-beta.12":
+  version "1.8.22-beta.12"
+  resolved "https://registry.yarnpkg.com/@enab/core/-/core-1.8.22-beta.12.tgz#b012f36be1893743939a6eca3b2aef4971a0e697"
+  integrity sha512-NqkLkU5yjAFFTSFUzo+L3qm/ubnIY4HP72TQKeJzrQzIPOhvxlWNpLZoclNe/D/wwooleVTTzosbT1JbLVcw+A==
   dependencies:
     "@nuxt/kit" "npm:@nuxt/kit-edge@latest"
     "@nuxtjs/color-mode" "^3.1.4"

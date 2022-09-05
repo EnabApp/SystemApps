@@ -118,6 +118,14 @@ export const useAppStore = defineStore("appStore", {
       {
         src: "https://ssb-prod.ec.aucegypt.edu/wtlgifs/main-banner-image.png",
       },
+    ]),
+    icons: ref([
+        {
+          home: '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M4 21V9l8-6l8 6v12h-6v-7h-4v7Z"/></svg>'
+        },
+        {
+          calc: '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M8 18h1.5v-2h2v-1.5h-2v-2H8v2H6V16h2Zm5-.75h5v-1.5h-5Zm0-2.5h5v-1.5h-5Zm1.1-3.8l1.4-1.4l1.4 1.4l1.05-1.05l-1.4-1.45l1.4-1.4L16.9 6l-1.4 1.4L14.1 6l-1.05 1.05l1.4 1.4l-1.4 1.45ZM6.25 9.2h5V7.7h-5ZM5 21q-.825 0-1.413-.587Q3 19.825 3 19V5q0-.825.587-1.413Q4.175 3 5 3h14q.825 0 1.413.587Q21 4.175 21 5v14q0 .825-.587 1.413Q19.825 21 19 21Z"/></svg>'
+        },
     ])
   }),
 
