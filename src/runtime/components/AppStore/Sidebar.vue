@@ -6,8 +6,8 @@
       appStore.selectedTab === index
         ? 'bg-primaryOp dark:bg-primary text-primary dark:text-primaryOp'
         : 'dark:group-hover:bg-primary group-hover:bg-secondaryOp text-primaryOp group-hover:text-primary dark:group-hover:text-primaryOp dark:text-primary cursor-pointer'" rounded="lg" flex="~" items="center" justify="center" w="64px" h="64px">
-        <div :class="tab.icon" w="32px" h="32px">
-        </div>
+        <!-- Icon -->
+        <component :text="appStore.selectedTab === index ? 'primary dark:primaryOp' : 'primaryOp dark:primary group-hover:primaryOp'" w="32px" h="32px" :is="tab.icon"></component>
       </div>
       <span text="primaryOp dark:primary">{{ tab.title }}</span>
     </div>
@@ -20,15 +20,15 @@ const appStore = useAppStore();
 const tabs = [
   {
     title: "الرئيسية",
-    icon: "i-ant-design:home-filled",
+    icon: "AppStoreIconHome",
   },
   {
     title: "التطبيقات",
-    icon: "i-charm:apps",
+    icon: "AppStoreIconApps",
   },
   {
     title: "تطبيقاتي",
-    icon: "i-fluent:library-16-filled",
+    icon: "AppStoreIconLibrary",
   },
 ]
 </script>

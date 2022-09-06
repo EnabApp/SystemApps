@@ -16,7 +16,7 @@
       <div div flex="~">
         <!-- Icon -->
         <div w="151px" h="151px" bg="primaryOp dark:primary" rounded="lg" grid="~ flow-row" class="place-items-center">
-          <div class="i-ci:check-bold" text="primary dark:primaryOp" w="88px" h="88px"></div>
+          <component text="primary dark:primaryOp" w="88px" h="88px" :is="`${appStore.selectedApp.name}Icon`"></component>
         </div>
         <!-- Name and install -->
         <div m-r="50px" h="151px">
@@ -25,11 +25,11 @@
           <div flex="~">
             <!-- Loading -->
             <div v-if="loading" flex="~" justify="center" m-t="30px" w="122px" h="41px" grid="~ flow-row" class="place-items-center" rounded="lg" bg="yellow">
-              <div class="i-eos-icons:loading" w="5" h="5" m-l="2" text="primaryOp"></div>
+              <AppstoreIconDownloading w="5" h="5" m-l="2" text="primaryOp"/>
             </div>
             <!-- Owned -->
             <div v-else-if="appStore.selectedApp.owned" flex="~" justify="center" m-t="30px" w="122px" h="41px" grid="~ flow-row" class="place-items-center" rounded="lg" bg="green">
-              <div class="i-ci:check-bold" w="5" h="5" m-l="2" text="primaryOp"></div>
+              <AppstoreIconCkeck w="5" h="5" m-l="2" text="primaryOp"/>
               <span text="md primaryOp">
                 تم الشراء
               </span>
@@ -38,6 +38,7 @@
             <div v-else flex="~">
               <div @click="toggleModal()" cursor="pointer" flex="~" justify="center" m-t="30px" w="122px" h="41px" grid="~ flow-row" class="place-items-center" rounded="lg" bg="primaryOp dark:primary">
                 <div class="i-charm:download" w="5" h="5" m-l="2" text="primary dark:primaryOp"></div>
+                <AppstoreIconDownload w="5" h="5" m-l="2" text="primary dark:primaryOp"/>
                 <span text="md primary dark:primaryOp" cursor="pointer">
                   {{appStore.selectedApp.points >0 ? 'تنصيب' : 'مجانا' }}
                 </span>

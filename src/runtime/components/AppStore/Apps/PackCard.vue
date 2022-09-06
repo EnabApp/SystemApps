@@ -9,13 +9,14 @@
         w="[82px]"
         h="[82px]"
       >
-        <div
+        <component
           v-for="app in pack.apps.slice(0, 3)" :key="'app-'+ app.id "
-          :class="app.icon"
+          :is="`${app.name}Icon`"
           text="primaryOp dark:primary"
-          w="[23px]"
-          h="[23px]"
-        ></div>
+          h="23px"
+          w="23px"
+        >
+        </component>
         <span v-if="pack.apps.length > 4" text="lg primaryOp dark:primary">+ {{pack.apps.length - 3}}</span>
       </div>
       <div w="82px" h="31px" m-t="3" grid="~ flow-row" class="place-items-center" rounded="md" bg="primary dark:primaryOp">
