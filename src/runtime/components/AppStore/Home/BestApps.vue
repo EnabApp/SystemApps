@@ -18,8 +18,8 @@
     <div grid="~ flow-col" justify="between">
       <div grid="~ flow-col">
         <div m-l="2" border="primary dark:primaryOp" bg="primary dark:primaryOp" m-r="2" w="[64px]" h="[64px]" rounded="lg" grid="~ flow-row" class="place-content-center">
-          <div class="i-fluent:library-16-filled" w="[32px]" h="[32px]" text="primaryOp dark:primary"></div>
-          <!-- <IconsIcon :icon="appStore.icons." /> -->
+          <!-- <div class="i-fluent:library-16-filled" w="[32px]" h="[32px]" text="primaryOp dark:primary"></div> -->
+          <IconsIcon w="32px" h="32px" :icon="appStore.icons.home" />
         </div>
         <div grid="~ flow-row">
           <span text="lg">{{app.title}}</span>
@@ -42,8 +42,9 @@ import { useAppStore,computed } from '#imports'
 
 const appStore = useAppStore()
 const apps = computed(() => appStore.apps)
+console.log(appStore.icons.home)
+console.log(apps)
 
-console.log(appStore.icons)
 </script>
 
 <style>
