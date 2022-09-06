@@ -2,7 +2,7 @@
   <div>
     <div>
       <div @click="appStore.back()" cursor="pointer" flex="~" justify="center" m-t="30px" w="122px" h="41px" grid="~ flow-row" class="place-items-center">
-        <div class="i-ant-design:arrow-right-outlined" w="5" h="5" m-l="2" text="primaryOp dark:primary"></div>
+        <AppStoreIconBack w="5" h="5" m-l="2" text="primaryOp dark:primary"/>
         <span text="xl primaryOp dark:primary">
           الرجوع
         </span>

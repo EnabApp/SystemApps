@@ -1,7 +1,7 @@
 <template>
   <!-- App -->
   <div>
-    <div w="950px" h="630px" overflow="x-hidden y-scroll" class="hide-scroll">
+    <div w="950px" h="auto" overflow="x-hidden y-scroll">
       <!-- Header -->
       <div class="flex gap-2 justify-center">
         <div v-for="(step, id, i) in stepper.steps.value" :key="id" class="">
@@ -14,7 +14,7 @@
         </div>
       </div>
       <!-- Body -->
-      <div overflow="x-hidden y-scroll" m-t="2" gap="2" flex="~ col" justify="center" class="hide-scroll">
+      <div overflow="x-hidden y-scroll" m-t="2" gap="2" flex="~ col" justify="center">
           <!-- First Step -->
           <div v-if="stepper.isCurrent('step1')">
             <div place="content-center" gap="2" flex="~ row">
@@ -131,7 +131,7 @@
           <UiButton @click="next" color="primary" v-if="!stepper.isLast.value && stepper.current.value.isValid()" :disabled="!stepper.current.value.isValid()" w="32">
             التالي
           </UiButton>
-          <UiButton @click="next" color="success" v-if="stepper.isLast.value && stepper.current.value.isValid()" :disabled="!stepper.current.value.isValid()" w="32">
+          <UiButton @click="confirm" color="success" v-if="stepper.isLast.value && stepper.current.value.isValid()" :disabled="!stepper.current.value.isValid()" w="32">
             اشتراك
           </UiButton>
         </div>
@@ -148,7 +148,7 @@ import { useStepper } from '@vueuse/core'
 const steps = reactive({
   step1: '',
   step2: 'done',
-  step3: null,
+  step3: 0,
 })
 const stepper = useStepper({
   'step1': {
@@ -161,9 +161,10 @@ const stepper = useStepper({
   },
   'step3': {
     title: 'Bill',
-    isValid: () => steps.step3 !== null ,
+    isValid: () => steps.step3[0] === 1,
   },
 })
+console.log(steps.step3)
 function next() {
   if (stepper.current.value.isValid())
     stepper.goToNext()
@@ -179,6 +180,10 @@ function allStepsBeforeAreValid(index: number): boolean {
 const props = defineProps({
   app: {
     type: Object,
+    required: true,
+  },
+  confirm: {
+    type: String,
     required: true,
   },
 });

@@ -3,7 +3,7 @@
     <!-- Back Button -->
     <div m-t="29px">
     <div @click="appStore.back()" cursor="pointer" flex="~" justify="center" m-t="30px" w="122px" h="41px" grid="~ flow-row" class="place-items-center">
-      <div class="i-ant-design:arrow-right-outlined" w="5" h="5" m-l="2" text="primaryOp dark:primary"></div>
+      <AppStoreIconBack w="5" h="5" m-l="2" text="primaryOp dark:primary"/>
       <span text="xl primaryOp dark:primary">
         الرجوع
       </span>
@@ -25,11 +25,11 @@
           <div flex="~">
             <!-- Loading -->
             <div v-if="loading" flex="~" justify="center" m-t="30px" w="122px" h="41px" grid="~ flow-row" class="place-items-center" rounded="lg" bg="yellow">
-              <AppstoreIconDownloading w="5" h="5" m-l="2" text="primaryOp"/>
+              <AppStoreIconLoading w="5" h="5" m-l="2" text="primaryOp"/>
             </div>
             <!-- Owned -->
             <div v-else-if="appStore.selectedApp.owned" flex="~" justify="center" m-t="30px" w="122px" h="41px" grid="~ flow-row" class="place-items-center" rounded="lg" bg="green">
-              <AppstoreIconCkeck w="5" h="5" m-l="2" text="primaryOp"/>
+              <AppStoreIconCkeck w="5" h="5" m-l="2" text="primaryOp"/>
               <span text="md primaryOp">
                 تم الشراء
               </span>
@@ -37,8 +37,7 @@
             <!-- Not Owned -->
             <div v-else flex="~">
               <div @click="toggleModal()" cursor="pointer" flex="~" justify="center" m-t="30px" w="122px" h="41px" grid="~ flow-row" class="place-items-center" rounded="lg" bg="primaryOp dark:primary">
-                <div class="i-charm:download" w="5" h="5" m-l="2" text="primary dark:primaryOp"></div>
-                <AppstoreIconDownload w="5" h="5" m-l="2" text="primary dark:primaryOp"/>
+                <AppStoreIconInstall w="5" h="5" m-l="2" text="primary dark:primaryOp"/>
                 <span text="md primary dark:primaryOp" cursor="pointer">
                   {{appStore.selectedApp.points >0 ? 'تنصيب' : 'مجانا' }}
                 </span>
@@ -49,10 +48,9 @@
             </div>
             <!-- Buy App Modal -->
             <Teleport to="body" w="950px" h="630px">
-              <UiModal v-model="stateModal" cancel="الغاء" confirm="اشتراك" @confirm="buyApp(appStore.selectedApp.id)" @cancel="modalCanceled" align="center">
+              <UiModal v-model="stateModal" @cancel="modalCanceled" align="center">
                 <template v-slot:title>تأكيد عملية الاشتراك</template>
-                <LazyAppStoreAppsPricePlans :app="appStore.selectedApp"/>
-                <UiButton color="primary" w="32" @click="buyApp(appStore.selectedApp.id)">شراء</UiButton>
+                <LazyAppStoreAppsPricePlans :app="appStore.selectedApp" :confirm="buyApp"/>
               </UiModal>
             </Teleport>
           </div>
@@ -77,8 +75,6 @@
           <span text="primaryOp dark:primary 2xl" >لا توجد خدمات لهذا التطبيق حاليا</span>
         </div>
       </div>
-      <h1 text="primaryOp dark:primary 3xl center" font="semibold" m-b="13px">خطط الشراء</h1>
-      <LazyAppStoreAppsPricePlans :app="appStore.selectedApp"/>
     </div>
     <!-- Left Section - Packs -  -->
     <div w="280px" m-b="21px">
@@ -102,23 +98,23 @@ const appManager = useAppManager()
 const supabase = useSupabaseClient()
 
 
-const skeleton = ref(true)
 const loading = ref(false)
 const packs = ref(appStore.packs)
 const [stateModal, toggleModal] = useToggle(false);
 
 console.log(appStore.selectedApp.getAllServices())
 // Buy App Function
-const buyApp = async (id) => {
+const buyApp = async () => {
   stateModal.value = false;
   const { $toast } = useNuxtApp();
     loading.value = true
-    const data = await appManager.buyApp(id)
+    const data = await appManager.buyApp(appStore.selectedApp.id)
     if(data !== false)
       $toast.success(" تم الاشتراك في " +appStore.selectedApp.title + " بنجاح 🥰")
     loading.value = false
     appStore.selectedApp.owned = true
 };
+
 </script>
 
 <style>

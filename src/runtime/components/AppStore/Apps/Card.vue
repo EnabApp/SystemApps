@@ -17,11 +17,11 @@
           <span text="sm primary dark:primaryOp">
             {{ app.points > 0 ? app.points : "مجانا" }}
           </span>
-          <div class="i-ri:copper-coin-fill" h="4" w="4"></div>
+          <AppStoreIconCoin h="4" w="4"/>
         </div>
 
       <div v-else rounded="~" text="sm primary dark:primaryOp">
-        <div h="4" w="4" class="i-ci:check-bold"></div>
+        <AppStoreIconCheck h="6" w="6"/>
       </div>
     </div>
 
