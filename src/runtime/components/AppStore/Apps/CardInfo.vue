@@ -49,8 +49,8 @@
             <!-- Buy App Modal -->
             <Teleport to="body" w="950px" h="630px">
               <UiModal v-model="stateModal" @cancel="modalCanceled" align="center">
-                <template v-slot:title>تأكيد عملية الاشتراك</template>
-                <LazyAppStoreAppsPricePlans :app="appStore.selectedApp" :confirm="buyApp"/>
+                <template v-slot:title>أختيار الخطة</template>
+                  <AppStorePlans :app="appStore.selectedApp" :confirm="buyApp"/>
               </UiModal>
             </Teleport>
           </div>

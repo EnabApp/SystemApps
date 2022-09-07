@@ -1,9 +1,9 @@
 <template>
   <!-- App -->
   <div>
-    <div w="950px" h="auto" overflow="x-hidden y-scroll">
+    <div w="900px" h="auto" overflow="x-hidden y-scroll">
       <!-- Header -->
-      <div class="flex gap-2 justify-center">
+      <div class="flex justify-center gap-2">
         <div v-for="(step, id, i) in stepper.steps.value" :key="id" class="">
           <button
           :class="allStepsBeforeAreValid(i) && !stepper.isBefore(id) ? 'bg-blue' : 'bg-secondary'"
@@ -19,11 +19,12 @@
           <div v-if="stepper.isCurrent('step1')">
             <div place="content-center" gap="2" flex="~ row">
               <!-- First Card -->
-              <div @click="steps.step1 = 0" :class="steps.step1 === 0 ? 'ease-in-out duration-300 scale-100 border-3 border-green' : 'ease-in-out duration-300 scale-90 border-3 border-secondary'" cursor="pointer" bg="secondary" w="300px" h="auto" rounded="xl" p-y="4">
+              <div @click="steps.step1 = 0" :class="steps.step1 === 0 ? 'ease-in-out duration-100 scale-100 bg-opacity-100 dark:bg-opacity-100' : 'ease-in-out duration-100 scale-90 bg-opacity-50 dark:bg-opacity-50'" cursor="pointer" bg="secondary dark:secondaryOp" w="300px" h="auto" rounded="xl" p-y="4">
                 <!-- Title and icon -->
-                <div align="center">
-                  <div class="i-fa:plane" w="80px" h="80px"></div>
-                  <span text="2xl" font="bold">اقتصادي</span><br>
+                <div justify="center">
+                  <div>
+                    <span text="2xl" font="bold">اقتصادي</span>
+                  </div>
                 </div>
                 <!-- Description -->
                 <div align="center" m-t="4" p-x="4">
@@ -34,23 +35,24 @@
                   <span text="md" font="bold"> يحتوي العرض على :</span>
                   <div gap="2" flex="~ col" m-t="4">
                     <div v-for="i in 3" :key="i" gap="2" flex="~ row">
-                      <div class="i-akar-icons:check" w="15px" h="15px"></div>
+                      <AppStoreIconCheck w="15px" h="15px" />
                       <span text="sm" font="medium"> 3000 منتج يتحمل </span>
                     </div>
                   </div>
                 </div>
                 <!-- Points -->
                 <div flex="~ row" gap="3" place="content-center" m-t="8">
-                  <div class="i-ri:copper-coin-fill" w="30px" h="30px"></div>
+                  <AppStoreIconCoin text="yellow-500 dark:yellow-400" w="30px" h="30px"/>
                   <span text="3xl" font="bold">5000</span>
                 </div>
               </div>
               <!-- Second Card -->
-              <div text="white" @click="steps.step1 = 1" :class="steps.step1 === 1 ? 'ease-in-out duration-300 scale-100 border-3 border-green' : 'ease-in-out duration-300 scale-90 border-3 border-blue-800'" cursor="pointer" bg="blue-800 dark:blue-800" w="300px" h="auto" rounded="xl" p-y="4">
+              <div @click="steps.step1 = 1" :class="steps.step1 === 1 ? 'ease-in-out duration-100 scale-100 bg-opacity-100 dark:bg-opacity-100' : 'ease-in-out duration-100 scale-90 bg-opacity-50 dark:bg-opacity-50'" cursor="pointer" bg="secondary dark:secondaryOp" w="300px" h="auto" rounded="xl" p-y="4">
                 <!-- Title and icon -->
-                <div align="center">
-                  <div class="i-icomoon-free:rocket" w="80px" h="80px"></div>
-                  <span text="2xl" font="bold">سوبر</span><br>
+                <div justify="center">
+                  <div>
+                    <span text="2xl blue-400" font="bold">سوبر</span>
+                  </div>
                 </div>
                 <!-- Description -->
                 <div align="center" m-t="4" p-x="4">
@@ -61,14 +63,42 @@
                   <span text="md" font="bold"> يحتوي العرض على :</span>
                   <div gap="2" flex="~ col" m-t="4">
                     <div v-for="i in 7" :key="i" gap="2" flex="~ row">
-                      <div class="i-akar-icons:check" w="15px" h="15px"></div>
+                      <AppStoreIconCheck w="15px" h="15px" />
                       <span text="sm" font="medium"> 3000 منتج يتحمل </span>
                     </div>
                   </div>
                 </div>
                 <!-- Points -->
                 <div flex="~ row" gap="3" place="content-center" m-t="8">
-                  <div class="i-ri:copper-coin-fill" w="30px" h="30px"></div>
+                  <AppStoreIconCoin text="yellow-500 dark:yellow-400" w="30px" h="30px"/>
+                  <span text="3xl" font="bold">10000</span>
+                </div>
+              </div>
+              <!-- Third Card -->
+              <div @click="steps.step1 = 2" :class="steps.step1 === 2 ? 'ease-in-out duration-100 scale-100 bg-opacity-100 dark:bg-opacity-100' : 'ease-in-out duration-100 scale-90 bg-opacity-50 dark:bg-opacity-50'" cursor="pointer" bg="info-400 dark:info" w="300px" h="auto" rounded="xl" p-y="4">
+                <!-- Title and icon -->
+                <div justify="center">
+                  <div>
+                    <span text="2xl" font="bold">شراء</span>
+                  </div>
+                </div>
+                <!-- Description -->
+                <div align="center" m-t="4" p-x="4">
+                  <span text="md" font="medium">استثمر بعرض ينطيك طن خدمات وبسعر خيالي</span>
+                </div>
+                <!-- Contains -->
+                <div align="start" m-t="4" p-x="4">
+                  <span text="md" font="bold"> يحتوي العرض على :</span>
+                  <div gap="2" flex="~ col" m-t="4">
+                    <div v-for="i in 15" :key="i" gap="2" flex="~ row">
+                      <AppStoreIconCheck w="15px" h="15px" />
+                      <span text="sm" font="medium"> 3000 منتج يتحمل </span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Points -->
+                <div flex="~ row" gap="3" place="content-center" m-t="8">
+                  <AppStoreIconCoin text="yellow-500 dark:yellow-400" w="30px" h="30px"/>
                   <span text="3xl" font="bold">10000</span>
                 </div>
               </div>
