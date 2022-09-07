@@ -9,16 +9,17 @@
         w="[82px]"
         h="[82px]"
       >
-        <div :class="service.icon" text="primary dark:primaryOp" w="41px" h="41px"></div>
+        <!-- Icon -->
+        <AppStoreIconApps w="41px" h="41px" text="primary dark:primaryOp"/>
       </div>
       <div v-if="service.owned" flex="~" justify="center" m-t="9px" w="82px" h="24px" grid="~ flow-row" class="place-items-center" rounded="sm" bg="primaryOp dark:secondaryOp">
-        <div class="i-akar-icons:check-box-fill" w="5" h="5" m-l="2" text="primary dark:primary"></div>
+        <AppStoreIconCheck w="5" h="5" m-l="2" text="primary dark:primary"/>
         <span text="md primary dark:primary" m-l="1">
-          done
+          مشترك
         </span>
       </div>
       <div v-else flex="~" justify="center" m-t="9px" w="82px" h="24px" grid="~ flow-row" class="place-items-center" rounded="sm" bg="primaryOp dark:secondaryOp">
-        <div class="i-ri:copper-coin-fill" w="5" h="5" m-l="2" text="primary dark:primary"></div>
+        <AppStoreIconCoin w="5" h="5" m-l="2" text="primary dark:primary"/>
         <span text="md primary dark:primary">
           {{service.points >0 ? service.points : 'مجانا' }}
         </span>

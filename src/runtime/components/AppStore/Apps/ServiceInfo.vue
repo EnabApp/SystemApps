@@ -16,7 +16,7 @@
         <div div flex="~">
           <!-- Icon -->
           <div w="151px" h="151px" bg="primaryOp dark:primary" rounded="lg" grid="~ flow-row" class="place-items-center">
-            <div :class="appStore.selectedService.icon" text="primary dark:primaryOp" w="88px" h="88px"></div>
+            <AppStoreIconApps text="primary dark:primaryOp" w="88px" h="88px"/>
           </div>
           <!-- Name and install -->
           <div m-r="50px" h="151px">
@@ -25,11 +25,11 @@
             <div flex="~">
               <!-- Loading -->
               <div v-if="loading" flex="~" justify="center" m-t="30px" w="122px" h="41px" grid="~ flow-row" class="place-items-center" rounded="lg" bg="yellow">
-                <div class="i-eos-icons:loading" w="5" h="5" m-l="2" text="primaryOp"></div>
+                <AppStoreIconLoading w="5" h="5" m-l="2" text="primaryOp"/>
               </div>
               <!-- Owned -->
               <div v-else-if="appStore.selectedService.owned" flex="~" justify="center" m-t="30px" w="122px" h="41px" grid="~ flow-row" class="place-items-center" rounded="lg" bg="green">
-                <div class="i-ci:check-bold" w="5" h="5" m-l="2" text="primaryOp"></div>
+                <AppStoreIconCheck w="5" h="5" m-l="2" text="primaryOp"/>
                 <span text="md primaryOp">
                   تم الشراء
                 </span>
@@ -37,13 +37,13 @@
               <!-- Not Owned -->
               <div v-else flex="~" m-t="3">
                 <span flex="~" text="md primaryOp dark:primary 2xl" m-l="4">
-                  <div class="i-ri:copper-coin-fill" w="32px" h="32px"></div> {{ appStore.selectedService.points > 0 ? appStore.selectedService.points : 'مجانا' }}
+                  <AppStoreIconCoin w="32px" h="32px"/> {{ appStore.selectedService.points > 0 ? appStore.selectedService.points : 'مجانا' }}
                 </span>
                 <div v-if="!appStore.selectedApp.owned">
                   <span text="primaryOp dark:primary 2xl"> يجب عليك شراء التطبيق لكي تقوم بشراء هذه الخدمة 🥰</span>
                 </div>
                 <div v-else @click="toggleModal()" cursor="pointer" flex="~" justify="center" w="122px" h="41px" grid="~ flow-row" class="place-items-center" rounded="lg" bg="primaryOp dark:primary">
-                  <div class="i-charm:download" w="5" h="5" m-l="2" text="primary dark:primaryOp"></div>
+                  <AppStoreIconInstall w="5" h="5" m-l="2" text="primary dark:primaryOp"/>
                   <span text="md primary dark:primaryOp" cursor="pointer">
                     {{ appStore.selectedService.points > 0 ? 'تنصيب' : 'مجانا' }}
                   </span>
