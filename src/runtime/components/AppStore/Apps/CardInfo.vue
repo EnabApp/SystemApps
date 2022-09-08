@@ -29,7 +29,7 @@
             </div>
             <!-- Owned -->
             <div v-else-if="appStore.selectedApp.owned" flex="~" justify="center" m-t="30px" w="122px" h="41px" grid="~ flow-row" class="place-items-center" rounded="lg" bg="green">
-              <AppStoreIconCkeck w="5" h="5" m-l="2" text="primaryOp"/>
+              <AppStoreIconCheck w="5" h="5" m-l="2" text="primaryOp"/>
               <span text="md primaryOp">
                 تم الشراء
               </span>
