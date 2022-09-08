@@ -1,6 +1,6 @@
 <template>
 <div m-t="19px">
-  <div flex="~">
+  <div flex="~" justify="between">
     <UiInput label="عراقي" placeholder="عراقي" rounded="xl" v-model="iqd" type="number" w="50" />
     <RechargeIconTransfers justify="items-center" text="primaryOp dark:primary"  m-t="20px"  w="40px" h="40px"/>
     <UiInput label="نقاط عنب" placeholder="نقاط عنب" rounded="xl" v-model="points" w="50" />
@@ -14,7 +14,10 @@ const iqd = ref(0)
 const points = ref(0)
 //convert
 watch(iqd, (newX) => {
-  points.value = newX * 1.5
+  points.value = newX * 0.5
+  watch(points, (newV) => {
+    iqd.value = newV / 0.5
+  })
 })
 // watch(points, (newX) => {
 //   iqd.value = newX % 3

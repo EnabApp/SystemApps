@@ -4,7 +4,7 @@
       <!-- Icon with Name -->
       <div w="250px" h="92px" rounded="lg" flex="~">
         <div h="64px" w="64px" bg="primaryOp dark:primary" m="16px" rounded="lg" grid="~ flow-row" class="place-content-center">
-          <div justify="items-center" class="i-ci:transfer" text="primary dark:primaryOp"  w="38px" h="32px"></div>
+          <RechargeIconTransfers justify="items-center" text="primary dark:primaryOp" w="38px" h="32px"/>
         </div>
         <div grid="~ flow-row" class="place-content-center" m-r="4px" align="center">
           <span text="primaryOp dark:primary xl">ستيفن مالك</span>

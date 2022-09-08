@@ -11,7 +11,7 @@
           <span text="primaryOp 5xl">Enab</span>
           <div m-t="36px">
             <span text="primaryOp 3xl" font="semibold">ستيفن الحمصي يا روحي</span>
-            <div flex="~" class="place-content-end" m-t="2">
+            <div flex="~" class="place-content-end" m-t="7">
               <span text="primaryOp 2xl" m-x="2">Ste7een al7umosy yaro7y</span>
             </div>
           </div>
@@ -26,12 +26,11 @@
         <div align="left" m-l="28px" m-t="37px" grid="~ flow-row">
           <span text="primaryOp 5xl">Enab</span>
           <div m-t="80px">
-            <span text="primaryOp 2xl">8784  8478  8274  9248</span><br>
-            <div m-t="36px">
-              <span text="primaryOp 3xl">المجموع الحالي</span>
+            <span text="primaryOp 2xl">8784 - 8478 - 8274 - 9248</span><br>
+            <div m-t="30px">
               <div flex="~" class="place-content-end">
                 <span text="primaryOp 3xl " m-x="2">1,999</span>
-                <div class="i-uil:processor" text="primary" w="40px" h="40px"></div>
+                <RechargeIconCoin text="primaryOp" w="40px" h="40px"/>
               </div>
             </div>
           </div>

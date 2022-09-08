@@ -18,6 +18,10 @@
               <RechargeHome v-if="appRecharge.selectedTab === 0" />
               <!-- Transfers Page -->
               <RechargeTransfers v-if="appRecharge.selectedTab === 1" />
+              <!-- Charge Page -->
+              <RechargeCharge v-if="appRecharge.selectedTab === 2" />
+              <!-- Gift Page -->
+              <RechargeGift v-if="appRecharge.selectedTab === 3" />
             </div>
           </div>
         </div>
