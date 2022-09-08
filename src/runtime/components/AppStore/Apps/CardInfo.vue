@@ -87,7 +87,7 @@
 </template>
 
 <script setup>
-import { useAppStore,useSupabaseClient, useAppManager, useNuxtApp ,ref,useToggle } from "#imports"
+import { useAppStore,useSupabaseClient, useAppManager ,ref,useToggle } from "#imports"
 
 const modalCanceled = () => {
   stateModal.value = false;
@@ -102,17 +102,15 @@ const loading = ref(false)
 const packs = ref(appStore.packs)
 const [stateModal, toggleModal] = useToggle(false);
 
-console.log(appStore.selectedApp.getAllServices())
 // Buy App Function
 const buyApp = async () => {
   stateModal.value = false;
-  const { $toast } = useNuxtApp();
     loading.value = true
     const data = await appManager.buyApp(appStore.selectedApp.id)
     if(data !== false)
-      $toast.success(" تم الاشتراك في " +appStore.selectedApp.title + " بنجاح 🥰")
-    loading.value = false
+      alert(" تم الاشتراك في " +appStore.selectedApp.title + " بنجاح 🥰");
     appStore.selectedApp.owned = true
+    loading.value = false
 };
 
 </script>
