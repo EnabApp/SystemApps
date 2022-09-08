@@ -15,7 +15,7 @@
           <div grid="~ flow-col" justify="between">
             <div grid="~ flow-col" m="17px">
               <div m-l="2" bg="primaryOp dark:primary" m-r="2" w="[64px]" h="[64px]" rounded="lg" grid="~ flow-row" class="place-content-center">
-                <div class="i-fluent:library-16-filled" w="32px" h="32px" text="primary dark:primaryOp"></div>
+                <RechargeIconTransfers text="primary dark:primaryOp"  w="32px" h="32px"/>
               </div>
               <div grid="~ flow-row" text="primary">
                 <span text="2xl">حسن خالد</span>

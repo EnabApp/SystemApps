@@ -3,7 +3,7 @@
     <!-- state card -->
     <div bg="primaryOp dark:primary" w="250px" h="92px" rounded="lg" flex="~">
       <div h="64px" w="64px" bg="primary dark:primaryOp" m="16px" rounded="lg" grid="~ flow-row" class="place-content-center">
-        <div justify="items-center" class="i-fa6-solid:money-bill-trend-up" text="primaryOp dark:primary"  w="38px" h="32px"></div>
+        <RechargeIconCharge text="primaryOp dark:primary"  w="38px" h="32px"/>
       </div>
       <div grid="~ flow-row" class="place-content-center" m-r="23px" align="center">
         <span text="primary dark:primaryOp xl">الشحن</span>
@@ -13,7 +13,7 @@
     <!-- state card -->
     <div bg="primaryOp dark:primary" w="250px" h="92px" rounded="lg" flex="~">
       <div h="64px" w="64px" bg="primary dark:primaryOp" m="16px" rounded="lg" grid="~ flow-row" class="place-content-center">
-        <div justify="items-center" class="i-ci:transfer" text="primaryOp dark:primary"  w="38px" h="32px"></div>
+        <RechargeIconTransfers text="primaryOp dark:primary"  w="38px" h="32px"/>
       </div>
       <div grid="~ flow-row" class="place-content-center" m-r="23px" align="center">
         <span text="primary dark:primaryOp xl">الصرفيات</span>
