@@ -2,13 +2,13 @@
   <!-- Application -->
   <Suspense>
     <!-- component with nested async dependencies -->
-    <div class="flex" bg="primary dark:primaryOp" h="full" pt="4">
+    <div ref="windowRef" flex="~" bg="primary dark:primaryOp" h="full" pt="4">
       <!-- sidebar -->
-      <div flex="~" justify="center" min-w="96px">
+      <div v-if="!(breakpoint.twoXs || breakpoint.xs || breakpoint.sm)" flex="~" justify="center" min-w="96px">
         <AppStoreSidebar w="[64px]" />
       </div>
       <!-- Header and Content  { 104px m-x } -->
-      <div flex="grow" px="10">
+      <div relative="~" flex="grow" px="10" >
         <!-- Header -->
         <AppStoreHeader />
         <div class="overflow-x-hidden overflow-y-scroll hide-scroll" h="cuts">
@@ -16,7 +16,7 @@
           <TransitionGroup>
             <div
               v-if="appStore.selectedApp === null && appStore.selectedPack === null && appStore.selectedService === null">
-              <LazyAppStoreHome v-if="appStore.selectedTab === 0" />
+              <LazyAppStoreHome :breakpoints="breakpoints" v-if="appStore.selectedTab === 0" />
               <LazyAppStoreApps v-if="appStore.selectedTab === 1" />
               <LazyAppStoreMyApps v-if="appStore.selectedTab === 2" />
             </div>
@@ -32,6 +32,8 @@
             <AppStoreAppsServiceInfo v-if="appStore.selectedService !== null" key="serviceInfoPage" />
           </TransitionGroup>
         </div>
+        <!-- ButtomBar -->
+        <AppStoreButtomBar v-if="breakpoint.twoXs || breakpoint.xs || breakpoint.sm"/>
       </div>
     </div>
 
@@ -46,7 +48,8 @@
 </template>
 
 <script setup>
-import { useAppStore, useAppManager, useUser, useSupabaseClient , useUserProfile  } from "#imports"
+import { useAppStore, useAppManager, useUser, useSupabaseClient , useUserProfile , useBreakpointWindow , watch } from "#imports"
+import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
 
 const appStore = useAppStore()
 const appManager = useAppManager()
@@ -60,13 +63,7 @@ appStore.apps = appManager.getApps
 // Set use_id to composable
 appStore.user_id = user.value.id
 
-// Set points to composable
-// const { data, error } = await supabase
-//   .from('user_protected')
-//   .select('points')
-//   .eq('user_id', user.value.id)
-
-  appStore.points = 999
+appStore.points = 999
 
 const props = defineProps({
   app: {
@@ -75,8 +72,18 @@ const props = defineProps({
   },
 });
 
-///////////////////////////////
+///////////// Breakpoints  //////////////////
 
+const windowRef = ref(null)
+const breakpoints = useBreakpointWindow(windowRef)
+
+appStore.setBreakpoints(breakpoints)
+watch(()=>breakpoints,(newBreakpoints)=>{
+  appStore.setBreakpoints(breakpoints)
+},{
+  deep:true
+})
+const breakpoint = appStore.getBreakpoints
 </script>
 <style>
 /* Hide scrollbar for Chrome, Safari and Opera */

@@ -1,13 +1,10 @@
 <template>
 <div class="flex justify-between grid-cols-3">
-  <div class="flex place-items-center">
-    <UiInput v-model="search" placeholder="البحث عن تطبيق" bg="primary dark:primaryOp" rounded="lg" icon="i-akar-icons:search" w="[484px]" />
+  <div v-if="!(breakpoint.twoXs || breakpoint.xs || breakpoint.sm)" class="flex place-items-center"  w="25%">
+    <UiInput v-model="search" placeholder="البحث عن تطبيق" bg="primary dark:primaryOp" rounded="lg" icon="i-akar-icons:search" w="100%" />
   </div>
-  <!-- <div class="flex place-items-center">
-    <span hover="cursor-pointer" text="primaryOp dark:primary" m-l="6">الخدمات</span>
-    <span hover="cursor-pointer" text="primaryOp dark:primary" m-l="6">التطبيقات</span>
-    <span hover="cursor-pointer" text="primaryOp dark:primary" m-l="6">الحزم</span>
-  </div> -->
+  <AppStoreIconSearch @mouseover="searchHover = true" @mouseleave="searchHover = false" v-else w="24px" h="24px" text="primaryOp dark:primary" />
+  <UiInput v-if="searchHover" w="25%" v-model="search" placeholder="البحث عن تطبيق" bg="primary dark:primaryOp" rounded="lg" icon="i-akar-icons:search"  />
   <div class="flex place-items-center">
     <AppStoreIconCoin text="primary" w="32px" h="32px"/>
     <span text="primaryOp dark:primary" m-r="3" >{{appStore.points}}</span>
@@ -23,6 +20,7 @@ const appStore = useAppStore()
 const skeleton = ref(true)
 
 const search = ref('')
+const searchHover = ref(false)
 appStore.search = search
 
 watch(search.value, (newX) => {
@@ -37,7 +35,7 @@ watch(
   }
 )
 
-if(appStore.points != 0) skeleton.value = false
+const breakpoint = appStore.getBreakpoints
 </script>
 
 <style>
