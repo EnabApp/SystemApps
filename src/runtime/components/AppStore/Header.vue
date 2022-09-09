@@ -9,9 +9,8 @@
     <span hover="cursor-pointer" text="primaryOp dark:primary" m-l="6">الحزم</span>
   </div> -->
   <div class="flex place-items-center">
-    <div class="i-ri:copper-coin-fill" text="primaryOp dark:primary" w="[32px]" h="[32px]"></div>
-    <span v-if="skeleton" text="primaryOp dark:primary" m-r="3" >Loading...</span>
-    <span v-else text="primaryOp dark:primary" m-r="3" >{{appStore.points}}</span>
+    <AppStoreIconCoin text="primary" w="32px" h="32px"/>
+    <span text="primaryOp dark:primary" m-r="3" >{{appStore.points}}</span>
   </div>
 </div>
 </template>
