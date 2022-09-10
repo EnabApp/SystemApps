@@ -1,40 +1,40 @@
 <template>
   <div m-t="90px">
-    <div bg="secondaryOp dark:secondary" rounded="lg" flex="~" grid="~ flow-row gap-120px" h="81px" class="place-items-center" align="center">
-      <span w="full" text="primary dark:primaryOp xl">التطبيق</span>
-      <span w="full" text="primary dark:primaryOp xl">تاريخ الشراء</span>
-      <span w="full" text="primary dark:primaryOp xl">موعد الانتهاء</span>
-      <span w="full" text="primary dark:primaryOp xl">المدفوع</span>
-      <!-- <span w="full" text="primary dark:primaryOp xl">...</span> -->
+    <div flex="~" items="center" justify="center" h="auto" w="full" py="4">
+      <div flex="~ row" justify="around" w="85%" h="full" bg="secondaryOp dark:secondary" rounded="lg">
+        <div>
+          <span w="full" text="primary dark:primaryOp xl">التطبيق</span>
+        </div>
+        <div>
+          <span w="full" text="primary dark:primaryOp xl">تاريخ الشراء</span>
+        </div>
+        <div>
+          <span w="full" text="primary dark:primaryOp xl">موعد الانتهاء</span>
+        </div>
+        <div>
+          <span w="full" text="primary dark:primaryOp xl">المدفوع</span>
+        </div>
+      </div>
     </div>
-    <div h="420px" m-t="2" class="overflow-x-hidden overflow-y-scroll ">
-      <div v-for="app in appStore.ownedAppsWithoutCore" :key="'app-' + app.id"  flex="~" grid="~ flow-row gap-120px" h="81px" class="place-items-center" align="center">
-        <div flex="~" place="items-center" w="full">
-          <div
-            :class="app.icon"
-            text="primaryOp dark:primary"
-            w="[64px]"
-            h="[64px]"
-          ></div>
+    <div h="420px" m-t="2" overflow="y-scroll">
+      <div flex="~ col gap-y-4" items="center" justify="center" h="auto" w="full" py="4">
+        <div v-for="app in appStore.ownedAppsWithoutCore" :key="'app-' + app.id" flex="~ row" justify="around" w="85%">
+          <div flex="~" w="auto">
+            <component text="primary" w="64px" h="64px" :is="`${app.name}Icon`"></component>
+            <span text="primaryOp dark:primary xl" mr="2">{{app.title}}</span>
+          </div>
           <div>
-            <span text="primaryOp dark:primary md">{{app.title}}</span><br>
+            <span w="full" text="primaryOp dark:primary xl"> 05/8/2021</span>
+          </div>
+          <div w="auto">
+            <div :class="6 <= 10 ? 'bg-warning' : 'bg-green'" w="74px" h="34px" rounded="lg" align="center" cursor="pointer">
+              <span text="primaryOp xl" justify="center">6 يوم</span>
+            </div>
+          </div>
+          <div>
+            <span xw="full" text="primaryOp dark:primary xl">{{app.points}}</span>
           </div>
         </div>
-        <span w="full" text="dark:primary primaryOp xl">05/8/2021</span>
-        <div w="full">
-          <div :class="6 <= 10 ? 'bg-warning' : 'bg-green'" w="74px" h="34px" rounded="lg" align="center" cursor="pointer">
-            <span text="primaryOp xl" justify="center">6 يوم</span>
-          </div>
-        </div>
-        <span w="full" text="dark:primary primaryOp xl">{{app.points}}</span>
-        <!-- <div flex="~" w="full">
-          <div bg="red" w="96px" h="31px" rounded="lg" align="center" cursor="pointer">
-            <span text="primary xl">تعطيل</span>
-          </div>
-          <div bg="primaryOp dark:primary" w="31px" h="31px" m-r="2" rounded="lg" align="center" cursor="pointer">
-            <span text="dark:primaryOp primary xl">...</span>
-          </div>
-        </div> -->
       </div>
     </div>
   </div>
@@ -44,6 +44,7 @@
 import { useAppStore } from "#imports"
 
 const appStore = useAppStore();
+const breakpoint = appStore.getBreakpoints
 
 </script>
 
