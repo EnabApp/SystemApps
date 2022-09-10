@@ -4,7 +4,7 @@
 
     <!-- App Icon -->
     <div h="full" w="60%">
-      <component text="primaryOp" h="full" w="full" :is="`${app.name}Icon`"></component>
+      <component text="primary dark:primaryOp" h="full" w="full" :is="`${app.name}Icon`"></component>
     </div>
 
     <div flex="~ col gap-2" justify="center" items="center">
@@ -16,11 +16,11 @@
           <span text="sm primary dark:primaryOp">
             {{ app.points > 0 ? app.points : "مجانا" }}
           </span>
-          <AppStoreIconCoin h="4" w="4"/>
+          <AppStoreIconCoin text="primary dark:primaryOp" h="4" w="4"/>
         </div>
 
       <div v-else rounded="~" text="sm primary dark:primaryOp">
-        <AppStoreIconCheck h="6" w="6"/>
+        <AppStoreIconCheck text="primary dark:primaryOp" h="6" w="6"/>
       </div>
     </div>
   </div>

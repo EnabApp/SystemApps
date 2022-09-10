@@ -11,7 +11,7 @@
       <div w="100%" mx="3" justify="center">
         <!-- Header -->
         <AppStoreHeader />
-        <div class="overflow-y-scroll hide-scroll" h="cuts">
+        <div class="hide-scroll" overflow="y-scroll" h="cuts">
           <!-- Pages -->
           <TransitionGroup>
             <div v-if="appStore.selectedApp === null && appStore.selectedPack === null && appStore.selectedService === null">
