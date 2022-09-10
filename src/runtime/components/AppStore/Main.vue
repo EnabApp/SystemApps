@@ -5,17 +5,16 @@
     <div ref="windowRef" flex="~" bg="primary dark:primaryOp" h="full" pt="4">
       <!-- sidebar -->
       <div v-if="!(breakpoint.twoXs || breakpoint.xs || breakpoint.sm)" flex="~" justify="center" min-w="96px">
-        <AppStoreSidebar w="[64px]" />
+        <AppStoreSidebar w="64px" />
       </div>
       <!-- Header and Content  { 104px m-x } -->
-      <div relative="~" flex="grow" px="10" >
+      <div w="100%" mx="3" justify="center">
         <!-- Header -->
         <AppStoreHeader />
-        <div class="overflow-x-hidden overflow-y-scroll hide-scroll" h="cuts">
+        <div class="overflow-y-scroll hide-scroll" h="cuts">
           <!-- Pages -->
           <TransitionGroup>
-            <div
-              v-if="appStore.selectedApp === null && appStore.selectedPack === null && appStore.selectedService === null">
+            <div v-if="appStore.selectedApp === null && appStore.selectedPack === null && appStore.selectedService === null">
               <LazyAppStoreHome :breakpoints="breakpoints" v-if="appStore.selectedTab === 0" />
               <LazyAppStoreApps v-if="appStore.selectedTab === 1" />
               <LazyAppStoreMyApps v-if="appStore.selectedTab === 2" />

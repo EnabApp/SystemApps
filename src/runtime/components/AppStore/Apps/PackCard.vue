@@ -1,6 +1,6 @@
 <template>
   <!-- Pack -->
-  <div @click="appStore.setSelectedPack(pack)" cursor="pointer" grid="~ flow-col" class="col-span-2 place-items-center" w="100%" h="160px" rounded="lg" bg="primaryOp dark:primary">
+  <div @click="appStore.setSelectedPack(pack)" cursor="pointer" class="col-span-2" flex="~" justify="around" items="center" w="100%" max-w="280px" min-w="260px" h="160px" rounded="lg" bg="primaryOp dark:primary">
     <div grid="~ flow-row" m-r="2">
       <div
         class="grid grid-cols-2 place-items-center"
