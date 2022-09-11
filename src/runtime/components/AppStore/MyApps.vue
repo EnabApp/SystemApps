@@ -1,42 +1,24 @@
 <template>
-  <div m-t="90px">
-    <div flex="~" items="center" justify="center" h="auto" w="full" py="4">
-      <div flex="~ row" justify="around" w="85%" h="full" bg="secondaryOp dark:secondary" rounded="lg">
-        <div>
-          <span w="full" text="primary dark:primaryOp xl">التطبيق</span>
+  <div flex="~" w="full" items="center" justify="center">
+    <div w="95%"  m-t="2" flex="~ col gap-2" overflow="y-scroll">
+      <div v-for="app in appStore.apps" :key="'app-' + app.id" p="2" rounded="xl"  grid="~ cols gap-3" border="1 secondaryOp" :class="(breakpoint.twoXs) ? 'grid-cols-2' : 'grid-cols-4'">
+        <div flex="~ row gap-2" :class="(breakpoint.twoXs) ? 'col-start-1 col-end-2' : '' ">
+          <component text="primaryOp dark:primary" w="24px" h="24px" :is="`${app.name}Icon`"></component>
+          <span text="primaryOp dark:primary" >{{app.title}}</span>
         </div>
-        <div>
-          <span w="full" text="primary dark:primaryOp xl">تاريخ الشراء</span>
+        <div :class="(breakpoint.twoXs) ? 'col-start-3 col-end-4' : '' ">
+          <span w="full" text="primaryOp dark:primary xl"> 05/8/2021</span>
         </div>
-        <div>
-          <span w="full" text="primary dark:primaryOp xl">موعد الانتهاء</span>
+        <div :class="(breakpoint.twoXs) ? 'col-start-1 col-end-2' : '' ">
+          <span :text="expire ? 'primaryOp dark:primary xl' : 'green'">6 يوم</span>
         </div>
-        <div>
-          <span w="full" text="primary dark:primaryOp xl">المدفوع</span>
-        </div>
-      </div>
-    </div>
-    <div h="420px" m-t="2" overflow="y-scroll">
-      <div flex="~ col gap-y-4" items="center" justify="center" h="auto" w="full" py="4">
-        <div v-for="app in appStore.ownedAppsWithoutCore" :key="'app-' + app.id" flex="~ row" justify="around" w="85%">
-          <div flex="~" w="auto">
-            <component text="primary" w="64px" h="64px" :is="`${app.name}Icon`"></component>
-            <span text="primaryOp dark:primary xl" mr="2">{{app.title}}</span>
-          </div>
-          <div>
-            <span w="full" text="primaryOp dark:primary xl"> 05/8/2021</span>
-          </div>
-          <div w="auto">
-            <div :class="6 <= 10 ? 'bg-warning' : 'bg-green'" w="74px" h="34px" rounded="lg" align="center" cursor="pointer">
-              <span text="primaryOp xl" justify="center">6 يوم</span>
-            </div>
-          </div>
-          <div>
-            <span xw="full" text="primaryOp dark:primary xl">{{app.points}}</span>
-          </div>
+        <div flex="~ row gap-2" :class="(breakpoint.twoXs) ? 'col-start-3 col-end-4' : '' ">
+          <AppStoreIconCoin text="primary" w="24px" h="24px"/>
+          <span text="primaryOp dark:primary xl">{{app.points}}</span>
         </div>
       </div>
     </div>
+    <!-- new -->
   </div>
 </template>
 
@@ -45,7 +27,21 @@ import { useAppStore } from "#imports"
 
 const appStore = useAppStore();
 const breakpoint = appStore.getBreakpoints
-
+const expire = 5
+const headers = [
+  {
+    title: "التطبيق",
+  },
+  {
+    title: "تاريخ الشراء",
+  },
+  {
+    title: "موعد الانتهاء",
+  },
+  {
+    title: "المدفوع",
+  },
+]
 </script>
 
 <style>

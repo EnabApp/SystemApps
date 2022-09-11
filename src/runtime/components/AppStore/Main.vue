@@ -32,7 +32,7 @@
           </TransitionGroup>
         </div>
         <!-- ButtomBar -->
-        <AppStoreButtomBar v-if="breakpoint.twoXs || breakpoint.xs || breakpoint.sm"/>
+        <AppStoreBottomBar v-if="breakpoint.twoXs || breakpoint.xs || breakpoint.sm"/>
       </div>
     </div>
 
