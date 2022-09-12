@@ -94,6 +94,11 @@ const buy = async () => {
   loading.value = false
   appStore.selectedService.owned = true
 }
+
+window.onpopstate = function () {
+  history.go(1);
+  appStore.selectedService = null
+};
 </script>
 
 <style>

@@ -202,7 +202,7 @@ export const useAppStore = defineStore("appStore", {
     },
     setBreakpoints(breakpoints : any){
       this.breakpoints = breakpoints
-    }
+    },
   },
 });
 

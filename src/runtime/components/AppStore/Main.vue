@@ -4,7 +4,7 @@
     <!-- component with nested async dependencies -->
     <div ref="windowRef" flex="~" bg="primary dark:primaryOp" h="full" pt="4">
       <!-- sidebar -->
-      <div v-if="!(breakpoint.twoXs || breakpoint.xs || breakpoint.sm)" flex="~" justify="center" min-w="96px">
+      <div v-if="!(breakpoint.twoXs || breakpoint.xs || breakpoint.sm || breakpoint.md)" flex="~" justify="center" min-w="96px">
         <AppStoreSidebar w="64px" />
       </div>
       <!-- Header and Content  { 104px m-x } -->
@@ -32,7 +32,7 @@
           </TransitionGroup>
         </div>
         <!-- ButtomBar -->
-        <AppStoreBottomBar v-if="breakpoint.twoXs || breakpoint.xs || breakpoint.sm"/>
+        <AppStoreBottomBar v-if="breakpoint.twoXs || breakpoint.xs || breakpoint.sm || breakpoint.md"/>
       </div>
     </div>
 
@@ -70,7 +70,6 @@ const props = defineProps({
     required: true,
   },
 });
-
 ///////////// Breakpoints  //////////////////
 
 const windowRef = ref(null)

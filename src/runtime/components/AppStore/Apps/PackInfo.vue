@@ -59,6 +59,13 @@ import { useAppStore } from '#imports'
 const appStore = useAppStore()
 
 const pack = appStore.selectedPack
+
+window.onpopstate = function () {
+  history.go(1);
+  appStore.selectedService = null
+  appStore.selectedApp = null
+  appStore.selectedPack = null
+};
 </script>
 
 <style>

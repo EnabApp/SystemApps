@@ -1,10 +1,12 @@
 <template>
-<div class="flex justify-between grid-cols-3">
+<div class="flex justify-between grid-cols-3" w="90%">
   <div v-if="!(breakpoint.twoXs || breakpoint.xs || breakpoint.sm)" class="flex place-items-center"  w="25%">
     <UiInput v-model="search" placeholder="البحث عن تطبيق" bg="primary dark:primaryOp" rounded="lg" icon="i-akar-icons:search" w="100%" />
   </div>
-  <AppStoreIconSearch @mouseover="searchHover = true" @mouseleave="searchHover = false" v-else w="24px" h="24px" text="primaryOp dark:primary" />
-  <UiInput v-if="searchHover" w="25%" v-model="search" placeholder="البحث عن تطبيق" bg="primary dark:primaryOp" rounded="lg" icon="i-akar-icons:search"  />
+  <div v-else flex="~ gap-3">
+    <AppStoreIconSearch @mouseover="searchHover = true" @mouseleave="searchHover = false" w="24px" h="24px" text="primaryOp dark:primary" />
+    <UiInput v-if="searchHover" w="100%" v-model="search" placeholder="البحث عن تطبيق" bg="primary dark:primaryOp" rounded="lg" icon="i-akar-icons:search"  />
+  </div>
   <div class="flex place-items-center">
     <AppStoreIconCoin text="primary" w="32px" h="32px"/>
     <span text="primaryOp dark:primary" m-r="3" >{{appStore.points}}</span>
