@@ -31,10 +31,9 @@
             ? 'w-60%'
             : 'w-95%'
         "
-        bg="error"
       >
         <!-- Icom ,Name and install -->
-        <div flex="~ gap-3" items="center" w="full" h="auto" bg="info">
+        <div flex="~ gap-3" items="center" w="full" h="auto">
           <!-- Icon -->
           <component
             text="primaryOp dark:primary"
@@ -44,7 +43,7 @@
             :is="`${appStore.selectedApp.name}Icon`"
           ></component>
           <!-- Name and install -->
-          <div h="full" bg="warning">
+          <div h="full">
             <span text="primaryOp dark:primary 3xl" font="semibold" m-b="3%">
               {{ appStore.selectedApp.title }}
             </span><br>
@@ -182,7 +181,6 @@
               ? 'w-30%'
               : 'w-95%'
           "
-        bg="info"
         flex="~ col"
         items="center">
         <span text="priamryOp dark:primary" font="bold"
