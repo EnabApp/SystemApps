@@ -14,8 +14,8 @@ appManager.addApp({
     "title": "متجر التطبيقات",
     "owned":true,
     "points":4000,
-    "minWidth": 300,
-    "minHeight": 200,
+    "minWidth": 450,
+    "minHeight": 495,
     "maximized": true,
     "maximizable":true,
     "resizeable":false
