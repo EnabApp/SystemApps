@@ -6,7 +6,7 @@
         v-if="banner"
         class="transition-all duration-300 ease-in delay-75"
         w="full"
-        h="3xl:140 2xl:120 xl:80 lg:60 md:40 sm:40"
+        :h="(breakpoint.twoXs || breakpoint.xs || breakpoint.sm) ? '40' : breakpoint.md ? '40' : breakpoint.lg ? '60' : breakpoint.xl ? '80' : breakpoint.twoXl ? '120' : '120' "
         rounded="lg"
         :src="banner.src"
       />
@@ -20,6 +20,7 @@ import { useCycleList } from "@vueuse/core";
 
 const appManager = useAppManager();
 const appStore = useAppStore();
+const breakpoint = appStore.getBreakpoints
 
 const apps = computed(() => appManager.getApps);
 

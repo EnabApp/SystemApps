@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Back Button -->
-    <div m-t="29px">
+    <div v-if="!breakpoint.twoXs">
       <div @click="appStore.serviceBack()" cursor="pointer" flex="~" justify="center" m-t="30px" w="122px" h="41px" grid="~ flow-row" class="place-items-center">
         <AppStoreIconBack w="5" h="5" m-l="2" text="primaryOp dark:primary"/>
         <span text="xl primaryOp dark:primary">
@@ -9,9 +9,9 @@
         </span>
       </div>
     </div>
-    <div flex="~" m-t="10px">
+    <div flex="~" m-t="2%">
       <!-- Main Section -->
-      <div flex="grow">
+      <div flex="~ col">
         <!-- Icom ,Name and install -->
         <div div flex="~">
           <!-- Icon -->
@@ -20,46 +20,41 @@
           </div>
           <!-- Name and install -->
           <div m-r="50px" h="151px">
-            <h1 text="primaryOp dark:primary 3xl" font="semibold" m-b="13px">{{ appStore.selectedService.title }}</h1>
-            <span text="primaryOp dark:secondaryOp 2xl" font="light">خدمة</span>
+            <!-- Name -->
+            <span text="primaryOp dark:primary 3xl" font="semibold" m-b="3%">
+              {{ appStore.selectedService.title }}
+            </span><br>
+            <!-- Type -->
+            <span text="primaryOp dark:primary xl" font="light">خدمة</span>
+            <!-- Buttons state -->
             <div flex="~">
               <!-- Loading -->
-              <div v-if="loading" flex="~" justify="center" m-t="30px" w="122px" h="41px" grid="~ flow-row" class="place-items-center" rounded="lg" bg="yellow">
-                <AppStoreIconLoading w="5" h="5" m-l="2" text="primaryOp"/>
+              <div v-if="loading" flex="~" justify="center" m-t="30px" w="122px" h="41px" rounded="lg" bg="yellow">
+                <AppStoreIconLoading w="5" h="5" m-l="2" text="primaryOp" />
               </div>
               <!-- Owned -->
-              <div v-else-if="appStore.selectedService.owned" flex="~" justify="center" m-t="30px" w="122px" h="41px" grid="~ flow-row" class="place-items-center" rounded="lg" bg="green">
-                <AppStoreIconCheck w="5" h="5" m-l="2" text="primaryOp"/>
-                <span text="md primaryOp">
-                  تم الشراء
-                </span>
+              <div v-else-if="appStore.selectedApp.owned" flex="~" justify="center" m-t="30px" w="122px" h="41px" grid="~ flow-row" class="place-items-center" rounded="lg" bg="green">
+                <AppStoreIconCheck w="5" h="5" m-l="2" text="primaryOp" />
+                <span text="md primaryOp"> تم الشراء </span>
               </div>
               <!-- Not Owned -->
               <div v-else flex="~" m-t="3">
                 <span flex="~" text="md primaryOp dark:primary 2xl" m-l="4">
                   <AppStoreIconCoin w="32px" h="32px"/> {{ appStore.selectedService.points > 0 ? appStore.selectedService.points : 'مجانا' }}
                 </span>
-                <div v-if="!appStore.selectedApp.owned">
-                  <span text="primaryOp dark:primary 2xl"> يجب عليك شراء التطبيق لكي تقوم بشراء هذه الخدمة 🥰</span>
-                </div>
-                <div v-else @click="toggleModal()" cursor="pointer" flex="~" justify="center" w="122px" h="41px" grid="~ flow-row" class="place-items-center" rounded="lg" bg="primaryOp dark:primary">
+                <div v-if="appStore.selectedApp.owned" @click="toggleModal()" cursor="pointer" flex="~" justify="center" w="122px" h="41px" grid="~ flow-row" class="place-items-center" rounded="lg" bg="primaryOp dark:primary">
                   <AppStoreIconInstall w="5" h="5" m-l="2" text="primary dark:primaryOp"/>
                   <span text="md primary dark:primaryOp" cursor="pointer">
                     {{ appStore.selectedService.points > 0 ? 'تنصيب' : 'مجانا' }}
                   </span>
                 </div>
               </div>
-              <!-- Buy service Modal -->
-              <Teleport to="body">
-                <UiModal v-model="stateModal" cancel="الغاء" confirm="اشتراك" @confirm="buy()" @cancel="modalCanceled" align="center">
-                  <template v-slot:title>تأكيد عملية الاشتراك</template>
-                  <span text="primaryOp dark:primary 2xl center" m="3">هل انت متأكد من اشتراكك في الخدمة ( {{ appStore.selectedService.title }} )</span>
-                  <hr m="4">
-                  <UiButton color="primary" w="32" @click="buy()">شراء</UiButton>
-                </UiModal>
-              </Teleport>
             </div>
           </div>
+        </div>
+        <!-- Check -->
+        <div v-if="!appStore.selectedApp.owned">
+          <span text="primaryOp dark:primary 2xl"> يجب عليك شراء التطبيق لكي تقوم بشراء هذه الخدمة 🥰</span>
         </div>
         <!-- Content -->
         <div m-t="31px" m-l="72px">
@@ -67,6 +62,15 @@
         </div>
       </div>
     </div>
+    <!-- Buy service Modal -->
+    <Teleport to="body">
+      <UiModal v-model="stateModal" cancel="الغاء" confirm="اشتراك" @confirm="buy()" @cancel="modalCanceled" align="center">
+        <template v-slot:title>تأكيد عملية الاشتراك</template>
+        <span text="primaryOp dark:primary 2xl center" m="3">هل انت متأكد من اشتراكك في الخدمة ( {{ appStore.selectedService.title }} )</span>
+        <hr m="4">
+        <UiButton color="primary" w="32" @click="buy()">شراء</UiButton>
+      </UiModal>
+    </Teleport>
   </div>
 </template>
 
@@ -94,6 +98,12 @@ const buy = async () => {
   loading.value = false
   appStore.selectedService.owned = true
 }
+
+window.onpopstate = function () {
+  history.go(1);
+  appStore.selectedService = null
+};
+const breakpoint = appStore.getBreakpoints;
 </script>
 
 <style>

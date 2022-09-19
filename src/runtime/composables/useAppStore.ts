@@ -9,6 +9,7 @@ export const useAppStore = defineStore("appStore", {
     selectedService: ref(null),
     selectedPack: ref(null),
     search: ref(null),
+    breakpoints : null ,
     apps: ref([]),
     services: ref([]),
     packs: ref([
@@ -131,6 +132,8 @@ export const useAppStore = defineStore("appStore", {
     ownedAppsWithoutCore: (state) => state.apps.filter((app) => app.title.includes(state.search) && !app.core && app.owned),
     // Get core apps with filter
     coreApps: (state) => state.apps.filter((app) => app.title.includes(state.search) && app.core),
+    // Get breakpoints
+    getBreakpoints: (state) => state.breakpoints,
   },
 
   actions: {
@@ -196,7 +199,10 @@ export const useAppStore = defineStore("appStore", {
 
       if (error) console.error(error)
       else console.log(data)
-    }
+    },
+    setBreakpoints(breakpoints : any){
+      this.breakpoints = breakpoints
+    },
   },
 });
 
