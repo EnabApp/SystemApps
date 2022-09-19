@@ -58,11 +58,12 @@ const userProfile = useUserProfile()
 
 // Set apps to composable
 appStore.apps = appManager.getApps
-
+const allPacks = appManager.getPacks
+console.log(allPacks)
 // Set use_id to composable
 appStore.user_id = user.value.id
 
-appStore.points = 999
+appStore.points = userProfile.getPoints
 
 const props = defineProps({
   app: {
