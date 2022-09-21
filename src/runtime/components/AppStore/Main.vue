@@ -56,13 +56,12 @@ const supabase = useSupabaseClient()
 const user = useUser()
 const userProfile = useUserProfile()
 
-// Set apps to composable
-appStore.apps = appManager.getApps
 const allPacks = appManager.getPacks
 console.log(allPacks)
-// Set use_id to composable
-appStore.user_id = user.value.id
 
+// Set use_id , points and apps to composable
+appStore.apps = appManager.getApps
+appStore.user_id = user.value.id
 appStore.points = userProfile.getPoints
 
 const props = defineProps({
@@ -71,17 +70,19 @@ const props = defineProps({
     required: true,
   },
 });
-///////////// Breakpoints  //////////////////
+///////////// Breakpoints //////////////////
 
 const windowRef = ref(null)
 const breakpoints = useBreakpointWindow(windowRef)
 
+//set breakpoints to composable
 appStore.setBreakpoints(breakpoints)
 watch(()=>breakpoints,(newBreakpoints)=>{
   appStore.setBreakpoints(breakpoints)
 },{
   deep:true
 })
+
 const breakpoint = appStore.getBreakpoints
 </script>
 <style>
