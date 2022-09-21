@@ -57,8 +57,8 @@ const user = useUser()
 const userProfile = useUserProfile()
 
 onMounted(() => {
-  appManager.fetchPacks
-  const allPacks = appManager.getPacks
+  appManager.fetchPacks()
+  appStore.packs = appManager.getPacks
 })
 
 
