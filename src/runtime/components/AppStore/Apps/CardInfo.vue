@@ -142,18 +142,14 @@ const buyApp = async () => {
   stateModal.value = false;
   loading.value = true;
   const data = await appManager.buyApp(appStore.selectedApp.id);
-  if (data !== false)
+  if (data !== false){
     alert(" تم الاشتراك في " + appStore.selectedApp.title + " بنجاح 🥰");
+    console.log(data)
+  }
   appStore.selectedApp.owned = true;
   loading.value = false;
 };
 
-window.onpopstate = function () {
-  history.go(1);
-  appStore.selectedService = null;
-  appStore.selectedApp = null;
-  appStore.selectedPack = null;
-};
 const breakpoint = appStore.getBreakpoints;
 </script>
 

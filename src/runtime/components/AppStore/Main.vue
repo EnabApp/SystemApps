@@ -56,17 +56,13 @@ const supabase = useSupabaseClient()
 const user = useUser()
 const userProfile = useUserProfile()
 
-onMounted(() => {
-  appManager.fetchPacks()
-  appStore.packs = appManager.getPacks
-})
-
 
 // Set use_id , points and apps to composable
 appStore.apps = appManager.getApps
 appStore.user_id = user.value.id
 appStore.points = userProfile.getPoints
 
+console.log(appManager.getApps)
 const props = defineProps({
   app: {
     type: Object,
