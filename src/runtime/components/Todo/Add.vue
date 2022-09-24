@@ -11,6 +11,11 @@
 <script setup>
 import { useUser, ref } from "#imports";
 import { useTodoStore } from "../../composables/useTodoStore";
+// import { useToasts } from '#imports';
+// const toastsCenter = useToasts()
+
+// const toasts = toastsCenter.getToasts
+
 
 const props = defineProps({
   task: Object,
@@ -22,6 +27,8 @@ const task = ref("");
 
 //=========>> Add Todo Function <<=========//
 const addTodo = async () => {
+
+  if (task.value.length < 3) alert("المهمة قصيرة جدا");
   const taskData = {
     user_id: user.value.id,
     task: task.value,

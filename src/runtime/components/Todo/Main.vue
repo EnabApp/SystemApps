@@ -26,9 +26,8 @@
               </h3>
               <h3 v-if=" md || lg || xl || twoXl" flex="~" gap="2" text="lg secondaryOp dark:secondary" font="semibold">لديك
                 {{ todoStore.getNotArchivedTasks.length }}
-                <h4 v-if="todoStore.getArchivedTasks.length > 1"> مهام </h4>
-                <h4  v-else> مهمة </h4>
-                مؤرشفة
+                <h4 v-if="todoStore.getNotArchivedTasks.length > 1"> مهام </h4>
+                <h4 v-else> مهمة </h4>
               </h3>
           </div>
           <!-- INPUT button -->
