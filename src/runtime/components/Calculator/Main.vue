@@ -336,4 +336,3 @@ onKeyStroke('Enter', (e) => {
   operation.value = "";
 }, { eventName: 'keyup' })
 </script>
-
