@@ -11,7 +11,7 @@
       <div w="100%" mx="3" justify="center">
         <!-- Header -->
         <AppStoreHeader />
-        <span text="primary 2xl">{{appStore.getPacks}}</span>
+        <!-- <span text="primary 2xl">{{appStore.getPacks}}</span> -->
         <div class="hide-scroll" overflow="y-scroll" h="cuts">
           <!-- Pages -->
           <TransitionGroup>
@@ -57,6 +57,7 @@ const supabase = useSupabaseClient()
 const user = useUser()
 const userProfile = useUserProfile()
 
+
 onMounted(() => {
   appManager.fetchPacks()
 })
@@ -65,7 +66,7 @@ onMounted(() => {
 appStore.apps = appManager.getApps
 appStore.user_id = user.value.id
 appStore.points = userProfile.getPoints
-appStore.setPacks(appManager.getPacks)
+
 
 const props = defineProps({
   app: {
