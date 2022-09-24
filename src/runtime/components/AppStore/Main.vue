@@ -11,6 +11,7 @@
       <div w="100%" mx="3" justify="center">
         <!-- Header -->
         <AppStoreHeader />
+        <span text="primary 2xl">{{appStore.getPacks}}</span>
         <div class="hide-scroll" overflow="y-scroll" h="cuts">
           <!-- Pages -->
           <TransitionGroup>
@@ -56,13 +57,16 @@ const supabase = useSupabaseClient()
 const user = useUser()
 const userProfile = useUserProfile()
 
+onMounted(() => {
+  appManager.fetchPacks()
+})
 
-// Set use_id , points and apps to composable
+// Set use_id , points , packs and apps to composable
 appStore.apps = appManager.getApps
 appStore.user_id = user.value.id
 appStore.points = userProfile.getPoints
+appStore.setPacks(appManager.getPacks)
 
-console.log(appManager.getApps)
 const props = defineProps({
   app: {
     type: Object,

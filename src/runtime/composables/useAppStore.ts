@@ -42,7 +42,7 @@ export const useAppStore = defineStore("appStore", {
     // Get breakpoints
     getBreakpoints: (state) => state.breakpoints,
     // All apps with filter
-    allPacks: (state) => state.packs.filter((pack) => pack.title.includes(state.search)),
+    getPacks: (state) => state.packs.filter((pack) => pack.title.includes(state.search)),
     allPacks2: (state) => state.packs
   },
 
@@ -65,11 +65,6 @@ export const useAppStore = defineStore("appStore", {
       this.selectedApp = null
       this.selectedService = null
       this.selectedPack = pack
-    },
-    // Set Selected Service
-    setSelectedService(service: any) {
-      this.selectedPack = null
-      this.selectedService = service
     },
     back() {
       this.selectedService = null
@@ -112,6 +107,9 @@ export const useAppStore = defineStore("appStore", {
     },
     setBreakpoints(breakpoints : any){
       this.breakpoints = breakpoints
+    },
+    setPacks(packs : any){
+      this.packs = packs
     },
   },
 });
