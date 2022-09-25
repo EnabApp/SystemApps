@@ -282,7 +282,12 @@ const operationKeys = ['+', '*', '-', '/']
 
 operationKeys.forEach(operatorKey => {
   onKeyStroke(operatorKey, (e) => {
-    currentValue.value += operatorKey + " "
+    previousValue.value = resultValue.value ? resultValue.value : currentValue.value
+    currentValue.value = "" // empty the current value
+    currentValue.value += operatorKey
+    operation.value = operatorKey
+    currentValue.value = ""
+    resultValue.value = ""
   }, { eventName: 'keypress' })
 })
 
@@ -296,12 +301,13 @@ onKeyStroke('Backspace', (e) => {
 
 
 
-const operationsKeys = ['Enter', '=']
 // get the result using (= , Enter) keys
+const operationsKeys = ['Enter', '=']
 
 operationsKeys.forEach(key => {
-  onKeyStroke(key, () => {
+  onKeyStroke(key, (e) => {
     // turning multiply into '*' to be easy calculated
+    e.preventDefault()
     if (operation.value === "×")
   {
     operation.value = "*";
@@ -341,7 +347,8 @@ operationsKeys.forEach(key => {
   currentValue.value = "";
   previousValue.value = "";
   operation.value = "";
-  }, { eventName: 'keydown' })
+
+  }, { eventName: 'keypress' })
 });
 
 // clear the screen using (Escape) key from all the numbers

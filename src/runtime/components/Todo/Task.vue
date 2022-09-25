@@ -16,7 +16,7 @@
           <input
             v-model.lazy="task.task"
             font="bold"
-            w="fit-content"
+            w="full"
             border="red 2px solid"
             text="right primaryOp dark:primary"
             caret="info"
