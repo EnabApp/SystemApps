@@ -11,7 +11,7 @@
       <div w="100%" mx="3" justify="center">
         <!-- Header -->
         <AppStoreHeader />
-        <!-- <span text="primary 2xl">{{appStore.getPacks}}</span> -->
+        <span v-for="pack in appStore.getPacks" :key="pack.title" text="primary 2xl">{{pack.title}}</span>
         <div class="hide-scroll" overflow="y-scroll" h="cuts">
           <!-- Pages -->
           <TransitionGroup>

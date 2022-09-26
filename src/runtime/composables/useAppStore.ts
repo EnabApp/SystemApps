@@ -109,7 +109,6 @@ export const useAppStore = defineStore("appStore", {
     },
     setPacks(packs : any){
       this.packs = packs
-      console.log('setPacks')
     },
   },
 });
