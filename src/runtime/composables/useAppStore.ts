@@ -43,7 +43,6 @@ export const useAppStore = defineStore("appStore", {
     getBreakpoints: (state) => state.breakpoints,
     // All apps with filter
     getPacks: (state) => state.packs.filter((pack) => pack.title.includes(state.search)),
-    allPacks2: (state) => state.packs
   },
 
   actions: {
@@ -110,6 +109,7 @@ export const useAppStore = defineStore("appStore", {
     },
     setPacks(packs : any){
       this.packs = packs
+      console.log('setPacks')
     },
   },
 });

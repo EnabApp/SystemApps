@@ -24,6 +24,8 @@ const appManager = useAppManager()
 const packs = computed(() => appStore.packs);
 const breakpoint = appStore.getBreakpoints
 
+appStore.setPacks(appManager.getPacks)
+
 </script>
 
 <style></style>

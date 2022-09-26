@@ -30,4 +30,24 @@ appManager.addApp({
   "minHeight": 200,
   "maximized": true
 })
+
+appManager.addApp({
+    "name": "Todo",
+    "title": "مهامي",
+    "icon": "i-ri-todo-fill",
+    "owned":true,
+    "minWidth": 350,
+    "minHeight": 550,
+    "maximized":  false,
+    "maximizable": true
+})
+
+appManager.addApp({
+  "name": "Calculator",
+  "title": "الحاسبة",
+  "icon": "i-ic-baseline-calculate",
+  "minWidth": 300,
+  "minHeight": 350,
+  "maximizable": true
+})
 </script>
