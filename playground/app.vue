@@ -13,18 +13,17 @@ appManager.addApp({
     "name": "AppStore",
     "title": "متجر التطبيقات",
     "owned":true,
-    "points":4000,
+    "core":true,
     "minWidth": 450,
     "minHeight": 495,
     "maximized": true,
-    "maximizable":true,
-    "resizeable":false
 })
 
 appManager.addApp({
   "name": "Recharge",
   "title": "محفظتي",
   "owned":true,
+  "core":true,
   "points":1999,
   "minWidth": 300,
   "minHeight": 200,
@@ -36,6 +35,7 @@ appManager.addApp({
     "title": "مهامي",
     "icon": "i-ri-todo-fill",
     "owned":true,
+    "core":true,
     "minWidth": 350,
     "minHeight": 550,
     "maximized":  false,
@@ -46,6 +46,8 @@ appManager.addApp({
   "name": "Calculator",
   "title": "الحاسبة",
   "icon": "i-ic-baseline-calculate",
+  "owned":true,
+  "core":true,
   "minWidth": 300,
   "minHeight": 350,
   "maximizable": true

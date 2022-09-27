@@ -74,23 +74,42 @@
         </div>
       </div>
     </div>
+    <!-- Buy Pack Modal -->
+    <Teleport to="body" w="950px" h="630px">
+      <UiModal v-model="stateModal" @cancel="modalCanceled" align="center">
+        <template v-slot:title>أختيار الخطة</template>
+        <AppStorePlans :app="appStore.selectedPack" :confirm="buyPack" />
+      </UiModal>
+    </Teleport>
   </div>
 </template>
 
 <script setup>
-import { useAppStore } from '#imports'
+import { useAppStore , useAppManager } from '#imports'
 const appStore = useAppStore()
+const appManager = useAppManager()
 
 const pack = appStore.selectedPack
 
-window.onpopstate = function () {
-  history.go(1);
-  appStore.selectedService = null
-  appStore.selectedApp = null
-  appStore.selectedPack = null
+const breakpoint = appStore.getBreakpoints;
+const loading = ref(false);
+
+const [stateModal, toggleModal] = useToggle(false);
+
+const modalCanceled = () => {
+  stateModal.value = false;
 };
 
-const breakpoint = appStore.getBreakpoints;
+const buyPack = async () => {
+  stateModal.value = false;
+  loading.value = true;
+  const data = await appManager.buyPack(appStore.selectedPack.id);
+  if (data !== false){
+    alert(" تم الاشتراك في " + appStore.selectedPack.title + " بنجاح 🥰");
+  }
+  console.log(data)
+  loading.value = false;
+};
 </script>
 
 <style>
