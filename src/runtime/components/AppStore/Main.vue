@@ -8,11 +8,11 @@
         <AppStoreSidebar w="64px" />
       </div>
       <!-- Header and Content  { 104px m-x } -->
-      <div w="100%" mx="3" justify="center">
+      <div position="relative" w="100%" mx="3" justify="center" h="full" class="border-box isolate">
         <!-- Header -->
         <AppStoreHeader />
         <!-- <span text="primary 2xl">{{appStore.getPacks}}</span> -->
-        <div class="hide-scroll" overflow="y-scroll" h="cuts">
+        <div overflow="y-scroll" h="fit-content" class="hide-scroll absolute top-8 right-0 bottom-0 left-0 border-box">
           <!-- Pages -->
           <TransitionGroup>
             <div v-if="appStore.selectedApp === null && appStore.selectedPack === null && appStore.selectedService === null">
@@ -33,7 +33,7 @@
           </TransitionGroup>
         </div>
         <!-- ButtomBar -->
-        <AppStoreBottomBar v-if="breakpoint.twoXs || breakpoint.xs || breakpoint.sm || breakpoint.md"/>
+        <AppStoreBottomBar class="sticky bottom-0 top-280 right-0 left-0 z-2" v-if="breakpoint.twoXs || breakpoint.xs || breakpoint.sm || breakpoint.md"/>
       </div>
     </div>
 

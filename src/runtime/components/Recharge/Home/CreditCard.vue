@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div w="full">
     <!-- Credit Cards -->
     <div flex="~" justify="center" gap="71px">
       <!-- Credit back -->
@@ -7,7 +7,7 @@
         <div class="relative " w="176px" h="full" rounded="r-lg" align="right">
           <img src="https://images.unsplash.com/photo-1595411425732-e69c1abe2763?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fA%3D%3D&w=1000&q=80" w="full" h="full" rounded="r-lg" />
         </div>
-        <div align="left" m-l="28px" m-t="37px" grid="~ flow-row">
+        <div  align="left" m-l="28px" m-t="37px" grid="~ flow-row">
           <span text="primaryOp 5xl">Enab</span>
           <div m-t="36px">
             <span text="primaryOp 3xl" font="semibold">ستيفن الحمصي يا روحي</span>

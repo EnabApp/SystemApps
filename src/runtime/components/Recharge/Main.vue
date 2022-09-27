@@ -2,18 +2,18 @@
   <!-- Application -->
   <Transition>
     <UiDesktopWindow v-if="app.running" v-show="!app.minimized" :app="app">
-      <div class="flex" bg="primary dark:primaryOp" h="full">
+      <div w="full" class="flex" bg="primary dark:primaryOp" h="full">
         <!-- sidebare -->
         <div class="flex place-content-center" w="[96px]" m-t="[36px]">
           <RechargeSidebar w="[64px]" />
         </div>
         <!-- Headet and Content  { 104px m-x } -->
-        <div flex="grow" m-x="[128px]" m-t="[36px]">
+        <div w="full" flex="grow" p-x="[20px]" m-t="[20px]">
           <!-- Transfers page header -->
           <RechargeTransfersHeader v-if="appRecharge.selectedTab === 1" m-b="100px"/>
-          <div class="overflow-x-hidden overflow-y-scroll hide-scroll" h="cuts">
+          <div w="full" border="1px solid red" class="overflow-x-hidden overflow-y-scroll hide-scroll">
             <!-- Pages -->
-            <div>
+            <div w="full">
               <!-- Home Page -->
               <RechargeHome v-if="appRecharge.selectedTab === 0" />
               <!-- Transfers Page -->

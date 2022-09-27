@@ -1,7 +1,6 @@
 <template>
   <!-- App -->
   <div @click="appStore.setSelectedApp(app)" cursor="pointer" h="150px" w="128px" flex="~ gap-2 col" items="center" justify="start" class="group" p="3" bg="primaryOp dark:primary" rounded="~ lg" position="relative" transition="~ 0.15s ease-in-out" transform="~ active:scale-95">
-
     <!-- App Icon -->
     <div h="full" w="60%">
       <component text="primary dark:primaryOp" h="full" w="full" :is="`${app.name}Icon`"></component>
@@ -37,10 +36,11 @@ const props = defineProps({
 const appStore = useAppStore()
 </script>
 
-<style>
+<style scoped>
+
   .v-enter-active,
 .v-leave-active {
-  transition: opacity 0.5s ease;
+  transition: all 0.5s;
 }
 
 .v-enter-from,
