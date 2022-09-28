@@ -21,4 +21,5 @@ const { twoXs, xs, sm, md, lg, xl, twoXl } = props.breakpoints
 
 </script>
 
-<style></style>
+<style>
+</style>

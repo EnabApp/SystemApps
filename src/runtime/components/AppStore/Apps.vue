@@ -27,5 +27,4 @@ const breakpoint = appStore.getBreakpoints
 appStore.setPacks(appManager.getPacks)
 
 </script>
-
 <style></style>
