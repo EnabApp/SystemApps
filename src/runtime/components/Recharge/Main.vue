@@ -11,7 +11,7 @@
         <div w="full" flex="grow" p-x="[20px]" m-t="[20px]">
           <!-- Transfers page header -->
           <RechargeTransfersHeader v-if="appRecharge.selectedTab === 1" m-b="100px"/>
-          <div w="full" border="1px solid red" class="overflow-x-hidden overflow-y-scroll hide-scroll">
+          <div w="full" class="overflow-x-hidden overflow-y-scroll hide-scroll">
             <!-- Pages -->
             <div w="full">
               <!-- Home Page -->

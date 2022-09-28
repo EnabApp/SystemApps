@@ -1,7 +1,7 @@
 <template>
   <div>
     <div m-t="3%" flex="~ col">
-      <div v-if="!(breakpoint.twoXs || breakpoint.xs)" grid="~" place="items-center" :class="(breakpoint.md || breakpoint.sm ) ? 'grid-cols-4' : breakpoint.lg ? 'grid-cols-4' : breakpoint.xl ? 'grid-cols-6' : breakpoint.twoXl ? 'grid-cols-6' : 'grid-cols-8' ">
+      <div v-if="!(breakpoint.twoXs || breakpoint.xs)" grid="~" place="items-center" :class="(breakpoint.md || breakpoint.sm ) ? 'grid-cols-4' : breakpoint.lg ? 'grid-cols-4' : breakpoint.xl ? 'grid-cols-6' : breakpoint.twoXl ? 'grid-cols-7' : 'grid-cols-8' ">
         <AppStoreAppsPackCard v-for="pack in appStore.getPacks" :key="'pack-'+ pack.id " :pack="pack" />
       </div>
       <div v-else class="max-w-90% mx-auto min-w-0">

@@ -12,7 +12,7 @@
         <!-- Header -->
         <AppStoreHeader />
         <!-- <span text="primary 2xl">{{appStore.getPacks}}</span> -->
-        <div overflow="y-scroll" h="fit-content" class="hide-scroll absolute top-8 right-0 bottom-0 left-0 border-box">
+        <div overflow="y-scroll" h="86%" class="hide-scroll absolute top-8 right-0 bottom-0 left-0 border-box">
           <!-- Pages -->
           <TransitionGroup>
             <div v-if="appStore.selectedApp === null && appStore.selectedPack === null && appStore.selectedService === null">
@@ -104,9 +104,12 @@ const breakpoint = appStore.getBreakpoints
 }
 
 
-.v-enter-active,
 .v-leave-active {
-  transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.1s ease-in-out;
+}
+
+.v-enter-active {
+  transition: opacity 0.9s ease-in-out;
 }
 
 .v-enter-from,
