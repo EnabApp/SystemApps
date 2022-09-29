@@ -10,7 +10,7 @@
       <!-- Header and Content  { 104px m-x } -->
       <div w="100%" mx="3" justify="center">
         <!-- Header -->
-        <AppStoreHeader />
+        <AppStoreHeader  />
         <!-- <span text="primary 2xl">{{appStore.getPacks}}</span> -->
         <div class="hide-scroll" overflow="y-scroll" h="cuts">
           <!-- Pages -->
@@ -104,9 +104,11 @@ const breakpoint = appStore.getBreakpoints
 }
 
 
-.v-enter-active,
 .v-leave-active {
-  transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.0001s ease-in-out;
+}
+.v-enter-active {
+  transition: opacity 0.5s ease-in-out;
 }
 
 .v-enter-from,
