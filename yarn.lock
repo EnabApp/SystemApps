@@ -301,10 +301,10 @@
   dependencies:
     "@jridgewell/trace-mapping" "0.3.9"
 
-"@enab/core@^1.9.2-beta.0":
-  version "1.9.2-beta.0"
-  resolved "https://registry.yarnpkg.com/@enab/core/-/core-1.9.2-beta.0.tgz#c098672ecbe050ede6b607bfec1c4ee74fa1ad5f"
-  integrity sha512-bXUVd/LlqNEejLb7xaHar4/cCl/qSFhEpiKI4LPzq7cdJBTiYZtirGydp9T8scj6cQBCI6paMFbcWmYugCCYrg==
+"@enab/core@^1.9.2-beta.2":
+  version "1.9.2-beta.2"
+  resolved "https://registry.yarnpkg.com/@enab/core/-/core-1.9.2-beta.2.tgz#f4180fbe9632fd50e058512bb54a0bd48e19d5ed"
+  integrity sha512-SWUBPwr62jLHfSaPTLK9ssVxCGuzQgfT5+X9oEs4Yu6DA6a16IEHm6rMti019BnfKrgfIyo9Nu694Y1SPrmspg==
   dependencies:
     "@nuxt/kit" "^3.0.0-rc.10"
     "@vueuse/firebase" "^9.2.0"

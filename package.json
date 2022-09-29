@@ -25,7 +25,7 @@
     "@nuxt/kit": "npm:@nuxt/kit-edge@latest"
   },
   "devDependencies": {
-    "@enab/core": "^1.9.2-beta.0",
+    "@enab/core": "^1.9.2-beta.2",
     "@enab/utilities": "^1.0.15-beta.5",
     "@nuxt/image-edge": "^1.0.0-27703825.db0934c",
     "@nuxt/module-builder": "latest",

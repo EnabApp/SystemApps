@@ -1,5 +1,5 @@
 <template>
-  <div grid="~ flow-row" gap="5" class="place-content-center" align="center">
+  <div grid="~ flow-row" gap="5" class="place-content-center" align="center" py="0.5em">
     <!-- Icon and Content -->
     <div>
       <RechargeIconGift w="220px" h="220px" text="primaryOp dark:primary" />

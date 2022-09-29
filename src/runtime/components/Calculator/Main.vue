@@ -7,7 +7,7 @@
         'text-4xl': lg,
         'text-5xl': xl || twoXl,
       }">
-      {{ previousValue + operation + currentValue }} <span> {{ resultValue }} </span>
+      {{ previousValue  + operation + currentValue }} <span> {{ resultValue }} </span>
       <CalculatorHistoryIcon v-if="twoXs || xs || sm" @click="toggleModal()" class="cursor-pointer ml-2" w="30px"
         h="30px" />
     </div>
@@ -157,6 +157,7 @@ function calculate(button) {
   if (["×", "+", "-", "÷"].includes(button))
   {
     previousValue.value = resultValue.value ? resultValue.value : currentValue.value
+    currentValue.value = "" // empty the current value
     currentValue.value += button
     operation.value = button
     currentValue.value = ""
@@ -270,7 +271,7 @@ numbersKeys.forEach(numberKey => {
       if (currentValue.value.length === 0 && numberKey == '0') addNumber = false;
       else
       {
-        currentValue.value += numberKey
+        currentValue.value += numberKey + " "
       }
     }
   }, { eventName: 'keypress' })
@@ -281,7 +282,12 @@ const operationKeys = ['+', '*', '-', '/']
 
 operationKeys.forEach(operatorKey => {
   onKeyStroke(operatorKey, (e) => {
+    previousValue.value = resultValue.value ? resultValue.value : currentValue.value
+    currentValue.value = "" // empty the current value
     currentValue.value += operatorKey
+    operation.value = operatorKey
+    currentValue.value = ""
+    resultValue.value = ""
   }, { eventName: 'keypress' })
 })
 
@@ -293,11 +299,21 @@ onKeyStroke('Backspace', (e) => {
   )
 }, { eventName: 'keydown' })
 
-// get the result using (= , Enter) keys
-onKeyStroke('Enter', (e) => {
-  // turning multiply into '*' to be easy calculated
 
-  if (operation.value === "×")
+
+// get the result using (= , Enter) keys
+const operationsKeys = ['Enter', '=']
+
+operationsKeys.forEach(key => {
+  onKeyStroke(key, (e) => {
+
+    // this solves the issue of (undefined)
+    if (!currentValue.value || !previousValue.value) return;
+
+    // prevent the default (this solves the duplicated number issue)
+    e.preventDefault()
+    // turning multiply into '*' to be easy calculated
+    if (operation.value === "×")
   {
     operation.value = "*";
   }
@@ -310,13 +326,15 @@ onKeyStroke('Enter', (e) => {
 
   // saving the process of calculation into one variable (not include the result)
   processOfCalculation.value =
-    previousValue.value + " " + operation.value + " " + currentValue.value ?  currentValue.value : null ;
-    console.log( previousValue.value + "--" +currentValue.value)
+    previousValue.value + " " + operation.value + " " + currentValue.value
+
+
 
   // calculate( number before operation sign + the operation sign + number after operation sign)
   resultValue.value = eval(
     previousValue.value + operation.value + currentValue.value
   );
+
   // prepare the data to push to the history
   resultInHistory.value =
     processOfCalculation.value + " " + "=" + " " + resultValue.value;
@@ -324,15 +342,25 @@ onKeyStroke('Enter', (e) => {
 
   // push the data to the history if there is an operation
 
-    historyList.value.push(resultInHistory.value);
+  historyList.value.push(resultInHistory.value);
 
 
   /* SAVING THE DATA OF THE HISTORY INTO THE localStorage */
   historyStorage.value = historyList.value
 
   // remove the numbers from the result bar WHEN CLICK THE EQUAL BUTTON
-  previousValue.value = "";
   currentValue.value = "";
+  previousValue.value = "";
   operation.value = "";
-}, { eventName: 'keyup' })
+
+  }, { eventName: 'keypress' })
+});
+
+// clear the screen using (Escape) key from all the numbers
+onKeyStroke('Escape', (e) => {
+  previousValue.value = ""
+  currentValue.value = ""
+  operation.value = ""
+  resultValue.value = ""
+}, { eventName: 'keydown' })
 </script>

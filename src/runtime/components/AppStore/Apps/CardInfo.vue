@@ -30,7 +30,7 @@
             <span text="primaryOp dark:primary xl" font="light">تطبيق</span>
             <div flex="~">
               <!-- Loading -->
-              <div v-if="loading" flex="~" justify="center" m-t="30px" w="122px" h="41px" rounded="lg" bg="yellow">
+              <div v-if="loading" flex="~" justify="center" items="center" m-t="30px" w="122px" h="41px" rounded="lg" bg="yellow">
                 <AppStoreIconLoading w="5" h="5" m-l="2" text="primaryOp" />
               </div>
               <!-- Owned -->
