@@ -1,5 +1,5 @@
 <template>
-  <div flex="~" w="full" items="center" justify="center">
+  <div class="fade-in-out" flex="~" w="full" items="center" justify="center">
     <div w="95%"  m-t="2" flex="~ col gap-2" overflow="y-scroll">
       <div v-for="app in appStore.apps" :key="'app-' + app.id" p="2" rounded="xl"  grid="~ cols gap-3" border="1 secondaryOp" :class="(breakpoint.twoXs) ? 'grid-cols-2 transition-all duration-300 ease-in delay-75' : 'grid-cols-4 transition-all duration-300 ease-in delay-75'">
         <div flex="~ row gap-2" :class="(breakpoint.twoXs) ? 'col-start-1 col-end-2' : '' ">
@@ -45,5 +45,20 @@ const headers = [
 </script>
 
 <style>
+  .fade-in-out {
+  animation: fadeIn ease 1s;
+  -webkit-animation: fadeIn ease 1s;
+  -moz-animation: fadeIn ease 1s;
+  -o-animation: fadeIn ease 1s;
+  -ms-animation: fadeIn ease 1s;
+}
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 </style>
