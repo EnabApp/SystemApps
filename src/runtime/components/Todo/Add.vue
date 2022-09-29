@@ -8,7 +8,6 @@ import { useUser, ref } from "#imports";
 import { useTodoStore } from "../../composables/useTodoStore";
 import { useToasts } from '#imports'
 const toastsCenter = useToasts()
-
 // const toasts = toastsCenter.sendToast
 
 
@@ -22,17 +21,13 @@ const task = ref("");
 
 //=========>> Add Todo Function <<=========//
 const addTodo = async () => {
-  // const Toast = {
-  //   title: "خطأ",
-  //   description: "يجب ان تكون المهمة اكثر من 3 حروف",
-  //   status: "error",
-  //   duration: 0,
-  //   isClosable: true,
-  // };
+  const Toast = {
+    title: "خطأ",
+    message: "يجب ان تكون المهمة اكثر من 3 حروف",
+  };
 
   if (task.value.length <= 3) {
-    // toastsCenter.sendToast(Toast)
-    alert("يجب ان تكون المهمة اكثر من 3 حروف")
+    toastsCenter.sendToast(Toast)
     return;
   }
   const taskData = {

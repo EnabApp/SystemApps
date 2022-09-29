@@ -1,5 +1,5 @@
 <template>
-  <div mt="4">
+  <div class="fade-in-out" mt="4">
     <!-- Slider -->
     <AppStoreHomeSlider />
     <div mt="4">
@@ -21,4 +21,21 @@ const { twoXs, xs, sm, md, lg, xl, twoXl } = props.breakpoints
 
 </script>
 
-<style></style>
+<style>
+.fade-in-out {
+  animation: fadeIn ease 1s;
+  -webkit-animation: fadeIn ease 1s;
+  -moz-animation: fadeIn ease 1s;
+  -o-animation: fadeIn ease 1s;
+  -ms-animation: fadeIn ease 1s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+</style>

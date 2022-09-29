@@ -35,7 +35,6 @@ const props = defineProps({
 });
 const appStore = useAppStore()
 </script>
-
 <style scoped>
 
   .v-enter-active,

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="fade-in-out">
     <div m-t="3%" flex="~ col">
       <div v-if="!(breakpoint.twoXs || breakpoint.xs)" grid="~" place="items-center" :class="(breakpoint.md || breakpoint.sm ) ? 'grid-cols-4' : breakpoint.lg ? 'grid-cols-4' : breakpoint.xl ? 'grid-cols-6' : breakpoint.twoXl ? 'grid-cols-7' : 'grid-cols-8' ">
         <AppStoreAppsPackCard v-for="pack in appStore.getPacks" :key="'pack-'+ pack.id " :pack="pack" />
@@ -27,5 +27,21 @@ const breakpoint = appStore.getBreakpoints
 appStore.setPacks(appManager.getPacks)
 
 </script>
+<style>
+  .fade-in-out {
+  animation: fadeIn ease 1s;
+  -webkit-animation: fadeIn ease 1s;
+  -moz-animation: fadeIn ease 1s;
+  -o-animation: fadeIn ease 1s;
+  -ms-animation: fadeIn ease 1s;
+}
 
-<style></style>
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+</style>
