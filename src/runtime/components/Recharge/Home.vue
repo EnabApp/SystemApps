@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div w="full">
     <RechargeHomeCreditCard />
     <!-- Last Actions and Fast charge -->
     <div flex="~" justify="center" gap="71px" m-t="50px">
@@ -22,6 +22,3 @@
 
 </script>
 
-<style>
-
-</style>

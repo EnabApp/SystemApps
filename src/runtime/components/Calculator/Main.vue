@@ -306,8 +306,13 @@ const operationsKeys = ['Enter', '=']
 
 operationsKeys.forEach(key => {
   onKeyStroke(key, (e) => {
-    // turning multiply into '*' to be easy calculated
+
+    // this solves the issue of (undefined)
+    if (!currentValue.value || !previousValue.value) return;
+
+    // prevent the default (this solves the duplicated number issue)
     e.preventDefault()
+    // turning multiply into '*' to be easy calculated
     if (operation.value === "×")
   {
     operation.value = "*";

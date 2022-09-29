@@ -4,7 +4,7 @@
     <UiInput v-model="search" placeholder="البحث عن تطبيق" bg="primary dark:primaryOp" rounded="lg" icon="i-akar-icons:search" w="100%" />
   </div>
   <div v-else flex="~ gap-3">
-    <AppStoreIconSearch @mouseover="searchHover = true" @mouseleave="searchHover = false" w="24px" h="24px" text="primaryOp dark:primary" />
+    <AppStoreIconSearch @mouseover="displaySearchBar()"  @mouseleave="displaySearchBar()" w="24px" h="24px" text="primaryOp dark:primary" />
     <UiInput v-if="searchHover" w="100%" v-model="search" placeholder="البحث عن تطبيق" bg="primary dark:primaryOp" rounded="lg" icon="i-akar-icons:search"  />
   </div>
   <div class="flex place-items-center">
@@ -24,6 +24,10 @@ const skeleton = ref(true)
 const search = ref('')
 const searchHover = ref(false)
 appStore.search = search
+
+const displaySearchBar = () => {
+  searchHover.value = true
+}
 
 watch(search.value, (newX) => {
   appStore.selectedTab == 1
